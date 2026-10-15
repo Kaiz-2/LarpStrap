@@ -2,7 +2,7 @@
 
 Todos los cambios relevantes de LarpStrap. Formato basado en [Keep a Changelog](https://keepachangelog.com/es-ES/1.1.0/); versiones según [SemVer](https://semver.org/lang/es/).
 
-## Sin publicar
+## 0.4.0 - 2026-10-16 (versión preliminar)
 
 ### Añadido
 - **Actualización automática** (ADR 0009). Al iniciarse, la versión instalada busca una nueva en GitHub, verifica su firma con la clave propia de LarpStrap y su SHA-256, y se actualiza sola sin permisos de administrador.

@@ -28,7 +28,7 @@ Ninguno de los dos está firmado (ADR 0006). La decisión sobre el instalador es
 1. **Descarga** `LarpStrap-Setup-<versión>-win-x64.exe` y su `.sha256` desde la página de la versión.
 2. **Comprueba la descarga** antes de abrirla. En PowerShell:
    ```bash
-   Get-FileHash .\LarpStrap-Setup-0.3.0-win-x64.exe -Algorithm SHA256
+   Get-FileHash .\LarpStrap-Setup-0.4.0-win-x64.exe -Algorithm SHA256
    ```
    El resultado debe coincidir con el `.sha256`. Si no coincide, bórralo y no lo abras.
 3. **Ábrelo normalmente,** con doble clic y **sin** «Ejecutar como administrador». SmartScreen avisará porque no está firmado: si el SHA-256 coincide, pulsa «Más información» y «Ejecutar de todas formas». Si lo abres como administrador, el instalador se niega a seguir y explica por qué.
@@ -55,7 +55,7 @@ Ninguno de los dos está firmado (ADR 0006). La decisión sobre el instalador es
 ### Sin asistente (scripts)
 
 ```bash
-.\LarpStrap-Setup-0.3.0-win-x64.exe --silent --dir "D:\Juegos\LarpStrap" --no-desktop-shortcut --launch
+.\LarpStrap-Setup-0.4.0-win-x64.exe --silent --dir "D:\Juegos\LarpStrap" --no-desktop-shortcut --launch
 ```
 
 | Opción | Efecto |
