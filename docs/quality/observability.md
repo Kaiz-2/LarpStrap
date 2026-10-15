@@ -40,6 +40,9 @@ LarpStrap es una app de escritorio y **no envía telemetría**: no hay métricas
 
 Desde la corrección del defecto B, `InstanceTracker` escribe `Instance.CloseRequested`, `Instance.ForceKill` e `Instance.Exited`. Es el único punto por el que pasan el panel, «Cerrar y lanzar» y el sondeo del lanzamiento. Antes los escribía la interfaz, y se perdían cuando un lanzamiento refrescaba primero.
 | `Log.SizeLimitReached` | Warning | — (el archivo deja de crecer) |
+| `Update.Checked` | Info, o Warning si se rechaza | `result` (`UpToDate`, `Ready`, `NoRelease`, `Rejected`, `Failed`), `version` (la disponible), `reason` (por qué se rechazó o falló), `origin` (`start` o `manual`) |
+| `Update.Started` | Info | `version`: el instalador se abrió y LarpStrap se cierra |
+| `Update.StartFailed` / `Update.ChangedOnDisk` | Warning | `exception` / — |
 
 **Nunca se registran:**
 - URIs, líneas de comandos, tickets ni cookies;

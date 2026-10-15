@@ -12,7 +12,7 @@ LarpStrap es un proyecto personal de un desarrollador individual residente en Es
 ## Decisión
 - Licencia **MIT** (`LICENSE`).
 - Releases **sin firmar** en GitHub Releases, acompañadas de su hash SHA-256 publicado.
-- **Sin autoactualizador:** el usuario actualiza a mano desde Releases. Así no hay que resolver una raíz de confianza sin firma.
+- ~~**Sin autoactualizador:**~~ *Sustituido por la ADR 0009 (2026-10-16): actualización automática verificada con una clave propia.* El usuario actualiza a mano desde Releases. Así no hay que resolver una raíz de confianza sin firma.
 - El README avisa de que SmartScreen y los antivirus pueden advertir sobre un ejecutable sin firmar.
 
 ## Alternativas consideradas

@@ -4,6 +4,13 @@ Todos los cambios relevantes de LarpStrap. Formato basado en [Keep a Changelog](
 
 ## Sin publicar
 
+### Añadido
+- **Actualización automática** (ADR 0009). Al iniciarse, la versión instalada busca una nueva en GitHub, verifica su firma con la clave propia de LarpStrap y su SHA-256, y se actualiza sola sin permisos de administrador.
+  - Nunca con Roblox abierto ni durante un lanzamiento.
+  - Se desactiva en Acerca de, donde también está «Buscar ahora».
+  - Quien tenga 0.3.0 debe instalar esta versión a mano una vez.
+- Instalador: `--update <pid>` (lo usa el actualizador).
+
 ### Añadido (Codex, revisado)
 - **Dos cuentas:** abre Roblox - Windows (Microsoft Store) y Roblox web, cada uno con su sesión. No está garantizada ni probada con cliente real (ver limitaciones).
 - **Accesos directos:** nombre e icono públicos del juego desde Roblox, y «Unirme» por web o por Microsoft.

@@ -25,9 +25,18 @@
       <views:SettingCard Icon="&#xE7FC;" Title="Lo simulado, siempre a la vista" Description="El modo demostración marca cada cliente simulado; nunca se mezclan con los reales." />
 
       <TextBlock Style="{StaticResource TitleText}" Margin="0,24,0,12" Text="Actualizaciones" />
-      <views:SettingCard Icon="&#xE895;" Title="Buscar actualizaciones"
-                         Description="Aún no disponible. LarpStrap solo comprobará si hay una versión nueva y te enlazará su descarga: nunca se actualizará solo.">
-        <Button Content="No disponible todavía" IsEnabled="False" />
+      <views:SettingCard Icon="&#xE895;" Title="Actualizar automáticamente"
+                         Description="Al iniciarse, LarpStrap busca una versión nueva en GitHub, comprueba su firma y la instala. Nunca con Roblox abierto: entonces espera al siguiente inicio.">
+        <StackPanel>
+          <StackPanel Orientation="Horizontal">
+            <CheckBox Style="{StaticResource ToggleCheck}" Content="_Automático" IsChecked="{Binding AutoUpdate, Mode=TwoWay}" IsEnabled="{Binding IsInstalled}"
+                      AutomationProperties.Name="Actualizar LarpStrap automáticamente al iniciarse" />
+            <Button Margin="12,0,0,0" Content="_Buscar ahora" Command="{Binding CheckForUpdatesCommand}"
+                    AutomationProperties.Name="Buscar actualizaciones ahora" />
+          </StackPanel>
+          <TextBlock Style="{StaticResource CaptionText}" Margin="0,8,0,0" TextWrapping="Wrap" MaxWidth="360" HorizontalAlignment="Left"
+                     Text="{Binding UpdateStatus}" AutomationProperties.LiveSetting="Polite" />
+        </StackPanel>
       </views:SettingCard>
     </StackPanel>
   </ScrollViewer>

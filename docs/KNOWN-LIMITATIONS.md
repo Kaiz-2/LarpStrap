@@ -7,14 +7,15 @@ Lo que LarpStrap **no hace**, **no garantiza** o **hace mal** a día de hoy. Los
 - **«Dos cuentas» no está garantizada ni probada.** Abre Roblox - Windows y Roblox web, cada uno con su sesión. Roblox puede cerrar una al abrir la otra, y no hay ninguna prueba con cliente real registrada. «Unirme por Microsoft» usa el programa registrado para los enlaces `roblox:`, que puede ser otro launcher (Bloxstrap, Fishstrap) en lugar de Roblox - Windows.
 - **Sin almacenamiento de cuentas.** LarpStrap no guarda cookies ni contraseñas (ADR 0004); las sesiones las mantienen Roblox - Windows y el navegador.
 - **No toca el proceso de bandeja de Roblox.** Si ese proceso ocupa la plaza, el lanzamiento se bloquea y hay que cerrarlo desde la bandeja de Windows.
-- **Sin firma de código ni actualizador automático** (ADR 0006). SmartScreen avisa; las versiones se comprueban con el SHA-256 publicado.
+- **Sin firma de código** (ADR 0006). SmartScreen avisa; las versiones se comprueban con el SHA-256 publicado.
+- **Actualización automática (ADR 0009):** solo en la versión instalada, no en el zip. Se verifica con una clave propia, no con Authenticode. Si la clave del propietario se perdiera, haría falta instalar a mano una versión con una clave nueva. Con el modo demostración activado no se instala, porque no se sabe si hay Roblox abierto. No está probada todavía con una release real.
 - **Requiere el .NET 10 Desktop Runtime** instalado aparte (ADR 0007).
 - **Solo Windows 10/11 x64 e interfaz en español.**
 
 ## Funciones que todavía no existen
 
 - **Registrar LarpStrap como gestor de `roblox-player:`** (P4-T03). Sin registro, el botón «Jugar» de la web sigue abriendo el gestor actual (Bloxstrap). LarpStrap ya abre un enlace si se le pasa (`LarpStrap.exe roblox-player:…`, desde 0.3.0). «Lanzar» abre la página de inicio de la app de Roblox (`--app`).
-- **Perfiles de cuenta, cerrar a la bandeja y comprobación de actualizaciones.** Las que aparecen en la interfaz están desactivadas y marcadas «no disponible».
+- **Perfiles de cuenta y cerrar a la bandeja.** Las que aparecen en la interfaz están desactivadas y marcadas «no disponible».
 - **Discord Rich Presence** necesita que crees una aplicación de Discord y pegues su ID: LarpStrap no tiene una aplicación propia registrada.
 - **FastFlags:** si abres Roblox con otro programa (Bloxstrap, Fishstrap), este puede sustituir el archivo de flags. LarpStrap los vuelve a escribir en cada lanzamiento suyo. Si no se pueden escribir (archivo bloqueado), Roblox se abre con los anteriores y la barra de estado lo dice.
 

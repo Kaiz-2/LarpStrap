@@ -90,7 +90,8 @@ public sealed record AppSettings(
     bool CompactNavigation = false,
     LogoStyle Logo = LogoStyle.Classic,
     string? CustomAccentHex = null,
-    UiThemePreset ThemePreset = UiThemePreset.Nebula)
+    UiThemePreset ThemePreset = UiThemePreset.Nebula,
+    bool AutoUpdate = true)
 {
     public const int CurrentSchemaVersion = 2;
     public const double MinTextScale = 1.0;

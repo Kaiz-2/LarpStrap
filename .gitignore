@@ -480,3 +480,6 @@ $RECYCLE.BIN/
 
 # Vim temporary swap files
 *.swp
+
+# Update-signing private keys never belong in the repository (docs/adr/0009)
+*.p8

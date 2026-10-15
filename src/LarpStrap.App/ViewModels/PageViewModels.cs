@@ -532,10 +532,32 @@ public sealed partial class DiagnosticsViewModel : ObservableObject
 
 public sealed record InfoRow(string Label, string Value);
 
-public sealed partial class AboutViewModel : ObservableObject
+public sealed partial class AboutViewModel(SettingsService settings, AppUpdater updater) : ObservableObject
 {
     public static string AppVersion { get; } =
         Assembly.GetExecutingAssembly().GetCustomAttribute<AssemblyInformationalVersionAttribute>()?.InformationalVersion.Split('+')[0] ?? "0.0.0";
 
     public string Version => AppVersion;
+
+    public bool IsInstalled => AppUpdater.IsInstalled;
+
+    public bool AutoUpdate
+    {
+        get => settings.Current.AutoUpdate;
+        set
+        {
+            UpdateStatus = settings.Update(s => s with { AutoUpdate = value })
+                ?? (value ? "LarpStrap se actualizará solo al iniciarse." : "Actualización automática desactivada: usa «Buscar ahora».");
+            OnPropertyChanged();
+        }
+    }
+
+    [ObservableProperty] public partial string UpdateStatus { get; set; } = "";
+
+    [RelayCommand]
+    private async Task CheckForUpdatesAsync()
+    {
+        UpdateStatus = "Buscando actualizaciones…";
+        UpdateStatus = await updater.CheckAsync(manual: true);
+    }
 }

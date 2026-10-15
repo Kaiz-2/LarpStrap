@@ -24,7 +24,7 @@ public sealed partial class AppLog : IDisposable
     // Extend per module when a new field is genuinely needed; never add free-text keys.
     private static readonly HashSet<string> AllowedKeys =
     [
-        "appVersion", "robloxVersion", "placeId", "launchMode", "pid", "count", "durationMs", "exception", "result", "theme", "origin", "demoMode",
+        "appVersion", "robloxVersion", "placeId", "launchMode", "pid", "count", "durationMs", "exception", "result", "theme", "origin", "demoMode", "version", "reason",
     ];
 
     /// <summary>Per-file cap so a repeating warning cannot fill the disk; rotation only bounds the file count.</summary>

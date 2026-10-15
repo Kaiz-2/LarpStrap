@@ -2,7 +2,7 @@
 
 Bootstrapper de Roblox para Windows con **Clientes abiertos**, accesos a Roblox - Windows y Roblox web, gestión de FastFlags permitidos y personalización visual.
 
-> **Estado: versión preliminar 0.3.0 en [Releases](https://github.com/Kaiz-2/LarpStrap/releases)**, con instalador y zip portable. Lo que funciona y lo que no está en [Estado](#estado) y en [limitaciones conocidas](docs/KNOWN-LIMITATIONS.md). No está afiliado a Roblox Corporation.
+> **Estado: versión preliminar.** Las versiones se publican en [Releases](https://github.com/Kaiz-2/LarpStrap/releases), con instalador y zip portable; la instalada se actualiza sola. Lo que funciona y lo que no está en [Estado](#estado) y en [limitaciones conocidas](docs/KNOWN-LIMITATIONS.md). No está afiliado a Roblox Corporation.
 
 ![Inicio de LarpStrap: cabecera de marca, estado de Roblox y botón Lanzar (modo demostración)](docs/screenshots/nebulosa-inicio.png)
 
@@ -47,7 +47,7 @@ El ejecutable queda en `src/LarpStrap.App/bin/Release/net10.0-windows/LarpStrap.
 | Configuración (tema, tiempos, accesos directos) | `%LOCALAPPDATA%\LarpStrap\Settings.json`. Si se corrompe, se guarda una copia `.bad` y se usan los valores por defecto |
 | Logs | `%LOCALAPPDATA%\LarpStrap\Logs`: como máximo 10 archivos de 5 MB |
 
-Los logs solo contienen campos de una lista cerrada: versiones, PID, resultados y duraciones. Nunca guardan URIs, tickets ni rutas, y de los errores solo se registra el tipo. Desde **Diagnóstico** puedes verlos y exportarlos en un zip, que solo incluye los logs de LarpStrap, nunca los de Roblox. LarpStrap no envía telemetría. Solo se conecta a las API públicas de Roblox para mostrar el nombre y el icono de los juegos que guardas: envía el place ID, nunca datos de tu cuenta. El detalle de cada evento está en [docs/quality/observability.md](docs/quality/observability.md).
+Los logs solo contienen campos de una lista cerrada: versiones, PID, resultados y duraciones. Nunca guardan URIs, tickets ni rutas, y de los errores solo se registra el tipo. Desde **Diagnóstico** puedes verlos y exportarlos en un zip, que solo incluye los logs de LarpStrap, nunca los de Roblox. LarpStrap no envía telemetría. Solo se conecta a las API públicas de Roblox para mostrar el nombre y el icono de los juegos que guardas: envía el place ID, nunca datos de tu cuenta. Para actualizarse, consulta las releases de `Kaiz-2/LarpStrap` en GitHub (`api.github.com` y las descargas de GitHub) al iniciarse; no envía datos tuyos. El detalle de cada evento está en [docs/quality/observability.md](docs/quality/observability.md).
 
 ## Estado
 
@@ -58,7 +58,7 @@ Los logs solo contienen campos de una lista cerrada: versiones, PID, resultados 
 | Unirse a una partida desde el navegador (`roblox-player:`) | Pendiente (P4) |
 | FastFlags de la lista permitida | Integrado; la aplicación real por Roblox no se ha verificado |
 | Discord Rich Presence | Pendiente |
-| Comprobar actualizaciones | No hay autoactualizador (ADR 0006); la comprobación está pendiente |
+| Actualizaciones | Automáticas al iniciar en la versión instalada: firma verificada, nunca con Roblox abierto (ADR 0009). El zip se actualiza a mano |
 
 El plan completo y las tareas abiertas están en [PLAN.md](PLAN.md). La última auditoría, con los defectos conocidos, está en [docs/quality/final-audit.md](docs/quality/final-audit.md).
 

@@ -105,7 +105,22 @@ public partial class App : Application
         shell.Add("Dos cuentas", "\uE716", new AccountsViewModel(dialogs, storeLauncher), "Dos _cuentas");
         shell.Add("Personalización", "\uE790", new CustomizationViewModel(settings, Announce), "Pe_rsonalización", NavGroup.Footer);
         shell.Add("Ajustes", "\uE713", new SettingsViewModel(settings, dialogs, Announce), "A_justes", NavGroup.Footer);
-        shell.Add("Acerca de", "\uE946", new AboutViewModel(), "Acer_ca de", NavGroup.Footer);
+        // Updates: Roblox counts as in use while a client is open or starting, during a launch, and until the first real
+        // refresh (in demo mode the real clients are unknown). The background tray process does not count.
+        PanelSnapshot? lastReal = null;
+        var updater = new AppUpdater(log, Path.Combine(dataDir, "Updates"),
+            () => instances.IsLaunching || lastReal is null
+                || lastReal.Instances.Any(i => i.IsActive && i.Status != InstanceStatus.Background),
+            Announce, Shutdown);
+        var checkedAtStart = false;
+        instances.Refreshed += (snapshot, simulated) =>
+        {
+            lastReal = simulated ? null : snapshot;
+            if (simulated || checkedAtStart) return;
+            checkedAtStart = true;
+            if (settings.Current.AutoUpdate && AppUpdater.IsInstalled) _ = updater.CheckAsync(manual: false);
+        };
+        shell.Add("Acerca de", "\uE946", new AboutViewModel(settings, updater), "Acer_ca de", NavGroup.Footer);
         shell.Navigate(shell.Pages[0]);
 
         // The pane preferences are remembered between sessions.

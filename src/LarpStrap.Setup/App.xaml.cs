@@ -112,6 +112,16 @@ public partial class App : Application
 
             using var payload = OpenPayload();
             if (payload is null) return SetupArguments.NoPayload;
+            var (startMenu, desktop) = (args.StartMenuShortcut, args.DesktopShortcut);
+            if (args.WaitForProcess is { } pid)
+            {
+                // Started by LarpStrap's updater: only update an existing installation, after LarpStrap has closed.
+                if (existing is null) throw new InstallerException("La actualización solo se aplica sobre una instalación existente.");
+                WaitForExit(pid);
+                var current = InstallTarget.ForCurrentUser(existing.Directory);
+                startMenu = existing.Shortcuts.Contains(current.StartMenuShortcut, StringComparer.OrdinalIgnoreCase);
+                desktop = existing.Shortcuts.Contains(current.DesktopShortcut, StringComparer.OrdinalIgnoreCase);
+            }
             var target = existing?.Directory ?? args.Directory ?? InstallTarget.DefaultDirectory;
             if (existing is not null && args.Directory is { } wanted && !string.Equals(Path.GetFullPath(wanted).TrimEnd('\\'), Path.GetFullPath(existing.Directory).TrimEnd('\\'), StringComparison.OrdinalIgnoreCase))
                 throw new InstallerException($"LarpStrap ya está instalado en {existing.Directory}. Desinstálalo antes de instalarlo en otra carpeta.");
@@ -120,7 +130,7 @@ public partial class App : Application
 
             payload.Position = 0;
             var result = new Installer(InstallTarget.ForCurrentUser(target))
-                .Install(payload, new InstallOptions(args.StartMenuShortcut, args.DesktopShortcut, Version, Environment.ProcessPath));
+                .Install(payload, new InstallOptions(startMenu, desktop, Version, Environment.ProcessPath));
             Log?.Write(LogLevel.Info, "Setup.Installed", ("appVersion", Version), ("count", result.FilesVerified));
             if (args.Launch) LaunchApp(result.AppPath);
             return SetupArguments.Ok;
@@ -130,6 +140,18 @@ public partial class App : Application
             Log?.Write(LogLevel.Error, "Setup.Failed", ("exception", ex.InnerException ?? ex));
             return SetupArguments.Failed;
         }
+    }
+
+    /// <summary>Waits up to a minute for the LarpStrap that started the update to close; if it does not, the install refuses as usual.</summary>
+    private static void WaitForExit(int pid)
+    {
+        try
+        {
+            using var process = Process.GetProcessById(pid);
+            if (string.Equals(process.ProcessName, Path.GetFileNameWithoutExtension(InstallTarget.AppExe), StringComparison.OrdinalIgnoreCase))
+                process.WaitForExit(TimeSpan.FromMinutes(1));
+        }
+        catch (ArgumentException) { } // already gone
     }
 
     /// <summary>Starts the installed app as the current (non-elevated) user.</summary>

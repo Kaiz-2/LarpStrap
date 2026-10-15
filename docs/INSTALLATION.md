@@ -85,11 +85,17 @@ Ninguno de los dos está firmado (ADR 0006). La decisión sobre el instalador es
 | Configuración | `%LOCALAPPDATA%\LarpStrap\Settings.json` | **No, nunca** |
 | Logs de LarpStrap y del instalador | `%LOCALAPPDATA%\LarpStrap\Logs` (los del instalador: eventos `Setup.*`) | Escribe los suyos; nunca borra |
 
-LarpStrap no guarda cookies, contraseñas ni enlaces de juego, y no envía telemetría. Solo se conecta a las API públicas de Roblox (`apis`, `games` y `thumbnails.roblox.com`) para el nombre y el icono de los juegos que guardas, enviando el place ID y nada de tu cuenta. Ni el instalador ni la app cambian qué programa abre los enlaces de Roblox.
+LarpStrap no guarda cookies, contraseñas ni enlaces de juego, y no envía telemetría. Solo se conecta a las API públicas de Roblox (`apis`, `games` y `thumbnails.roblox.com`) para el nombre y el icono de los juegos que guardas, enviando el place ID y nada de tu cuenta. Para actualizarse, consulta las releases de `Kaiz-2/LarpStrap` en GitHub (`api.github.com` y las descargas de GitHub) al iniciarse; no envía datos tuyos. Ni el instalador ni la app cambian qué programa abre los enlaces de Roblox.
 
 ## Actualizar
 
-- **Con el instalador:** cierra LarpStrap y abre el instalador de la versión nueva.
+- **Automática (versión instalada, ADR 0009):** al iniciarse, LarpStrap busca una versión nueva en GitHub.
+  - Solo la acepta si su manifiesto está firmado con la clave de LarpStrap y el instalador coincide en tamaño y SHA-256; si no, la descarta y no instala nada.
+  - La descarga va a `%LOCALAPPDATA%\LarpStrap\Updates`. Después LarpStrap avisa, se cierra, el instalador actualiza en silencio conservando tus accesos directos y lo vuelve a abrir. Sin permisos de administrador.
+  - **Nunca con Roblox abierto** ni durante un lanzamiento: entonces espera al siguiente inicio. Nunca cierra Roblox.
+  - Se desactiva en **Acerca de › Actualizar automáticamente**; «Buscar ahora» comprueba en cualquier momento.
+  - Quien tenga 0.3.0 o anterior debe instalar a mano, una vez, la primera versión con actualizador.
+- **Con el instalador, a mano:** cierra LarpStrap y abre el instalador de la versión nueva.
   - Detecta la instalación y la actualiza **en su carpeta**; para cambiar de carpeta, desinstala antes.
   - Mantiene los accesos directos que tenías.
   - Si LarpStrap está abierto, se detiene sin cambiar nada y te pide cerrarlo. **Nunca cierra LarpStrap ni Roblox por su cuenta.**
@@ -97,7 +103,7 @@ LarpStrap no guarda cookies, contraseñas ni enlaces de juego, y no envía telem
   - Con la misma versión, «Reparar» vuelve a copiar y comprobar los archivos.
   - Con una versión anterior, explica que sustituirá una más reciente antes de hacerlo.
 - **Con el zip:** cierra LarpStrap, extrae la versión nueva en su carpeta y borra la anterior.
-- **En los dos casos se conserva tu configuración,** porque vive fuera de la carpeta del programa. No hay actualizaciones automáticas (ADR 0006).
+- **En los dos casos se conserva tu configuración,** porque vive fuera de la carpeta del programa. El zip portable no se actualiza solo.
 
 ## Desinstalar
 
