@@ -1,0 +1,84 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <!--
+    One seed per accent. ThemeService turns it into a fill, the text on that fill and the accent as text for the active
+    mode and interface theme (AccentPalette), always meeting WCAG; ThemeContrastTests checks every combination of
+    seed, interface theme and mode. Violet is the brand accent.
+  -->
+  <Color x:Key="AccentSeedViolet">#9475F5</Color>
+  <Color x:Key="AccentSeedBlue">#70A7F7</Color>
+  <Color x:Key="AccentSeedRose">#F28DAD</Color>
+  <Color x:Key="AccentSeedTeal">#45C2B5</Color>
+  <Color x:Key="AccentSeedCoral">#FF806F</Color>
+  <Color x:Key="AccentSeedLime">#A5D65C</Color>
+  <Color x:Key="AccentSeedAmber">#F4B942</Color>
+  <Color x:Key="AccentSeedCyan">#31C7E8</Color>
+  <Color x:Key="AccentSeedMint">#54D6A0</Color>
+  <Color x:Key="AccentSeedEmerald">#32C784</Color>
+  <Color x:Key="AccentSeedForest">#4D9A67</Color>
+  <Color x:Key="AccentSeedSky">#6BC7FF</Color>
+  <Color x:Key="AccentSeedOcean">#347FC4</Color>
+  <Color x:Key="AccentSeedIndigo">#6475ED</Color>
+  <Color x:Key="AccentSeedLavender">#B39DFF</Color>
+  <Color x:Key="AccentSeedMagenta">#D66BE8</Color>
+  <Color x:Key="AccentSeedPink">#FF76C8</Color>
+  <Color x:Key="AccentSeedCrimson">#E34B68</Color>
+  <Color x:Key="AccentSeedOrange">#F28A32</Color>
+  <Color x:Key="AccentSeedGold">#D7AD32</Color>
+  <Color x:Key="AccentSeedBronze">#BA7748</Color>
+  <Color x:Key="AccentSeedSlate">#8B9AAF</Color>
+  <Color x:Key="AccentSeedGraphite">#64748B</Color>
+
+  <!-- Swatches show each accent's seed, so the picker looks the same in both themes. -->
+  <SolidColorBrush x:Key="SwatchViolet" Color="{StaticResource AccentSeedViolet}" />
+  <SolidColorBrush x:Key="SwatchBlue" Color="{StaticResource AccentSeedBlue}" />
+  <SolidColorBrush x:Key="SwatchRose" Color="{StaticResource AccentSeedRose}" />
+  <SolidColorBrush x:Key="SwatchTeal" Color="{StaticResource AccentSeedTeal}" />
+  <SolidColorBrush x:Key="SwatchCoral" Color="{StaticResource AccentSeedCoral}" />
+  <SolidColorBrush x:Key="SwatchLime" Color="{StaticResource AccentSeedLime}" />
+  <SolidColorBrush x:Key="SwatchAmber" Color="{StaticResource AccentSeedAmber}" />
+  <SolidColorBrush x:Key="SwatchCyan" Color="{StaticResource AccentSeedCyan}" />
+  <SolidColorBrush x:Key="SwatchMint" Color="{StaticResource AccentSeedMint}" />
+  <SolidColorBrush x:Key="SwatchEmerald" Color="{StaticResource AccentSeedEmerald}" />
+  <SolidColorBrush x:Key="SwatchForest" Color="{StaticResource AccentSeedForest}" />
+  <SolidColorBrush x:Key="SwatchSky" Color="{StaticResource AccentSeedSky}" />
+  <SolidColorBrush x:Key="SwatchOcean" Color="{StaticResource AccentSeedOcean}" />
+  <SolidColorBrush x:Key="SwatchIndigo" Color="{StaticResource AccentSeedIndigo}" />
+  <SolidColorBrush x:Key="SwatchLavender" Color="{StaticResource AccentSeedLavender}" />
+  <SolidColorBrush x:Key="SwatchMagenta" Color="{StaticResource AccentSeedMagenta}" />
+  <SolidColorBrush x:Key="SwatchPink" Color="{StaticResource AccentSeedPink}" />
+  <SolidColorBrush x:Key="SwatchCrimson" Color="{StaticResource AccentSeedCrimson}" />
+  <SolidColorBrush x:Key="SwatchOrange" Color="{StaticResource AccentSeedOrange}" />
+  <SolidColorBrush x:Key="SwatchGold" Color="{StaticResource AccentSeedGold}" />
+  <SolidColorBrush x:Key="SwatchBronze" Color="{StaticResource AccentSeedBronze}" />
+  <SolidColorBrush x:Key="SwatchSlate" Color="{StaticResource AccentSeedSlate}" />
+  <SolidColorBrush x:Key="SwatchGraphite" Color="{StaticResource AccentSeedGraphite}" />
+
+  <!-- Brand "nebula" gradient: hero, logo tile and launch dialog. White text on both ends is ≥4.5:1. -->
+  <Color x:Key="BrandGradientStart">#4B3A83</Color>
+  <Color x:Key="BrandGradientEnd">#285A78</Color>
+  <LinearGradientBrush x:Key="BrandGradientBrush" StartPoint="0,0" EndPoint="1,1">
+    <GradientStop Offset="0" Color="{StaticResource BrandGradientStart}" />
+    <GradientStop Offset="1" Color="{StaticResource BrandGradientEnd}" />
+  </LinearGradientBrush>
+  <SolidColorBrush x:Key="OnBrandBrush" Color="#FFFFFF" />
+  <SolidColorBrush x:Key="OnBrandMutedBrush" Color="#D8D6E5" />
+  <!-- Text on the white hero button (≥8:1 on white). -->
+  <SolidColorBrush x:Key="OnHeroButtonBrush" Color="#30265C" />
+  <!-- Translucent white on the brand gradient: decorative fills and the progress track (not text). -->
+  <SolidColorBrush x:Key="OnBrandFaintBrush" Color="#26FFFFFF" />
+  <SolidColorBrush x:Key="OnBrandTrackBrush" Color="#59FFFFFF" />
+  <SolidColorBrush x:Key="OnBrandChipBrush" Color="#33FFFFFF" />
+
+  <!-- Theme previews in Personalización: always both themes' real colours, whatever theme is active. -->
+  <SolidColorBrush x:Key="PreviewLightBrush" Color="#F3F4F6" />
+  <SolidColorBrush x:Key="PreviewLightCardBrush" Color="#E4E7EB" />
+  <SolidColorBrush x:Key="PreviewDarkBrush" Color="#111318" />
+  <SolidColorBrush x:Key="PreviewDarkCardBrush" Color="#292E38" />
+
+  <!-- Defaults until ThemeService applies the saved accent and theme. -->
+  <SolidColorBrush x:Key="AccentBrush" Color="{StaticResource AccentSeedViolet}" />
+  <SolidColorBrush x:Key="OnAccentBrush" Color="#FFFFFF" />
+  <SolidColorBrush x:Key="AccentTextBrush" Color="{StaticResource AccentSeedViolet}" />
+  <SolidColorBrush x:Key="AccentSoftBrush" Color="#2E7C3AED" />
+</ResourceDictionary>

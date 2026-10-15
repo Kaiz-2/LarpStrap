@@ -1,0 +1,22 @@
+<Project>
+  <PropertyGroup>
+    <TargetFramework>net10.0-windows</TargetFramework>
+    <!-- One version for the app and its installer; the installer checks the installed LarpStrap.exe against it. -->
+    <Version>0.3.0</Version>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <LangVersion>latest</LangVersion>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <EnforceCodeStyleInBuild>true</EnforceCodeStyleInBuild>
+    <!-- Supply chain: packages.lock.json pins every (transitive) package and its hash; CI restores in locked mode. -->
+    <RestorePackagesWithLockFile>true</RestorePackagesWithLockFile>
+    <!-- NuGetAudit covers transitive packages too; TreatWarningsAsErrors turns its NU1901-NU1904 warnings into restore errors. -->
+    <NuGetAuditMode>all</NuGetAuditMode>
+    <!-- Windows 10/11 x64 only. Listing the RID keeps it in every lock file, so `publish -r win-x64` doesn't rewrite them. -->
+    <RuntimeIdentifiers>win-x64</RuntimeIdentifiers>
+    <!-- DLL planting: by default the .NET apphost first loads hostfxr.dll from the exe's own folder (AppLocal), before any of
+         our code runs; a planted hostfxr.dll in Downloads was loaded (tests/manual/Test-DllPlanting.ps1, 2026-10-14). Only the
+         registered global .NET install is used. Applies to published exes (app and installer). -->
+    <AppHostDotNetSearch>Global</AppHostDotNetSearch>
+  </PropertyGroup>
+</Project>

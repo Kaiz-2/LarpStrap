@@ -1,0 +1,11 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/LarpStrap.App/LarpStrap.App.csproj" />
+    <Project Path="src/LarpStrap.Core/LarpStrap.Core.csproj" />
+    <Project Path="src/LarpStrap.Setup/LarpStrap.Setup.csproj" />
+  </Folder>
+  <Folder Name="/tests/">
+    <Project Path="tests/LarpStrap.App.Tests/LarpStrap.App.Tests.csproj" />
+    <Project Path="tests/LarpStrap.Core.Tests/LarpStrap.Core.Tests.csproj" />
+  </Folder>
+</Solution>

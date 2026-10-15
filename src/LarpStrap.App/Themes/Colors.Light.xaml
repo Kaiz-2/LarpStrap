@@ -1,0 +1,27 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <!--
+    Nebulosa, light. Contrast is enforced by ThemeContrastTests (WCAG 2.x). Accent brushes are set by ThemeService.
+    Layer brushes are translucent so the Mica/Acrylic window material shows through; cards stay opaque for legibility.
+  -->
+  <SolidColorBrush x:Key="BgBrush" Color="#F3F4F6" />
+  <SolidColorBrush x:Key="LayerBrush" Color="#D9F3F4F6" />
+  <SolidColorBrush x:Key="SurfaceBrush" Color="#FFFFFF" />
+  <SolidColorBrush x:Key="SurfaceAltBrush" Color="#EEF0F3" />
+  <SolidColorBrush x:Key="SurfaceHoverBrush" Color="#E4E7EB" />
+  <SolidColorBrush x:Key="BorderSubtleBrush" Color="#D7DCE3" />
+  <SolidColorBrush x:Key="BorderStrongBrush" Color="#687386" />
+  <SolidColorBrush x:Key="TextBrush" Color="#1B2028" />
+  <SolidColorBrush x:Key="TextMutedBrush" Color="#525C69" />
+  <SolidColorBrush x:Key="TextDisabledBrush" Color="#737C89" />
+  <SolidColorBrush x:Key="OkBrush" Color="#28704C" />
+  <SolidColorBrush x:Key="WarnBrush" Color="#8B5F18" />
+  <SolidColorBrush x:Key="ErrorBrush" Color="#A94E52" />
+  <SolidColorBrush x:Key="InfoBrush" Color="#3A6E7F" />
+  <SolidColorBrush x:Key="OkSoftBrush" Color="#E7F2EB" />
+  <SolidColorBrush x:Key="WarnSoftBrush" Color="#F5EEDF" />
+  <SolidColorBrush x:Key="ErrorSoftBrush" Color="#F7E9EA" />
+  <SolidColorBrush x:Key="InfoSoftBrush" Color="#E7F0F3" />
+  <SolidColorBrush x:Key="FocusRingBrush" Color="#1B2028" />
+  <SolidColorBrush x:Key="ScrimBrush" Color="#991B2028" />
+</ResourceDictionary>

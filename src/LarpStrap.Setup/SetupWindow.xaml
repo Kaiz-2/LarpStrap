@@ -1,0 +1,148 @@
+<Window x:Class="LarpStrap.Setup.SetupWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:views="clr-namespace:LarpStrap.App.Views"
+        Title="Instalador de LarpStrap" Language="es-ES"
+        Width="800" Height="600" MinWidth="720" MinHeight="560" WindowStartupLocation="CenterScreen" ResizeMode="CanMinimize"
+        Background="{DynamicResource BgBrush}" Foreground="{DynamicResource TextBrush}"
+        FontFamily="{StaticResource FontText}" FontSize="{StaticResource FontSizeBody}">
+  <Grid>
+    <Grid.ColumnDefinitions>
+      <ColumnDefinition Width="248" />
+      <ColumnDefinition Width="*" />
+    </Grid.ColumnDefinitions>
+
+    <!-- Brand panel: logo, name, version and where the wizard is. The rings are decoration only. -->
+    <Border Background="{StaticResource BrandGradientBrush}" ClipToBounds="True">
+      <Grid>
+        <Grid Width="420" Height="420" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="-210,0,0,-210" IsHitTestVisible="False">
+          <Ellipse Stroke="#1AFFFFFF" StrokeThickness="1.5" />
+          <Ellipse Margin="60" Stroke="#14FFFFFF" StrokeThickness="1.5" />
+          <Ellipse Margin="120" Stroke="#0FFFFFFF" StrokeThickness="1.5" />
+        </Grid>
+        <DockPanel Margin="28,32">
+          <TextBlock DockPanel.Dock="Bottom" Foreground="{DynamicResource OnBrandMutedBrush}" FontSize="{StaticResource FontSizeCaption}" TextWrapping="Wrap"
+                     Text="Licencia MIT · © 2026 Leir. Sin firma de código: comprueba el SHA-256 publicado." />
+          <StackPanel>
+            <views:LogoBadge OnBrand="True" Width="64" Height="64" HorizontalAlignment="Left" />
+            <TextBlock Margin="0,18,0,0" FontFamily="{StaticResource FontBrand}" FontSize="{StaticResource FontSizeDisplay}" Foreground="{DynamicResource OnBrandBrush}" Text="LarpStrap" />
+            <TextBlock x:Name="BrandVersion" Margin="0,4,0,0" Foreground="{DynamicResource OnBrandMutedBrush}" />
+            <StackPanel x:Name="Steps" Margin="0,36,0,0" AutomationProperties.Name="Pasos del instalador" />
+          </StackPanel>
+        </DockPanel>
+      </Grid>
+    </Border>
+
+    <Grid Grid.Column="1">
+      <Grid.RowDefinitions>
+        <RowDefinition Height="*" />
+        <RowDefinition Height="Auto" />
+      </Grid.RowDefinitions>
+
+      <ScrollViewer VerticalScrollBarVisibility="Auto" Focusable="False">
+        <Grid Margin="32,28,32,16">
+
+          <!-- Welcome -->
+          <StackPanel x:Name="WelcomePage">
+            <TextBlock Style="{StaticResource OverlineText}" Text="BIENVENIDA" />
+            <TextBlock x:Name="WelcomeTitle" Style="{StaticResource DisplayText}" Margin="0,4,0,0" />
+            <TextBlock Style="{StaticResource BodyText}" Margin="0,12,0,0" TextWrapping="Wrap"
+                       Text="LarpStrap supervisa los clientes de Roblox. También puedes abrir Roblox - Windows y la versión web con sesiones separadas; Roblox puede cerrar una al abrir la otra." />
+            <Border Style="{StaticResource Card}" Margin="0,20,0,0">
+              <Grid x:Name="Facts" AutomationProperties.Name="Resumen de la instalación">
+                <Grid.ColumnDefinitions>
+                  <ColumnDefinition Width="Auto" />
+                  <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+              </Grid>
+            </Border>
+            <Border x:Name="WelcomeBanner" Style="{StaticResource Banner}" Margin="0,16,0,0" Visibility="Collapsed">
+              <TextBlock x:Name="WelcomeBannerText" Style="{StaticResource BodyText}" TextWrapping="Wrap" />
+            </Border>
+          </StackPanel>
+
+          <!-- Options -->
+          <StackPanel x:Name="OptionsPage" Visibility="Collapsed">
+            <TextBlock Style="{StaticResource OverlineText}" Text="OPCIONES" />
+            <TextBlock Style="{StaticResource DisplayText}" Margin="0,4,0,0" Text="Dónde y cómo" />
+            <Label x:Name="DestinationLabel" Target="{Binding ElementName=DestinationBox}" Margin="0,16,0,0" Padding="0,0,0,8"
+                   Foreground="{DynamicResource TextBrush}" FontWeight="SemiBold" Content="_Carpeta de instalación" />
+            <DockPanel>
+              <Button x:Name="BrowseButton" DockPanel.Dock="Right" Margin="8,0,0,0" Content="_Examinar…" Click="OnBrowse"
+                      AutomationProperties.Name="Examinar para elegir la carpeta de instalación" />
+              <TextBox x:Name="DestinationBox" TextChanged="OnDestinationChanged" AutomationProperties.LabeledBy="{Binding ElementName=DestinationLabel}" />
+            </DockPanel>
+            <TextBlock x:Name="DestinationError" Style="{StaticResource CaptionText}" Margin="0,6,0,0" TextWrapping="Wrap"
+                       Foreground="{DynamicResource ErrorBrush}" AutomationProperties.LiveSetting="Assertive" />
+            <TextBlock x:Name="DestinationNote" Style="{StaticResource CaptionText}" Margin="0,6,0,0" TextWrapping="Wrap" />
+
+            <views:SettingCard Margin="0,16,0,0" Icon="&#xE8FC;" Title="Acceso directo en el menú Inicio" Description="Para abrir LarpStrap desde Inicio o buscándolo.">
+              <CheckBox x:Name="StartMenuCheck" Style="{StaticResource ToggleCheck}" IsChecked="True" AutomationProperties.Name="Crear un acceso directo en el menú Inicio" />
+            </views:SettingCard>
+            <views:SettingCard Icon="&#xE8A1;" Title="Acceso directo en el escritorio" Description="Un icono de LarpStrap en tu escritorio.">
+              <CheckBox x:Name="DesktopCheck" Style="{StaticResource ToggleCheck}" IsChecked="True" AutomationProperties.Name="Crear un acceso directo en el escritorio" />
+            </views:SettingCard>
+            <TextBlock Style="{StaticResource CaptionText}" Margin="0,12,0,0" TextWrapping="Wrap"
+                       Text="Se instala solo para tu usuario y sin permisos de administrador. Tu configuración y tus logs están en %LOCALAPPDATA%\LarpStrap, fuera de esta carpeta: instalar, actualizar o desinstalar no los toca. Los clientes de Roblox abiertos no se cierran." />
+          </StackPanel>
+
+          <!-- Progress -->
+          <StackPanel x:Name="ProgressPage" Visibility="Collapsed">
+            <TextBlock Style="{StaticResource OverlineText}" Text="INSTALACIÓN" />
+            <TextBlock x:Name="ProgressTitle" Style="{StaticResource DisplayText}" Margin="0,4,0,0" />
+            <TextBlock x:Name="StageText" Style="{StaticResource SubtitleText}" Margin="0,24,0,8" AutomationProperties.LiveSetting="Polite" />
+            <ProgressBar x:Name="Progress" Maximum="1" AutomationProperties.Name="Progreso" />
+            <TextBlock x:Name="ProgressNote" Style="{StaticResource CaptionText}" Margin="0,12,0,0" TextWrapping="Wrap" />
+          </StackPanel>
+
+          <!-- Result: success or failure -->
+          <StackPanel x:Name="ResultPage" Visibility="Collapsed">
+            <TextBlock x:Name="ResultOverline" Style="{StaticResource OverlineText}" />
+            <TextBlock x:Name="ResultTitle" Style="{StaticResource DisplayText}" Margin="0,4,0,0" TextWrapping="Wrap" />
+            <TextBlock x:Name="ResultText" Style="{StaticResource BodyText}" Margin="0,12,0,0" TextWrapping="Wrap" />
+            <Border Style="{StaticResource Card}" Margin="0,16,0,0" x:Name="ResultCard">
+              <StackPanel x:Name="ResultList" AutomationProperties.Name="Comprobaciones" />
+            </Border>
+            <CheckBox x:Name="LaunchCheck" Style="{StaticResource ToggleCheck}" Margin="0,16,0,0" IsChecked="True" Content="_Abrir LarpStrap ahora"
+                      AutomationProperties.Name="Abrir LarpStrap al terminar" />
+          </StackPanel>
+
+          <!-- License -->
+          <StackPanel x:Name="LicensePage" Visibility="Collapsed">
+            <TextBlock Style="{StaticResource OverlineText}" Text="LICENCIA" />
+            <TextBlock Style="{StaticResource DisplayText}" Margin="0,4,0,0" Text="Licencia MIT" />
+            <TextBox x:Name="LicenseText" Margin="0,16,0,0" Height="220" IsReadOnly="True" TextWrapping="Wrap" VerticalScrollBarVisibility="Auto"
+                     FontFamily="{StaticResource FontMono}" FontSize="{StaticResource FontSizeCaption}" AutomationProperties.Name="Texto de la licencia de LarpStrap" />
+            <TextBlock Style="{StaticResource CaptionText}" Margin="0,8,0,0" TextWrapping="Wrap"
+                       Text="LarpStrap usa CommunityToolkit.Mvvm (licencia MIT). Esta licencia y los avisos de terceros se instalan en la carpeta del programa (LICENSE y licenses\)." />
+          </StackPanel>
+
+          <!-- Uninstall confirmation -->
+          <StackPanel x:Name="UninstallPage" Visibility="Collapsed">
+            <TextBlock Style="{StaticResource OverlineText}" Text="DESINSTALAR" />
+            <TextBlock x:Name="UninstallTitle" Style="{StaticResource DisplayText}" Margin="0,4,0,0" />
+            <Border Style="{StaticResource Card}" Margin="0,20,0,0">
+              <StackPanel>
+                <TextBlock Style="{StaticResource SubtitleText}" Text="Se quita" />
+                <TextBlock x:Name="UninstallRemoves" Style="{StaticResource BodyText}" Margin="0,4,0,0" TextWrapping="Wrap" />
+                <TextBlock Style="{StaticResource SubtitleText}" Margin="0,16,0,0" Text="Se conserva" />
+                <TextBlock Style="{StaticResource BodyText}" Margin="0,4,0,0" TextWrapping="Wrap"
+                           Text="Tu configuración y tus logs en %LOCALAPPDATA%\LarpStrap (bórralos a mano si quieres), los archivos que no instaló LarpStrap, Roblox y sus clientes." />
+              </StackPanel>
+            </Border>
+          </StackPanel>
+        </Grid>
+      </ScrollViewer>
+
+      <!-- Actions -->
+      <Border Grid.Row="1" BorderBrush="{DynamicResource BorderSubtleBrush}" BorderThickness="0,1,0,0" Padding="32,16">
+        <DockPanel LastChildFill="False">
+          <Button x:Name="ExtraButton" DockPanel.Dock="Left" Style="{StaticResource GhostButton}" Click="OnExtra" />
+          <Button x:Name="PrimaryButton" DockPanel.Dock="Right" Margin="8,0,0,0" Style="{StaticResource PrimaryButton}" IsDefault="True" Click="OnPrimary" />
+          <Button x:Name="SecondaryButton" DockPanel.Dock="Right" Margin="8,0,0,0" Click="OnSecondary" />
+          <Button x:Name="CancelButton" DockPanel.Dock="Right" IsCancel="True" Content="Cancelar" Click="OnCancel" />
+        </DockPanel>
+      </Border>
+    </Grid>
+  </Grid>
+</Window>

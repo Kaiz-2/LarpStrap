@@ -1,0 +1,25 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <UseWPF>true</UseWPF>
+    <AssemblyTitle>LarpStrap</AssemblyTitle>
+    <!-- The exe users see is LarpStrap.exe; code namespaces stay LarpStrap.App. -->
+    <AssemblyName>LarpStrap</AssemblyName>
+    <RootNamespace>LarpStrap.App</RootNamespace>
+    <Product>LarpStrap</Product>
+    <Company>Leir</Company>
+    <Copyright>© 2026 Leir. MIT License.</Copyright>
+    <!-- Generated from the logo geometry by eng/Build-Icon.ps1. -->
+    <ApplicationIcon>Assets\LarpStrap.ico</ApplicationIcon>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\LarpStrap.Core\LarpStrap.Core.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="CommunityToolkit.Mvvm" Version="8.4.2" />
+  </ItemGroup>
+
+</Project>

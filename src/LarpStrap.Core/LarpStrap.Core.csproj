@@ -1,0 +1,12 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <!-- Required by LibraryImport's generated marshalling code (SYSLIB1062); no hand-written unsafe code. -->
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <InternalsVisibleTo Include="LarpStrap.Core.Tests" />
+  </ItemGroup>
+
+</Project>

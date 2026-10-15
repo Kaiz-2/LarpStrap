@@ -1,0 +1,41 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <UseWPF>true</UseWPF>
+    <AssemblyTitle>Instalador de LarpStrap</AssemblyTitle>
+    <AssemblyName>LarpStrap-Setup</AssemblyName>
+    <RootNamespace>LarpStrap.Setup</RootNamespace>
+    <Product>LarpStrap</Product>
+    <Company>Leir</Company>
+    <Copyright>© 2026 Leir. MIT License.</Copyright>
+    <ApplicationIcon>..\LarpStrap.App\Assets\LarpStrap.ico</ApplicationIcon>
+    <!-- asInvoker: per-user install, never elevated (docs/adr/0008). -->
+    <ApplicationManifest>app.manifest</ApplicationManifest>
+    <!-- One downloadable file, framework-dependent like the app (ADR 0007). Declared here, not on the command line, so
+         restore (and packages.lock.json) sees the single-file analyzer package for this project only. -->
+    <PublishSingleFile>true</PublishSingleFile>
+    <SelfContained>false</SelfContained>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\LarpStrap.Core\LarpStrap.Core.csproj" />
+  </ItemGroup>
+
+  <!-- One design system: the app's theme files and the controls they use are compiled in from LarpStrap.App, not copied. -->
+  <ItemGroup>
+    <Page Include="..\LarpStrap.App\Themes\*.xaml" Link="Themes\%(Filename)%(Extension)" />
+    <Page Include="..\LarpStrap.App\Views\LogoBadge.xaml" Link="Shared\LogoBadge.xaml" />
+    <Compile Include="..\LarpStrap.App\Views\LogoBadge.xaml.cs" Link="Shared\LogoBadge.xaml.cs" />
+    <Compile Include="..\LarpStrap.App\Views\Glyph.cs;..\LarpStrap.App\Views\SettingCard.cs;..\LarpStrap.App\Views\Converters.cs;..\LarpStrap.App\Services\ThemeService.cs;..\LarpStrap.App\Services\AccentPalette.cs"
+             Link="Shared\%(Filename)%(Extension)" />
+    <EmbeddedResource Include="..\..\LICENSE" LogicalName="LICENSE.txt" />
+  </ItemGroup>
+
+  <!-- The app to install: a zip of the published app, passed by eng/Publish-Release.ps1. A build without it is a
+       development build and says so instead of installing anything. -->
+  <ItemGroup Condition="'$(PayloadZip)' != ''">
+    <EmbeddedResource Include="$(PayloadZip)" LogicalName="LarpStrap.payload.zip" />
+  </ItemGroup>
+
+</Project>

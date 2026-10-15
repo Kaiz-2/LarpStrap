@@ -1,0 +1,78 @@
+<UserControl x:Class="LarpStrap.App.Views.SettingsView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:views="clr-namespace:LarpStrap.App.Views">
+  <ScrollViewer VerticalScrollBarVisibility="Auto" Focusable="False">
+    <StackPanel Margin="32,24,32,32" MaxWidth="1120">
+      <TextBlock Style="{StaticResource DisplayText}" Text="Ajustes" />
+      <TextBlock Style="{StaticResource MutedText}" Margin="0,4,0,0" Text="Cómo lanza LarpStrap a Roblox y cómo se comporta la ventana." />
+
+      <TextBlock Style="{StaticResource TitleText}" Margin="0,24,0,12" Text="Interfaz" />
+      <views:SettingCard Icon="&#xE90F;" Title="Modo avanzado"
+                         Description="Muestra FastFlags y Diagnóstico en la navegación, con detalles técnicos de clientes y la integración con Discord.">
+        <CheckBox Style="{StaticResource ToggleCheck}" IsChecked="{Binding DataContext.IsAdvancedMode, RelativeSource={RelativeSource AncestorType=Window}, Mode=TwoWay}"
+                  AutomationProperties.Name="Modo avanzado" />
+      </views:SettingCard>
+      <TextBlock Style="{StaticResource CaptionText}" Margin="4,0,0,0"
+                 Text="En modo simple se oculta la integración con Discord; si la configuraste, sigue funcionando."
+                 Visibility="{Binding DataContext.IsAdvancedMode, RelativeSource={RelativeSource AncestorType=Window}, Converter={StaticResource Hidden}}" />
+
+      <TextBlock Style="{StaticResource TitleText}" Margin="0,24,0,12" Text="Lanzamiento" />
+      <views:SettingCard Icon="&#xE916;" Title="Tiempo máximo de arranque" Description="Cuánto esperar a que aparezca la ventana de Roblox antes de avisar.">
+        <StackPanel Orientation="Horizontal" KeyboardNavigation.TabNavigation="Once" AutomationProperties.Name="Tiempo máximo de arranque">
+          <RadioButton Style="{StaticResource OptionButton}" GroupName="Timeout" Content="30 s"
+                       IsChecked="{Binding LaunchTimeoutSeconds, Mode=TwoWay, Converter={StaticResource Equals}, ConverterParameter=30}" />
+          <RadioButton Style="{StaticResource OptionButton}" GroupName="Timeout" Content="60 s"
+                       IsChecked="{Binding LaunchTimeoutSeconds, Mode=TwoWay, Converter={StaticResource Equals}, ConverterParameter=60}" />
+          <RadioButton Style="{StaticResource OptionButton}" GroupName="Timeout" Content="120 s"
+                       IsChecked="{Binding LaunchTimeoutSeconds, Mode=TwoWay, Converter={StaticResource Equals}, ConverterParameter=120}" />
+        </StackPanel>
+      </views:SettingCard>
+      <views:SettingCard Icon="&#xE7FC;" Title="Modo demostración"
+                         Description="Muestra clientes SIMULADOS para ver todos los estados de Clientes abiertos sin abrir Roblox. Nunca se mezclan con clientes reales.">
+        <CheckBox Style="{StaticResource ToggleCheck}" Content="_Mostrar simulados" IsChecked="{Binding DemoMode, Mode=TwoWay}"
+                  AutomationProperties.Name="Modo demostración: mostrar clientes simulados en lugar de los reales" />
+      </views:SettingCard>
+
+      <!-- Technical options: only in advanced mode. Hidden options keep working with their saved values. -->
+      <StackPanel Visibility="{Binding DataContext.IsAdvancedMode, RelativeSource={RelativeSource AncestorType=Window}, Converter={StaticResource Visible}}">
+        <TextBlock Style="{StaticResource TitleText}" Margin="0,24,0,12" Text="Integraciones" />
+        <views:SettingCard Icon="&#xE8BD;" Title="Discord Rich Presence"
+                           Description="Tus amigos de Discord ven «En Roblox» y desde cuándo. No se envía el juego, tu cuenta ni nada del enlace de juego. Necesita Discord abierto en este PC.">
+          <StackPanel>
+            <CheckBox Style="{StaticResource ToggleCheck}" Content="Mostrar en _Discord" IsChecked="{Binding DiscordPresence, Mode=TwoWay}"
+                      AutomationProperties.Name="Discord Rich Presence: mostrar en Discord que estás en Roblox" />
+            <TextBlock Style="{StaticResource CaptionText}" Margin="0,8,0,0" TextWrapping="Wrap" MaxWidth="360" HorizontalAlignment="Left" Text="{Binding DiscordStatus}" />
+          </StackPanel>
+        </views:SettingCard>
+        <views:SettingCard Icon="&#xE8D7;" Title="ID de aplicación de Discord"
+                           Description="Discord muestra la actividad a nombre de una aplicación. Crea una gratis en el portal de desarrolladores de Discord (llámala, por ejemplo, LarpStrap) y pega aquí su Application ID.">
+          <StackPanel>
+            <StackPanel Orientation="Horizontal">
+              <TextBox Width="200" Text="{Binding DiscordAppId, UpdateSourceTrigger=LostFocus}" AutomationProperties.Name="ID de aplicación de Discord" />
+              <Button Margin="8,0,0,0" Command="{Binding OpenDiscordDevelopersCommand}" Content="Abrir el portal…"
+                      AutomationProperties.Name="Abrir el portal de desarrolladores de Discord en el navegador" />
+            </StackPanel>
+            <TextBlock Style="{StaticResource CaptionText}" Margin="0,4,0,0" TextWrapping="Wrap" MaxWidth="360" HorizontalAlignment="Left"
+                       Foreground="{DynamicResource ErrorBrush}" Text="{Binding DiscordAppIdError}" AutomationProperties.LiveSetting="Assertive" />
+          </StackPanel>
+        </views:SettingCard>
+      </StackPanel>
+
+      <TextBlock Style="{StaticResource TitleText}" Margin="0,24,0,12" Text="Ventana" />
+      <views:SettingCard Icon="&#xE737;" Title="Cerrar a la bandeja del sistema" Description="No disponible todavía: al cerrar, LarpStrap se cierra del todo.">
+        <CheckBox Style="{StaticResource ToggleCheck}" IsEnabled="False" AutomationProperties.Name="Cerrar a la bandeja del sistema (no disponible todavía)" />
+      </views:SettingCard>
+
+      <TextBlock Style="{StaticResource TitleText}" Margin="0,24,0,12" Text="Datos" />
+      <views:SettingCard Icon="&#xE8B7;" Title="Archivo de configuración" Description="{Binding SettingsPath}">
+        <Button Command="{Binding OpenSettingsFolderCommand}" AutomationProperties.Name="Abrir la carpeta de configuración">
+          <StackPanel Orientation="Horizontal">
+            <views:Glyph Style="{StaticResource IconText}" Margin="0,0,8,0" Text="&#xE838;" />
+            <TextBlock VerticalAlignment="Center" Text="Abrir carpeta" />
+          </StackPanel>
+        </Button>
+      </views:SettingCard>
+    </StackPanel>
+  </ScrollViewer>
+</UserControl>

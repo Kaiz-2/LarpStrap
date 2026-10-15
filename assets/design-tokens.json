@@ -1,0 +1,215 @@
+{
+    "$description":  "LarpStrap «Nebulosa» design tokens, exported from src/LarpStrap.App/Themes by eng/Export-DesignTokens.ps1. Do not edit.",
+    "brand":  "LarpStrap",
+    "color":  {
+                  "dark":  {
+                               "bg":  "#111318",
+                               "layer":  "#111318D9",
+                               "surface":  "#181B22",
+                               "surface-alt":  "#20242C",
+                               "surface-hover":  "#292E38",
+                               "border-subtle":  "#303743",
+                               "border-strong":  "#9AA8BA",
+                               "text":  "#E7EAF0",
+                               "text-muted":  "#A9B1BE",
+                               "text-disabled":  "#858F9D",
+                               "ok":  "#69B889",
+                               "warn":  "#D8A64D",
+                               "error":  "#DB8080",
+                               "info":  "#79AFC2",
+                               "ok-soft":  "#182A22",
+                               "warn-soft":  "#302719",
+                               "error-soft":  "#301D20",
+                               "info-soft":  "#1A2931",
+                               "focus-ring":  "#FFFFFF",
+                               "scrim":  "#05070BCC"
+                           },
+                  "light":  {
+                                "bg":  "#F3F4F6",
+                                "layer":  "#F3F4F6D9",
+                                "surface":  "#FFFFFF",
+                                "surface-alt":  "#EEF0F3",
+                                "surface-hover":  "#E4E7EB",
+                                "border-subtle":  "#D7DCE3",
+                                "border-strong":  "#687386",
+                                "text":  "#1B2028",
+                                "text-muted":  "#525C69",
+                                "text-disabled":  "#737C89",
+                                "ok":  "#28704C",
+                                "warn":  "#8B5F18",
+                                "error":  "#A94E52",
+                                "info":  "#3A6E7F",
+                                "ok-soft":  "#E7F2EB",
+                                "warn-soft":  "#F5EEDF",
+                                "error-soft":  "#F7E9EA",
+                                "info-soft":  "#E7F0F3",
+                                "focus-ring":  "#1B2028",
+                                "scrim":  "#1B202899"
+                            }
+              },
+    "accent":  {
+                   "violet":  "#9475F5",
+                   "blue":  "#70A7F7",
+                   "rose":  "#F28DAD",
+                   "teal":  "#45C2B5",
+                   "coral":  "#FF806F",
+                   "lime":  "#A5D65C",
+                   "amber":  "#F4B942",
+                   "cyan":  "#31C7E8",
+                   "mint":  "#54D6A0",
+                   "emerald":  "#32C784",
+                   "forest":  "#4D9A67",
+                   "sky":  "#6BC7FF",
+                   "ocean":  "#347FC4",
+                   "indigo":  "#6475ED",
+                   "lavender":  "#B39DFF",
+                   "magenta":  "#D66BE8",
+                   "pink":  "#FF76C8",
+                   "crimson":  "#E34B68",
+                   "orange":  "#F28A32",
+                   "gold":  "#D7AD32",
+                   "bronze":  "#BA7748",
+                   "slate":  "#8B9AAF",
+                   "graphite":  "#64748B"
+               },
+    "theme":  {
+                  "nebula":  {
+                                 "dark":  {
+                                              "bg":  "#111318",
+                                              "surface":  "#181B22",
+                                              "surface-alt":  "#20242C",
+                                              "surface-hover":  "#292E38",
+                                              "border-subtle":  "#303743"
+                                          },
+                                 "light":  {
+                                               "bg":  "#F3F4F6",
+                                               "surface":  "#FFFFFF",
+                                               "surface-alt":  "#EEF0F3",
+                                               "surface-hover":  "#E4E7EB",
+                                               "border-subtle":  "#D7DCE3"
+                                           }
+                             },
+                  "midnight":  {
+                                   "dark":  {
+                                                "bg":  "#0B1020",
+                                                "surface":  "#11182A",
+                                                "surface-alt":  "#192238",
+                                                "surface-hover":  "#222D47",
+                                                "border-subtle":  "#303D59"
+                                            },
+                                   "light":  {
+                                                 "bg":  "#F0F2FA",
+                                                 "surface":  "#FFFFFF",
+                                                 "surface-alt":  "#E9ECF7",
+                                                 "surface-hover":  "#DDE2F1",
+                                                 "border-subtle":  "#D0D6E8"
+                                             }
+                               },
+                  "ocean":  {
+                                "dark":  {
+                                             "bg":  "#091A23",
+                                             "surface":  "#102631",
+                                             "surface-alt":  "#173542",
+                                             "surface-hover":  "#214653",
+                                             "border-subtle":  "#305462"
+                                         },
+                                "light":  {
+                                              "bg":  "#EAF5F8",
+                                              "surface":  "#FFFFFF",
+                                              "surface-alt":  "#E2F0F4",
+                                              "surface-hover":  "#D5E8EE",
+                                              "border-subtle":  "#C7DDE4"
+                                          }
+                            },
+                  "forest":  {
+                                 "dark":  {
+                                              "bg":  "#101A13",
+                                              "surface":  "#17251B",
+                                              "surface-alt":  "#203226",
+                                              "surface-hover":  "#2A4031",
+                                              "border-subtle":  "#3A5140"
+                                          },
+                                 "light":  {
+                                               "bg":  "#EEF5EF",
+                                               "surface":  "#FFFFFF",
+                                               "surface-alt":  "#E6F0E7",
+                                               "surface-hover":  "#D8E8DA",
+                                               "border-subtle":  "#CADCCB"
+                                           }
+                             },
+                  "sunset":  {
+                                 "dark":  {
+                                              "bg":  "#211510",
+                                              "surface":  "#2D1E18",
+                                              "surface-alt":  "#3B2920",
+                                              "surface-hover":  "#4A3428",
+                                              "border-subtle":  "#5A4133"
+                                          },
+                                 "light":  {
+                                               "bg":  "#FFF3EC",
+                                               "surface":  "#FFFFFF",
+                                               "surface-alt":  "#F8EAE1",
+                                               "surface-hover":  "#F1DDD0",
+                                               "border-subtle":  "#E6CFC1"
+                                           }
+                             },
+                  "rose":  {
+                               "dark":  {
+                                            "bg":  "#20131B",
+                                            "surface":  "#2B1A26",
+                                            "surface-alt":  "#392333",
+                                            "surface-hover":  "#492E41",
+                                            "border-subtle":  "#5A3B52"
+                                        },
+                               "light":  {
+                                             "bg":  "#FFF1F5",
+                                             "surface":  "#FFFFFF",
+                                             "surface-alt":  "#F8E7ED",
+                                             "surface-hover":  "#F0D9E2",
+                                             "border-subtle":  "#E5C9D4"
+                                         }
+                           },
+                  "slate":  {
+                                "dark":  {
+                                             "bg":  "#131923",
+                                             "surface":  "#1C2430",
+                                             "surface-alt":  "#273140",
+                                             "surface-hover":  "#333F50",
+                                             "border-subtle":  "#465365"
+                                         },
+                                "light":  {
+                                              "bg":  "#F0F3F7",
+                                              "surface":  "#FFFFFF",
+                                              "surface-alt":  "#E9EDF2",
+                                              "surface-hover":  "#DCE2E9",
+                                              "border-subtle":  "#CDD5DF"
+                                          }
+                            }
+              },
+    "gradient":  {
+                     "start":  "#4B3A83",
+                     "end":  "#285A78"
+                 },
+    "font":  {
+                 "brand":  "Bahnschrift SemiBold, Bahnschrift, Segoe UI Variable Display, Segoe UI",
+                 "display":  "Segoe UI Variable Display, Segoe UI Semibold, Segoe UI",
+                 "text":  "Segoe UI Variable Text, Segoe UI",
+                 "mono":  "Cascadia Mono, Consolas",
+                 "icons":  "Segoe Fluent Icons, Segoe MDL2 Assets"
+             },
+    "size":  {
+                 "caption":  12,
+                 "body":  14,
+                 "subtitle":  16,
+                 "title":  20,
+                 "display":  30,
+                 "hero":  40
+             },
+    "radius":  {
+                   "control":  10,
+                   "container":  14,
+                   "hero":  20,
+                   "pill":  999,
+                   "status":  4
+               }
+}

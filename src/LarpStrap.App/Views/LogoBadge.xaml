@@ -1,0 +1,15 @@
+<UserControl x:Class="LarpStrap.App.Views.LogoBadge"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             Focusable="False" AutomationProperties.Name="Logotipo de LarpStrap">
+  <!-- The brand logo: tile + gloss + mark in a 64×64 box. OnBrand swaps the gradient tile for a translucent one,
+       for placing it on the brand gradient. -->
+  <Viewbox>
+    <Canvas Width="64" Height="64">
+      <Path x:Name="Tile" Data="{StaticResource LogoTile}" Fill="{StaticResource BrandGradientBrush}" />
+      <Path x:Name="Ring" Data="{StaticResource LogoTile}" Stroke="#59FFFFFF" StrokeThickness="1.5" Visibility="Collapsed" />
+      <Path Data="{StaticResource LogoGloss}" Fill="{StaticResource LogoGlossBrush}" />
+      <Path Data="{DynamicResource ActiveLogoMark}" Fill="{DynamicResource OnBrandBrush}" />
+    </Canvas>
+  </Viewbox>
+</UserControl>

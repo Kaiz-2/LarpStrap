@@ -1,0 +1,108 @@
+<UserControl x:Class="LarpStrap.App.Views.HomeView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:views="clr-namespace:LarpStrap.App.Views">
+  <ScrollViewer VerticalScrollBarVisibility="Auto" Focusable="False">
+    <StackPanel Margin="32,24,32,32" MaxWidth="1120">
+
+      <!-- Hero: the real state in one line and Jugar. The only place with the brand gradient. -->
+      <Border Style="{StaticResource HeroCard}" Margin="0,4,0,0">
+        <Grid>
+        <!-- Decoration only (no automation peer): orbit rings that bleed off the right edge. -->
+        <Grid HorizontalAlignment="Right" VerticalAlignment="Center" Width="360" Height="360" Margin="0,-120,-150,-120" IsHitTestVisible="False">
+          <Ellipse Stroke="#1AFFFFFF" StrokeThickness="1.5" />
+          <Ellipse Margin="48" Stroke="#14FFFFFF" StrokeThickness="1.5" />
+          <Ellipse Margin="96" Stroke="#0FFFFFFF" StrokeThickness="1.5" />
+          <Ellipse Width="14" Height="14" Fill="#40FFFFFF" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="52,52,0,0" />
+        </Grid>
+        <!-- WrapPanel: the actions sit beside the text when there is room and drop below it when not. -->
+        <WrapPanel>
+          <views:LogoBadge OnBrand="True" Width="76" Height="76" Margin="0,0,24,0" VerticalAlignment="Center" />
+          <StackPanel MinWidth="240" MaxWidth="440" Margin="0,0,32,0" VerticalAlignment="Center">
+            <TextBlock Style="{StaticResource OverlineText}" Foreground="{DynamicResource OnBrandMutedBrush}" Text="LARPSTRAP · CENTRO DE JUEGO" />
+            <TextBlock Style="{StaticResource HeroText}" FontSize="{StaticResource FontSizeDisplay}" Text="{Binding Instances.StatusHeadline}" />
+            <TextBlock Style="{StaticResource BodyText}" Margin="0,6,0,0" Foreground="{DynamicResource OnBrandMutedBrush}" Text="{Binding Instances.LaunchHint}" />
+          </StackPanel>
+          <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="0,12,0,0">
+            <Button Style="{StaticResource HeroButton}" MinWidth="160" Command="{Binding Instances.LaunchCommand}" AutomationProperties.Name="{Binding Instances.PrimaryActionText}">
+              <StackPanel Orientation="Horizontal">
+                <views:Glyph Style="{StaticResource IconText}" Foreground="{StaticResource OnHeroButtonBrush}" FontSize="16" Margin="0,0,12,0" Text="&#xE768;" />
+                <TextBlock VerticalAlignment="Center" Text="{Binding Instances.PrimaryActionText}" />
+              </StackPanel>
+            </Button>
+            <Button Style="{StaticResource HeroSecondaryButton}" Margin="12,0,0,0" Content="_Ver clientes"
+                    Command="{Binding OpenPanelCommand}" AutomationProperties.Name="Ver los clientes abiertos" />
+          </StackPanel>
+        </WrapPanel>
+        </Grid>
+      </Border>
+
+      <!-- Last result: one quiet line, never three cards. -->
+      <DockPanel Margin="4,12,0,0" Visibility="{Binding Instances.HasActivity, Converter={StaticResource Visible}}">
+        <TextBlock DockPanel.Dock="Left" Style="{StaticResource CaptionText}" FontFamily="{StaticResource FontMono}" Margin="0,0,12,0" Text="{Binding Instances.LastActivity.TimeText}" />
+        <TextBlock DockPanel.Dock="Right" Style="{StaticResource CaptionText}" Margin="8,0,0,0" Text="· simulado"
+                   Visibility="{Binding Instances.LastActivity.IsSimulated, Converter={StaticResource Visible}, FallbackValue=Collapsed}" />
+        <TextBlock Style="{StaticResource CaptionText}" TextTrimming="CharacterEllipsis" TextWrapping="NoWrap"
+                   Text="{Binding Instances.LastActivity.Summary}" ToolTip="{Binding Instances.LastActivity.Guidance}" />
+      </DockPanel>
+
+      <!-- Saved games: the main content. -->
+      <DockPanel Margin="0,32,0,14">
+        <Button DockPanel.Dock="Right" Style="{StaticResource GhostButton}" Command="{Binding OpenShortcutsCommand}" AutomationProperties.Name="Añadir o gestionar juegos">
+          <StackPanel Orientation="Horizontal">
+            <views:Glyph Style="{StaticResource IconText}" Margin="0,0,8,0" Text="&#xE710;" />
+            <AccessText VerticalAlignment="Center" Text="_Añadir juego" />
+          </StackPanel>
+        </Button>
+        <StackPanel VerticalAlignment="Center">
+          <TextBlock Style="{StaticResource TitleText}" Text="Tus experiencias" />
+          <TextBlock Style="{StaticResource CaptionText}" Margin="0,2,0,0" Text="Tus juegos guardados, listos para iniciar" />
+        </StackPanel>
+      </DockPanel>
+      <Border Style="{StaticResource Card}" Padding="32,28" Visibility="{Binding Shortcuts.IsEmpty, Converter={StaticResource Visible}}">
+        <StackPanel HorizontalAlignment="Center">
+          <views:Glyph Style="{StaticResource IconText}" HorizontalAlignment="Center" FontSize="28" Foreground="{DynamicResource AccentTextBrush}" Text="&#xE734;" />
+          <TextBlock Style="{StaticResource SubtitleText}" Margin="0,12,0,0" HorizontalAlignment="Center" Text="Aún no has guardado ningún juego" />
+          <TextBlock Style="{StaticResource MutedText}" Margin="0,4,0,0" HorizontalAlignment="Center" TextAlignment="Center"
+                     Text="Añade un enlace o place ID y podrás iniciarlo desde aquí." />
+          <Button Style="{StaticResource PrimaryButton}" Margin="0,16,0,0" HorizontalAlignment="Center" Content="Añadir mi primer juego" Command="{Binding OpenShortcutsCommand}" />
+        </StackPanel>
+      </Border>
+      <ItemsControl ItemsSource="{Binding Shortcuts.Favorites}" Focusable="False" AutomationProperties.Name="Tus juegos">
+        <ItemsControl.ItemsPanel>
+          <ItemsPanelTemplate><WrapPanel /></ItemsPanelTemplate>
+        </ItemsControl.ItemsPanel>
+        <ItemsControl.ItemTemplate>
+          <DataTemplate>
+            <Button Style="{StaticResource GameTile}" Width="264" Margin="0,0,14,14" Click="OpenJoinMenu"
+                    AutomationProperties.Name="{Binding OpenName}" ToolTip="{Binding PlaceText}">
+              <StackPanel>
+                <Border Width="234" Height="132" HorizontalAlignment="Center" Background="{DynamicResource SurfaceAltBrush}"
+                        CornerRadius="{StaticResource RadiusContainer}" ClipToBounds="True">
+                  <Grid>
+                    <Image Source="{Binding ThumbnailUrl}" Stretch="UniformToFill" Visibility="{Binding HasThumbnail, Converter={StaticResource Visible}}" />
+                    <Border HorizontalAlignment="Stretch" VerticalAlignment="Bottom" Height="48" Background="{StaticResource BrandGradientBrush}"
+                            Visibility="{Binding HasThumbnail, Converter={StaticResource Hidden}}" />
+                    <views:Glyph Style="{StaticResource IconText}" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="30" Foreground="{DynamicResource AccentTextBrush}" Text="&#xE7FC;"
+                                 Visibility="{Binding HasThumbnail, Converter={StaticResource Hidden}}" />
+                  </Grid>
+                </Border>
+                <TextBlock Style="{StaticResource SubtitleText}" Margin="0,14,0,0" Text="{Binding Name}" TextTrimming="CharacterEllipsis" TextWrapping="NoWrap" />
+                <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
+                  <TextBlock Style="{StaticResource CaptionText}" Foreground="{DynamicResource AccentTextBrush}" Text="Unirme ▾" />
+                  <views:Glyph Style="{StaticResource IconText}" FontSize="10" Margin="6,0,0,0" Foreground="{DynamicResource AccentTextBrush}" Text="&#xE8A7;" />
+                </StackPanel>
+              </StackPanel>
+              <Button.ContextMenu>
+                <ContextMenu DataContext="{Binding PlacementTarget.DataContext, RelativeSource={RelativeSource Self}}">
+                  <MenuItem Header="Unirme por Web" Command="{Binding JoinWebCommand}" />
+                  <MenuItem Header="Unirme por Microsoft" Command="{Binding JoinMicrosoftCommand}" />
+                </ContextMenu>
+              </Button.ContextMenu>
+            </Button>
+          </DataTemplate>
+        </ItemsControl.ItemTemplate>
+      </ItemsControl>
+    </StackPanel>
+  </ScrollViewer>
+</UserControl>
