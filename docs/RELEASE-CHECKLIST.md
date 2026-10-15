@@ -83,6 +83,10 @@ Versión del exe: FileVersion `0.4.0.0`; ProductVersion `0.4.0+71a01fcd39f4e51e9
 
 **Decisión: CONDITIONAL GO** como versión preliminar. El propietario aprobó el 2026-10-16 subir `update.json` y `update.json.sig` junto al instalador, y pidió no publicar el zip.
 
+**Publicada el 2026-10-16:** *pre-release* [v0.4.0](https://github.com/Kaiz-2/LarpStrap/releases/tag/v0.4.0), la primera en el repositorio público. La etiqueta anotada apunta a `71a01fc`, el commit del que salió el instalador. Activos: el instalador, su `.sha256`, `update.json` y `update.json.sig`.
+- **Comprobado tras publicar:** el instalador descargado de GitHub pasa `sha256sum -c`; `update.json` y su firma son idénticos byte a byte a los verificados.
+- **Actualizador contra GitHub real (sin instalar nada):** el `Updater` de Core, con la clave de `UpdateTrust` y una carpeta temporal, encuentra la release y verifica la firma. Siguió la redirección de descarga dentro de los dominios permitidos, y el instalador descargado tiene el SHA-256 publicado. Resultado: `Ready` haciéndose pasar por la 0.3.99 y `UpToDate` como 0.4.0. Sigue pendiente la prueba de punta a punta: que una copia instalada se cierre, se actualice y se reabra.
+
 ## Estado de 0.3.0 (2026-10-14)
 
 Primera versión con instalador (ADR 0008, aceptada), más el rediseño de la interfaz (iteraciones 1 y 2), las funciones de la fase 4 y S-5. Rama `release/0.3.0`; paquete construido con `eng/Publish-Release.ps1` desde el commit limpio `d1fa06c`.
