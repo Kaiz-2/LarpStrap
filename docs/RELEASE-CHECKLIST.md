@@ -1,6 +1,6 @@
 # Checklist de release
 
-Un procedimiento reutilizable más el estado de la candidata actual. **Preparar una release no autoriza a publicarla:** subir el instalador o el zip a GitHub, o a cualquier otro sitio, requiere la aprobación explícita del propietario.
+Un procedimiento reutilizable más el estado de la candidata actual. **Preparar una release no autoriza a publicarla:** subir el instalador o el manifiesto de actualización a GitHub, o a cualquier otro sitio, requiere la aprobación explícita del propietario.
 
 ## Procedimiento
 
@@ -16,9 +16,9 @@ Un procedimiento reutilizable más el estado de la candidata actual. **Preparar 
    Después, el paso «Fail on vulnerable packages» de la CI.
 4. **Commit** y luego `.\eng\Publish-Release.ps1`.
    - Se niega a empaquetar si el árbol tiene cambios o si cualquier archivo del paquete, incluido el instalador, contiene la ruta de tu perfil o tu correo de git.
-   - Genera, cada uno con su `.sha256`:
-     - `artifacts/LarpStrap-Setup-<versión>-win-x64.exe`: un solo archivo, con la app embebida;
-     - `artifacts/LarpStrap-<versión>-win-x64.zip`: portable, con los mismos archivos.
+   - Genera:
+     - `artifacts/LarpStrap-Setup-<versión>-win-x64.exe` y su `.sha256`: el único paquete desde 0.4.0, un solo archivo con la app embebida;
+     - `artifacts/update.json` y `update.json.sig`: el manifiesto firmado para el actualizador (ADR 0009). Necesita la clave de firma y se niega si no corresponde a `UpdateTrust`.
    - Comprueba que dice `Firma: ninguna` y que `Get-AuthenticodeSignature` da `NotSigned`. **Nunca se anuncia como firmado.**
    - **Que el paquete se genere no prueba nada de la instalación:** eso lo hacen los pasos 5 y 5b.
 5. **Verificar el paquete extraído:**
@@ -51,12 +51,37 @@ Un procedimiento reutilizable más el estado de la candidata actual. **Preparar 
 7. **Decisión GO / CONDITIONAL GO / NO-GO** con la evidencia, y **aprobación del propietario**.
 8. **Solo con aprobación:**
    - `git tag v<versión>` y push;
-   - release en GitHub con el zip, el `.sha256` y las notas (`CHANGELOG.md`, `docs/KNOWN-LIMITATIONS.md`);
+   - release en GitHub con el instalador, su `.sha256`, `update.json`, `update.json.sig` y las notas (`CHANGELOG.md`, `docs/KNOWN-LIMITATIONS.md`);
    - descargar lo publicado y comprobar el hash.
 
 **Vuelta atrás:** retirar la release, o marcarla «no usar», y volver a enlazar la anterior con su hash.
-- **Zip portable:** no hay que revertir nada en los equipos.
+- **Actualización automática (desde 0.4.0):** las copias instaladas pueden haberse actualizado ya. Retirar la release solo detiene las nuevas; para arreglarlas, publica una versión **más alta** corregida, porque el actualizador nunca baja de versión.
 - **Instalador:** el usuario puede ejecutar el instalador de la versión anterior, que avisa de que sustituye una más reciente y conserva la configuración, o desinstalar desde Configuración › Aplicaciones. El instalador solo escribe su clave de `HKCU\…\Uninstall\LarpStrap` y sus accesos directos. Nunca cambia el gestor de `roblox-player:`.
+
+## Estado de 0.4.0 (2026-10-16)
+
+Primera versión con actualización automática (ADR 0009), más los cambios de Codex revisados y la retirada de la multiinstancia. Desde esta versión solo se publica el instalador. Rama `release/0.4.0`; paquete construido con `eng/Publish-Release.ps1` desde el commit limpio `71a01fc`, la etiqueta `v0.4.0`. El zip que generó ese build no se publica: el script ya no lo genera.
+
+| Artefacto | Tamaño | SHA-256 |
+|---|---|---|
+| `LarpStrap-Setup-0.4.0-win-x64.exe` | 886 913 bytes | `0921138ca64632d29e88a3aa603e2e979f30b311c3fde8093dc12c92af18adc9` |
+| `update.json` | 152 bytes | Firma (`update.json.sig`, 64 bytes) verificada con la clave pública de la app |
+
+Versión del exe: FileVersion `0.4.0.0`; ProductVersion `0.4.0+71a01fcd39f4e51e9ea37affc0d275ceeae9640b`.
+
+| Comprobación | Resultado | Evidencia |
+|---|---|---|
+| Restore bloqueado, formato, build, vulnerabilidades (local) | **PASS** | 0 warnings; ningún paquete vulnerable en los 5 proyectos |
+| Tests automáticos | **PASS** | 267: 265 correctos, 2 omitidos (cliente real, opt-in). Incluye 12 del actualizador (firma falsa u otra clave, instalador manipulado, redirección fuera de GitHub, reutilización, limpieza) y los de `--update` |
+| CI en GitHub sobre `71a01fc` | **PASS** | Ejecución 38823348448 |
+| Integridad y privacidad | **PASS** | `sha256sum -c` correcto; barrera de privacidad del script en la app y el instalador |
+| Manifiesto firmado | **PASS** (SIMULADA, sin red) | La firma de `update.json` hecha por el script se verifica con `UpdateTrust` en .NET 10; un byte cambiado la invalida |
+| Firma de código | **NotSigned** | Sin firma Authenticode (ADR 0006). No se anuncia como firmado |
+| Instalador real (`Test-Installer.ps1`, asistente, DLL planting) | **NO VERIFICADO** | Había un cliente de Roblox del propietario abierto; estas pruebas abren ventanas. El motor del instalador solo cambió en `--update` (tests de argumentos) |
+| Actualización automática de punta a punta | **NO VERIFICADO** | Con Roblox abierto el actualizador espera, como debe. Prueba pendiente, con Roblox cerrado: instalar un build de prueba 0.3.99 con actualizador y comprobar que se actualiza solo a la 0.4.0 publicada |
+| Cliente real, equipo limpio | **NO VERIFICADO** | Igual que en 0.3.0 |
+
+**Decisión: CONDITIONAL GO** como versión preliminar. El propietario aprobó el 2026-10-16 subir `update.json` y `update.json.sig` junto al instalador, y pidió no publicar el zip.
 
 ## Estado de 0.3.0 (2026-10-14)
 

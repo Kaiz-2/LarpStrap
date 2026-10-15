@@ -1,16 +1,16 @@
 # Instalar, actualizar y desinstalar LarpStrap
 
-Desde 0.3.0 hay dos formas de instalarlo, con los mismos archivos:
+Desde 0.4.0 se distribuye **un solo archivo**, `LarpStrap-Setup-<versión>-win-x64.exe`. Lleva LarpStrap dentro: al abrirlo, el asistente lo extrae e instala, sin zip que descomprimir a mano.
 
-| | Instalador (recomendado) | Zip portable |
-|---|---|---|
-| Archivo | `LarpStrap-Setup-<versión>-win-x64.exe` | `LarpStrap-<versión>-win-x64.zip` |
-| Dónde | `%LOCALAPPDATA%\Programs\LarpStrap` o la carpeta que elijas | Donde lo extraigas |
-| Accesos directos | Menú Inicio y escritorio, opcionales | Ninguno |
-| Desinstalar | Configuración › Aplicaciones | Borrar la carpeta |
-| Permisos de administrador | No los pide, y se niega a ejecutarse elevado | No los necesita |
+| | |
+|---|---|
+| Dónde | `%LOCALAPPDATA%\Programs\LarpStrap` o la carpeta que elijas |
+| Accesos directos | Menú Inicio y escritorio, opcionales |
+| Actualizaciones | Automáticas al iniciar (ADR 0009) |
+| Desinstalar | Configuración › Aplicaciones |
+| Permisos de administrador | No los pide, y se niega a ejecutarse elevado |
 
-Ninguno de los dos está firmado (ADR 0006). La decisión sobre el instalador está en [ADR 0008](adr/0008-instalador-propio.md).
+No está firmado (ADR 0006). La decisión sobre el instalador está en [ADR 0008](adr/0008-instalador-propio.md).
 
 ## Requisitos
 
@@ -68,12 +68,6 @@ Ninguno de los dos está firmado (ADR 0006). La decisión sobre el instalador es
 
 **Códigos de salida:** 0 correcto, 1 error (el motivo queda en el log como `Setup.Failed`), 2 argumentos no válidos, 4 ejecutado como administrador, 5 instalador sin LarpStrap dentro (build de desarrollo).
 
-## Instalar con el zip portable
-
-1. Descarga `LarpStrap-<versión>-win-x64.zip` y su `.sha256`, y comprueba el hash como en el paso 2 anterior.
-2. **Extrae el zip** con «Extraer todo» en una carpeta tuya. El zip trae su propia carpeta `LarpStrap-<versión>-win-x64\`: no saques los archivos sueltos a `Descargas`.
-3. Abre `LarpStrap.exe`, sin «Ejecutar como administrador».
-
 ## Dónde guarda cada cosa
 
 | Qué | Dónde | Lo toca el instalador |
@@ -102,8 +96,8 @@ LarpStrap no guarda cookies, contraseñas ni enlaces de juego, y no envía telem
   - Los archivos que ya no existen en la versión nueva se quitan. Los que añadiste tú se quedan.
   - Con la misma versión, «Reparar» vuelve a copiar y comprobar los archivos.
   - Con una versión anterior, explica que sustituirá una más reciente antes de hacerlo.
-- **Con el zip:** cierra LarpStrap, extrae la versión nueva en su carpeta y borra la anterior.
-- **En los dos casos se conserva tu configuración,** porque vive fuera de la carpeta del programa. El zip portable no se actualiza solo.
+- **Se conserva tu configuración,** porque vive fuera de la carpeta del programa.
+- **Si usabas el zip portable de 0.3.0 o anterior:** instala con el instalador y borra la carpeta del zip. La configuración se mantiene.
 
 ## Desinstalar
 
@@ -111,8 +105,8 @@ LarpStrap no guarda cookies, contraseñas ni enlaces de juego, y no envía telem
   - **Se quita:** los archivos que instaló, sus accesos directos y su entrada en Aplicaciones. La carpeta se borra si queda vacía.
   - **Se conserva:** tu configuración y tus logs (`%LOCALAPPDATA%\LarpStrap`), los archivos que no instaló, y Roblox con sus clientes.
   - Como un programa no puede borrarse a sí mismo, el desinstalador se copia a `%TEMP%\LarpStrap-Uninstall-<id>\` y trabaja desde ahí. Esa copia (< 1 MB) se queda en `%TEMP%`.
-- **Zip:** cierra LarpStrap y borra su carpeta.
-- **Opcional, en los dos casos:** para borrar también tu configuración y los logs, borra `%LOCALAPPDATA%\LarpStrap`, y `%TEMP%\LarpStrap` si existe.
+- **Copia portable de 0.3.0 o anterior:** cierra LarpStrap y borra su carpeta.
+- **Opcional:** para borrar también tu configuración y los logs, borra `%LOCALAPPDATA%\LarpStrap`, y `%TEMP%\LarpStrap` si existe.
 
 ## Si algo falla
 

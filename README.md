@@ -2,7 +2,7 @@
 
 Bootstrapper de Roblox para Windows con **Clientes abiertos**, accesos a Roblox - Windows y Roblox web, gestión de FastFlags permitidos y personalización visual.
 
-> **Estado: versión preliminar.** Las versiones se publican en [Releases](https://github.com/Kaiz-2/LarpStrap/releases), con instalador y zip portable; la instalada se actualiza sola. Lo que funciona y lo que no está en [Estado](#estado) y en [limitaciones conocidas](docs/KNOWN-LIMITATIONS.md). No está afiliado a Roblox Corporation.
+> **Estado: versión preliminar.** Las versiones se publican en [Releases](https://github.com/Kaiz-2/LarpStrap/releases), como un único instalador que se actualiza solo. Lo que funciona y lo que no está en [Estado](#estado) y en [limitaciones conocidas](docs/KNOWN-LIMITATIONS.md). No está afiliado a Roblox Corporation.
 
 ![Inicio de LarpStrap: cabecera de marca, estado de Roblox y botón Lanzar (modo demostración)](docs/screenshots/nebulosa-inicio.png)
 
@@ -30,7 +30,7 @@ Bootstrapper de Roblox para Windows con **Clientes abiertos**, accesos a Roblox 
 
 ## Instalar
 
-Desde 0.3.0: descarga `LarpStrap-Setup-<versión>-win-x64.exe`, comprueba su SHA-256 y ábrelo sin «Ejecutar como administrador». Se instala para tu usuario, sin permisos de administrador, y se desinstala desde Configuración › Aplicaciones. Sigue habiendo un zip portable con los mismos archivos. Los pasos completos, cómo actualizar y desinstalar y qué hacer si algo falla están en [docs/INSTALLATION.md](docs/INSTALLATION.md). No hay firma de código (ADR 0006): SmartScreen avisará la primera vez.
+Descarga `LarpStrap-Setup-<versión>-win-x64.exe`, comprueba su SHA-256 y ábrelo sin «Ejecutar como administrador». Se instala para tu usuario, sin permisos de administrador, y se desinstala desde Configuración › Aplicaciones. Es un solo archivo: lleva LarpStrap dentro y lo instala sin que tengas que descomprimir nada. Los pasos completos, cómo actualizar y desinstalar y qué hacer si algo falla están en [docs/INSTALLATION.md](docs/INSTALLATION.md). No hay firma de código (ADR 0006): SmartScreen avisará la primera vez.
 
 ## Compilar y ejecutar desde el código
 
@@ -58,7 +58,7 @@ Los logs solo contienen campos de una lista cerrada: versiones, PID, resultados 
 | Unirse a una partida desde el navegador (`roblox-player:`) | Pendiente (P4) |
 | FastFlags de la lista permitida | Integrado; la aplicación real por Roblox no se ha verificado |
 | Discord Rich Presence | Pendiente |
-| Actualizaciones | Automáticas al iniciar en la versión instalada: firma verificada, nunca con Roblox abierto (ADR 0009). El zip se actualiza a mano |
+| Actualizaciones | Automáticas al iniciar en la versión instalada: firma verificada, nunca con Roblox abierto (ADR 0009). |
 
 El plan completo y las tareas abiertas están en [PLAN.md](PLAN.md). La última auditoría, con los defectos conocidos, está en [docs/quality/final-audit.md](docs/quality/final-audit.md).
 

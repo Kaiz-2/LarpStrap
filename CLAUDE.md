@@ -28,7 +28,7 @@ dotnet run --project src/LarpStrap.App
 La CI (`.github/workflows/ci.yml`) ejecuta restore, formato, build, test y `dotnet list package --vulnerable`.
 - **Licencia:** MIT (`LICENSE`).
 - **Distribución:** sin firma de código (ADR 0006). La versión instalada se actualiza sola con un manifiesto firmado por una clave propia (ADR 0009). La clave privada está fuera del repo (`%LOCALAPPDATA%\LarpStrap-Release`) y nunca se sube.
-- **Decisiones:** `docs/adr/0002…0009`. Todas aceptadas (0007: el paquete es dependiente del framework, no autocontenido; 0008: instalador propio, por usuario y sin elevación, junto al zip portable; 0009: actualización automática verificada). Se numeran por el archivo, como las cita el código; los documentos anteriores usan `ADR-001…005` (cada ADR indica su número antiguo).
+- **Decisiones:** `docs/adr/0002…0009`. Todas aceptadas (0007: el paquete es dependiente del framework, no autocontenido; 0008: instalador propio, por usuario y sin elevación, único paquete desde 0.4.0; 0009: actualización automática verificada). Se numeran por el archivo, como las cita el código; los documentos anteriores usan `ADR-001…005` (cada ADR indica su número antiguo).
 
 ## Leer antes de cambiar nada
 

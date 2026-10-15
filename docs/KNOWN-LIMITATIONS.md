@@ -8,7 +8,7 @@ Lo que LarpStrap **no hace**, **no garantiza** o **hace mal** a día de hoy. Los
 - **Sin almacenamiento de cuentas.** LarpStrap no guarda cookies ni contraseñas (ADR 0004); las sesiones las mantienen Roblox - Windows y el navegador.
 - **No toca el proceso de bandeja de Roblox.** Si ese proceso ocupa la plaza, el lanzamiento se bloquea y hay que cerrarlo desde la bandeja de Windows.
 - **Sin firma de código** (ADR 0006). SmartScreen avisa; las versiones se comprueban con el SHA-256 publicado.
-- **Actualización automática (ADR 0009):** solo en la versión instalada, no en el zip. Se verifica con una clave propia, no con Authenticode. Si la clave del propietario se perdiera, haría falta instalar a mano una versión con una clave nueva. Con el modo demostración activado no se instala, porque no se sabe si hay Roblox abierto. No está probada todavía con una release real.
+- **Actualización automática (ADR 0009):** solo en la versión instalada (desde 0.4.0 ya no hay zip portable). Se verifica con una clave propia, no con Authenticode. Si la clave del propietario se perdiera, haría falta instalar a mano una versión con una clave nueva. Con el modo demostración activado no se instala, porque no se sabe si hay Roblox abierto. No está probada todavía con una release real.
 - **Requiere el .NET 10 Desktop Runtime** instalado aparte (ADR 0007).
 - **Solo Windows 10/11 x64 e interfaz en español.**
 

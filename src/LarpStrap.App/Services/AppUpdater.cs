@@ -11,7 +11,7 @@ namespace LarpStrap.App.Services;
 
 /// <summary>
 /// Checks GitHub for a signed update and, when Roblox is not in use, closes LarpStrap and lets the downloaded installer
-/// update it silently (docs/adr/0009). Only for copies installed with the installer; the portable zip never updates itself.
+/// update it silently (docs/adr/0009). Only for copies installed with the installer (the only package since 0.4.0); an old portable copy never updates itself.
 /// </summary>
 /// <param name="robloxBusy">True while a client is open or starting, or a launch is in progress: never interrupt a game.</param>
 public sealed class AppUpdater(AppLog log, string downloadDirectory, Func<bool> robloxBusy, Action<string> announce, Action exit)
@@ -25,7 +25,7 @@ public sealed class AppUpdater(AppLog log, string downloadDirectory, Func<bool> 
     public async Task<string> CheckAsync(bool manual)
     {
         if (!IsInstalled)
-            return "Esta es la copia portable (zip): solo la versión instalada se actualiza sola. Descarga la nueva desde GitHub.";
+            return "Esta copia no está instalada (portable o de desarrollo): solo la versión instalada se actualiza sola. Descarga el instalador desde GitHub.";
         if (_running) return "Ya se está buscando una actualización.";
         _running = true;
         try

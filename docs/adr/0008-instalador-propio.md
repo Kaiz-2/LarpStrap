@@ -2,7 +2,7 @@
 
 ## Estado
 
-**Aceptado** (2026-10-14, aprobado por el usuario). A partir de 0.3.0 se distribuyen el instalador y el zip portable; publicar una versión sigue requiriendo aprobación explícita.
+**Aceptado** (2026-10-14, aprobado por el usuario). A partir de 0.3.0 se distribuyen el instalador y el zip portable; desde 0.4.0, solo el instalador (decisión del propietario, 2026-10-16: el usuario no debe tener que descomprimir nada); publicar una versión sigue requiriendo aprobación explícita.
 
 ## Contexto
 
@@ -48,7 +48,7 @@ Condiciones que ya estaban decididas:
   - nunca `%LOCALAPPDATA%\LarpStrap` (configuración y logs), Roblox ni los archivos ajenos.
 - **Nunca cierra procesos:** si LarpStrap está abierto, pide cerrarlo. Los clientes de Roblox no se tocan.
 - **El asistente reutiliza el sistema de diseño de la app enlazando sus archivos**, sin copiarlos: `Themes/*.xaml`, `Glyph`, `SettingCard`, los conversores y `ThemeService`.
-- **El zip portable se sigue generando** con los mismos archivos, para quien no quiera instalador.
+- ~~**El zip portable se sigue generando**~~ *Retirado en 0.4.0:* solo se publica el instalador.
 
 ## Consecuencias
 

@@ -37,7 +37,7 @@ El repositorio pasó a ser público el 2026-10-16 (`Kaiz-2/LarpStrap`), así que
 5. **Nunca interrumpe una partida:**
    - si hay un cliente de Roblox abierto o arrancando, o un lanzamiento en curso, la actualización espera al siguiente inicio (el proceso de Roblox en segundo plano no cuenta);
    - no cierra Roblox.
-6. **Solo para instalaciones hechas con el instalador.** El zip portable no se actualiza solo.
+6. **Solo para instalaciones hechas con el instalador,** que desde 0.4.0 es la única forma de distribución. Una copia portable antigua no se actualiza sola.
 7. **Se puede desactivar** en Acerca de («Actualizar automáticamente»), donde también se puede buscar una actualización en cualquier momento.
 
 ## Alternativas consideradas

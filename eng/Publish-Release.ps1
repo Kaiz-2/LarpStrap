@@ -1,6 +1,5 @@
 ﻿# Builds the Windows release packages from a clean commit:
-#   artifacts/LarpStrap-Setup-<version>-win-x64.exe (+ .sha256)  installer with the wizard (docs/adr/0008)
-#   artifacts/LarpStrap-<version>-win-x64.zip (+ .sha256)        portable copy, same files
+#   artifacts/LarpStrap-Setup-<version>-win-x64.exe (+ .sha256)  the only package: the wizard with the app inside (docs/adr/0008)
 #   artifacts/update.json + update.json.sig                       signed manifest for the in-app updater (docs/adr/0009)
 # Framework-dependent on purpose: with a self-contained build, DLLs planted next to the exe (uxtheme, wtsapi32,
 # dwrite, user32) were loaded by WPF; with the shared .NET runtime they were not (tests/manual/Test-DllPlanting.ps1,
@@ -21,13 +20,12 @@ $version = if ($Version) { $Version } else { ([xml](Get-Content Directory.Build.
 $versionArg = "-p:Version=$version"
 $name = "LarpStrap-$version-win-x64"
 $stage = Join-Path $Output $name
-$zip = Join-Path $Output "$name.zip"
 $setupName = "LarpStrap-Setup-$version-win-x64.exe"
 $setup = Join-Path $Output $setupName
 $payload = Join-Path $Output 'payload.zip'
 $setupStage = Join-Path $Output 'setup-publish'
 $manifest = Join-Path $Output 'update.json'
-Remove-Item $stage, $zip, "$zip.sha256", $setup, "$setup.sha256", $payload, $setupStage, $manifest, "$manifest.sig" -Recurse -Force -ErrorAction SilentlyContinue
+Remove-Item $stage, $setup, "$setup.sha256", $payload, $setupStage, $manifest, "$manifest.sig" -Recurse -Force -ErrorAction SilentlyContinue
 
 # The update-signing key (eng/New-UpdateSigningKey.ps1) must match the public key built into LarpStrap, or installed
 # copies would reject this release. Checked before building anything.
@@ -72,9 +70,7 @@ function Assert-NoPersonalData([IO.FileInfo[]]$files) {
 }
 Assert-NoPersonalData (Get-ChildItem $stage -Recurse -File)
 
-Compress-Archive -Path $stage -DestinationPath $zip  # keeps the LarpStrap-<version>-win-x64\ root folder
-
-# Installer: the same files as the zip, without its root folder, embedded in a single-file, framework-dependent setup.
+# Installer: the published app, without a root folder, embedded in a single-file, framework-dependent setup.
 Add-Type -AssemblyName System.IO.Compression.FileSystem
 [IO.Compression.ZipFile]::CreateFromDirectory((Resolve-Path $stage).Path, (Join-Path (Resolve-Path $Output) 'payload.zip'))
 dotnet publish src/LarpStrap.Setup -c Release -r win-x64 $versionArg `
@@ -88,7 +84,7 @@ Move-Item $built[0].FullName $setup
 Remove-Item $payload, $setupStage -Recurse -Force
 
 # LF and no BOM, so `sha256sum -c` works too (Set-Content wrote CRLF in 0.2.0).
-$hashes = foreach ($file in @($setup, $zip)) {
+$hashes = foreach ($file in @($setup)) {
     $hash = (Get-FileHash $file -Algorithm SHA256).Hash.ToLowerInvariant()
     $leaf = Split-Path $file -Leaf
     [IO.File]::WriteAllText((Join-Path (Resolve-Path $Output) "$leaf.sha256"), "$hash  $leaf`n")
