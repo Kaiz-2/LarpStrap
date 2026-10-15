@@ -5,7 +5,7 @@ Estado de las fases de LarpStrap. Las decisiones están en `docs/adr/`. Lo que q
 | Fase | Estado |
 |---|---|
 | 1. Investigación de fuentes | Hecha (`docs/research/reference-comparison.md`, `research_notes/`) |
-| 2. Especificación y arquitectura | Parcial: `SPEC-app-shell.md` en borrador; ADR 0002–0006 aceptadas |
+| 2. Especificación y arquitectura | Hecha: ADR 0002–0009 aceptadas (los borradores de spec de la fase 1 se retiraron el 2026-10-16) |
 | 3. MVP técnico del Panel de instancias | **Hecha, con límites** |
 | 4. Producto principal | **En curso** |
 | 5. Interfaz de escritorio de producción | **Hecha, con pendientes** (ver abajo) |
