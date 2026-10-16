@@ -2,6 +2,11 @@
 
 Todos los cambios relevantes de LarpStrap. Formato basado en [Keep a Changelog](https://keepachangelog.com/es-ES/1.1.0/); versiones según [SemVer](https://semver.org/lang/es/).
 
+## 0.4.5 - 2026-10-16 (versión preliminar)
+
+### Corregido
+- Evita el cierre al iniciar: las plantillas WPF ahora resuelven correctamente los recursos del tema compartido.
+
 ## 0.4.4 - 2026-10-16 (versión preliminar)
 
 ### Cambiado

@@ -15,31 +15,31 @@
 
   <!-- Text -->
   <Style x:Key="HeroText" TargetType="TextBlock">
-    <Setter Property="FontFamily" Value="{StaticResource FontBrand}" />
-    <Setter Property="FontSize" Value="{StaticResource FontSizeHero}" />
+    <Setter Property="FontFamily" Value="{DynamicResource FontBrand}" />
+    <Setter Property="FontSize" Value="{DynamicResource FontSizeHero}" />
     <Setter Property="Foreground" Value="{DynamicResource OnBrandBrush}" />
     <Setter Property="TextWrapping" Value="Wrap" />
   </Style>
   <Style x:Key="DisplayText" TargetType="TextBlock">
-    <Setter Property="FontFamily" Value="{StaticResource FontDisplay}" />
-    <Setter Property="FontSize" Value="{StaticResource FontSizeDisplay}" />
+    <Setter Property="FontFamily" Value="{DynamicResource FontDisplay}" />
+    <Setter Property="FontSize" Value="{DynamicResource FontSizeDisplay}" />
     <Setter Property="Foreground" Value="{DynamicResource TextBrush}" />
     <Setter Property="TextWrapping" Value="Wrap" />
   </Style>
   <Style x:Key="TitleText" TargetType="TextBlock">
-    <Setter Property="FontFamily" Value="{StaticResource FontDisplay}" />
-    <Setter Property="FontSize" Value="{StaticResource FontSizeTitle}" />
+    <Setter Property="FontFamily" Value="{DynamicResource FontDisplay}" />
+    <Setter Property="FontSize" Value="{DynamicResource FontSizeTitle}" />
     <Setter Property="Foreground" Value="{DynamicResource TextBrush}" />
     <Setter Property="TextWrapping" Value="Wrap" />
   </Style>
   <Style x:Key="SubtitleText" TargetType="TextBlock">
-    <Setter Property="FontSize" Value="{StaticResource FontSizeSubtitle}" />
+    <Setter Property="FontSize" Value="{DynamicResource FontSizeSubtitle}" />
     <Setter Property="FontWeight" Value="SemiBold" />
     <Setter Property="Foreground" Value="{DynamicResource TextBrush}" />
     <Setter Property="TextWrapping" Value="Wrap" />
   </Style>
   <Style x:Key="BodyText" TargetType="TextBlock">
-    <Setter Property="FontSize" Value="{StaticResource FontSizeBody}" />
+    <Setter Property="FontSize" Value="{DynamicResource FontSizeBody}" />
     <Setter Property="Foreground" Value="{DynamicResource TextBrush}" />
     <Setter Property="TextWrapping" Value="Wrap" />
     <Setter Property="LineHeight" Value="20" />
@@ -48,21 +48,21 @@
     <Setter Property="Foreground" Value="{DynamicResource TextMutedBrush}" />
   </Style>
   <Style x:Key="CaptionText" TargetType="TextBlock" BasedOn="{StaticResource MutedText}">
-    <Setter Property="FontSize" Value="{StaticResource FontSizeCaption}" />
+    <Setter Property="FontSize" Value="{DynamicResource FontSizeCaption}" />
     <Setter Property="LineHeight" Value="16" />
   </Style>
   <!-- Small section label above a group ("ESTADO"). -->
   <Style x:Key="OverlineText" TargetType="TextBlock" BasedOn="{StaticResource CaptionText}">
-    <Setter Property="FontFamily" Value="{StaticResource FontBrand}" />
+    <Setter Property="FontFamily" Value="{DynamicResource FontBrand}" />
     <Setter Property="FontSize" Value="12" />
   </Style>
   <Style x:Key="MonoText" TargetType="TextBlock">
-    <Setter Property="FontFamily" Value="{StaticResource FontMono}" />
+    <Setter Property="FontFamily" Value="{DynamicResource FontMono}" />
     <Setter Property="FontSize" Value="13" />
     <Setter Property="Foreground" Value="{DynamicResource TextBrush}" />
   </Style>
   <Style x:Key="IconText" TargetType="TextBlock">
-    <Setter Property="FontFamily" Value="{StaticResource FontIcons}" />
+    <Setter Property="FontFamily" Value="{DynamicResource FontIcons}" />
     <Setter Property="FontSize" Value="16" />
     <Setter Property="VerticalAlignment" Value="Center" />
     <Setter Property="Foreground" Value="{DynamicResource TextMutedBrush}" />
@@ -74,7 +74,7 @@
     <Setter Property="Background" Value="Transparent" />
     <Setter Property="BorderThickness" Value="0" />
     <Setter Property="Padding" Value="0" />
-    <Setter Property="FontFamily" Value="{StaticResource FontIcons}" />
+    <Setter Property="FontFamily" Value="{DynamicResource FontIcons}" />
     <Setter Property="FontSize" Value="11" />
     <Setter Property="Cursor" Value="Hand" />
     <Setter Property="Template">
@@ -103,13 +103,13 @@
     <Setter Property="Background" Value="{DynamicResource SurfaceBrush}" />
     <Setter Property="BorderBrush" Value="{DynamicResource BorderSubtleBrush}" />
     <Setter Property="BorderThickness" Value="1" />
-    <Setter Property="CornerRadius" Value="{StaticResource RadiusContainer}" />
+    <Setter Property="CornerRadius" Value="{DynamicResource RadiusContainer}" />
     <Setter Property="Padding" Value="20" />
   </Style>
   <!-- Brand hero: the nebula gradient behind white text (≥4.5:1 on both ends). -->
   <Style x:Key="HeroCard" TargetType="Border">
-    <Setter Property="Background" Value="{StaticResource BrandGradientBrush}" />
-    <Setter Property="CornerRadius" Value="{StaticResource RadiusHero}" />
+    <Setter Property="Background" Value="{DynamicResource BrandGradientBrush}" />
+    <Setter Property="CornerRadius" Value="{DynamicResource RadiusHero}" />
     <Setter Property="Padding" Value="28" />
     <Setter Property="ClipToBounds" Value="True" />
     <Setter Property="Effect"><Setter.Value><DropShadowEffect Color="#000000" Opacity="0.18" BlurRadius="24" ShadowDepth="3" Direction="270" /></Setter.Value></Setter>
@@ -118,13 +118,13 @@
   <Style x:Key="Avatar" TargetType="Border">
     <Setter Property="Width" Value="48" />
     <Setter Property="Height" Value="48" />
-    <Setter Property="CornerRadius" Value="{StaticResource RadiusContainer}" />
+    <Setter Property="CornerRadius" Value="{DynamicResource RadiusContainer}" />
     <Setter Property="Background" Value="{DynamicResource SurfaceAltBrush}" />
     <Setter Property="VerticalAlignment" Value="Center" />
   </Style>
   <!-- Small label chip: "SIMULADO", "Externo"… -->
   <Style x:Key="Chip" TargetType="Border">
-    <Setter Property="CornerRadius" Value="{StaticResource RadiusPill}" />
+    <Setter Property="CornerRadius" Value="{DynamicResource RadiusPill}" />
     <Setter Property="Padding" Value="12,4" />
     <Setter Property="Background" Value="{DynamicResource SurfaceAltBrush}" />
     <Setter Property="BorderThickness" Value="0" />
@@ -135,15 +135,15 @@
     <Setter Property="Background" Value="{DynamicResource InfoSoftBrush}" />
     <Setter Property="BorderBrush" Value="{DynamicResource BorderSubtleBrush}" />
     <Setter Property="BorderThickness" Value="0" />
-    <Setter Property="CornerRadius" Value="{StaticResource RadiusStatus}" />
+    <Setter Property="CornerRadius" Value="{DynamicResource RadiusStatus}" />
     <Setter Property="Padding" Value="7,2" />
   </Style>
   <!-- Client status: dot + text on a soft tint, never colour alone. DataContext: an item with StatusText/StatusKind. -->
   <DataTemplate x:Key="StatusPill">
-    <Border x:Name="Pill" CornerRadius="{StaticResource RadiusPill}" Padding="10,3" Background="{DynamicResource SurfaceAltBrush}" HorizontalAlignment="Left">
+    <Border x:Name="Pill" CornerRadius="{DynamicResource RadiusPill}" Padding="10,3" Background="{DynamicResource SurfaceAltBrush}" HorizontalAlignment="Left">
       <StackPanel Orientation="Horizontal">
         <Ellipse x:Name="Dot" Width="8" Height="8" Fill="{DynamicResource TextMutedBrush}" VerticalAlignment="Center" />
-        <TextBlock Margin="8,0,0,0" Text="{Binding StatusText}" FontWeight="SemiBold" FontSize="{StaticResource FontSizeCaption}" Foreground="{DynamicResource TextBrush}" />
+        <TextBlock Margin="8,0,0,0" Text="{Binding StatusText}" FontWeight="SemiBold" FontSize="{DynamicResource FontSizeCaption}" Foreground="{DynamicResource TextBrush}" />
       </StackPanel>
     </Border>
     <DataTemplate.Triggers>
@@ -168,7 +168,7 @@
 
   <!-- Banner (info bar): Tag = Info | Warn | Error | Ok | Neutral -->
   <Style x:Key="Banner" TargetType="Border">
-    <Setter Property="CornerRadius" Value="{StaticResource RadiusContainer}" />
+    <Setter Property="CornerRadius" Value="{DynamicResource RadiusContainer}" />
     <Setter Property="Padding" Value="16,12" />
     <Setter Property="BorderThickness" Value="1" />
     <Setter Property="Background" Value="{DynamicResource InfoSoftBrush}" />
@@ -200,7 +200,7 @@
       <Setter.Value>
         <ControlTemplate TargetType="views:SettingCard">
           <Border Background="{DynamicResource SurfaceBrush}" BorderBrush="{DynamicResource BorderSubtleBrush}" BorderThickness="1"
-                  CornerRadius="{StaticResource RadiusContainer}" Padding="18,14">
+                  CornerRadius="{DynamicResource RadiusContainer}" Padding="18,14">
             <Grid VerticalAlignment="Center">
               <Grid.ColumnDefinitions><ColumnDefinition Width="Auto" /><ColumnDefinition Width="*" /><ColumnDefinition Width="Auto" /></Grid.ColumnDefinitions>
               <Border Width="42" Height="42" Margin="0,0,14,0" CornerRadius="11" Background="{DynamicResource AccentSoftBrush}"
@@ -209,7 +209,7 @@
                              Foreground="{DynamicResource AccentTextBrush}" Text="{TemplateBinding Icon}" />
               </Border>
               <StackPanel Grid.Column="1" VerticalAlignment="Center" Margin="0,0,18,0">
-                <TextBlock Style="{StaticResource SubtitleText}" FontSize="{StaticResource FontSizeBody}" Text="{TemplateBinding Title}" />
+                <TextBlock Style="{StaticResource SubtitleText}" FontSize="{DynamicResource FontSizeBody}" Text="{TemplateBinding Title}" />
                 <TextBlock Style="{StaticResource CaptionText}" Margin="0,4,0,0" Text="{TemplateBinding Description}" />
               </StackPanel>
               <ContentPresenter Grid.Column="2" VerticalAlignment="Center" Margin="8,4,0,4" />
@@ -228,16 +228,16 @@
     <Setter Property="BorderBrush" Value="{DynamicResource BorderSubtleBrush}" />
     <Setter Property="BorderThickness" Value="1" />
     <Setter Property="Padding" Value="18,0" />
-    <Setter Property="MinHeight" Value="{StaticResource ControlHeight}" />
-    <Setter Property="FontSize" Value="{StaticResource FontSizeBody}" />
+    <Setter Property="MinHeight" Value="{DynamicResource ControlHeight}" />
+    <Setter Property="FontSize" Value="{DynamicResource FontSizeBody}" />
     <Setter Property="Cursor" Value="Hand" />
     <Setter Property="Template">
       <Setter.Value>
         <ControlTemplate TargetType="Button">
           <Grid>
             <Border x:Name="Bd" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}"
-                    BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="{StaticResource RadiusControl}" SnapsToDevicePixels="True" />
-            <Border x:Name="Hover" Background="{DynamicResource TextBrush}" Opacity="0" CornerRadius="{StaticResource RadiusControl}" />
+                    BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="{DynamicResource RadiusControl}" SnapsToDevicePixels="True" />
+            <Border x:Name="Hover" Background="{DynamicResource TextBrush}" Opacity="0" CornerRadius="{DynamicResource RadiusControl}" />
             <ContentPresenter Margin="{TemplateBinding Padding}" HorizontalAlignment="Center" VerticalAlignment="Center" RecognizesAccessKey="True" />
           </Grid>
           <ControlTemplate.Triggers>
@@ -270,18 +270,18 @@
   <Style x:Key="HeroButton" TargetType="Button" BasedOn="{StaticResource ButtonBaseStyle}">
     <Setter Property="Background" Value="{DynamicResource OnBrandBrush}" />
     <Setter Property="BorderBrush" Value="{DynamicResource OnBrandBrush}" />
-    <Setter Property="Foreground" Value="{StaticResource OnHeroButtonBrush}" />
-    <Setter Property="FontFamily" Value="{StaticResource FontBrand}" />
-    <Setter Property="FontSize" Value="{StaticResource FontSizeSubtitle}" />
-    <Setter Property="MinHeight" Value="{StaticResource ControlHeightLarge}" />
+    <Setter Property="Foreground" Value="{DynamicResource OnHeroButtonBrush}" />
+    <Setter Property="FontFamily" Value="{DynamicResource FontBrand}" />
+    <Setter Property="FontSize" Value="{DynamicResource FontSizeSubtitle}" />
+    <Setter Property="MinHeight" Value="{DynamicResource ControlHeightLarge}" />
     <Setter Property="Padding" Value="28,0" />
   </Style>
   <!-- Secondary action on the brand hero: outline in white. -->
   <Style x:Key="HeroSecondaryButton" TargetType="Button" BasedOn="{StaticResource ButtonBaseStyle}">
-    <Setter Property="Background" Value="{StaticResource OnBrandFaintBrush}" />
+    <Setter Property="Background" Value="{DynamicResource OnBrandFaintBrush}" />
     <Setter Property="BorderBrush" Value="{DynamicResource OnBrandBrush}" />
     <Setter Property="Foreground" Value="{DynamicResource OnBrandBrush}" />
-    <Setter Property="MinHeight" Value="{StaticResource ControlHeightLarge}" />
+    <Setter Property="MinHeight" Value="{DynamicResource ControlHeightLarge}" />
     <Setter Property="Padding" Value="24,0" />
   </Style>
   <Style x:Key="DangerButton" TargetType="Button" BasedOn="{StaticResource ButtonBaseStyle}">
@@ -295,7 +295,7 @@
   </Style>
   <!-- Square icon-only button; give it AutomationProperties.Name and a ToolTip. -->
   <Style x:Key="IconButton" TargetType="Button" BasedOn="{StaticResource GhostButton}">
-    <Setter Property="Width" Value="{StaticResource ControlHeight}" />
+    <Setter Property="Width" Value="{DynamicResource ControlHeight}" />
     <Setter Property="Padding" Value="0" />
   </Style>
 
@@ -312,8 +312,8 @@
       <Setter.Value>
         <ControlTemplate TargetType="Button">
           <Grid>
-            <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="{StaticResource RadiusContainer}" />
-            <Border x:Name="Hover" Background="{DynamicResource TextBrush}" Opacity="0" CornerRadius="{StaticResource RadiusContainer}" />
+            <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="{DynamicResource RadiusContainer}" />
+            <Border x:Name="Hover" Background="{DynamicResource TextBrush}" Opacity="0" CornerRadius="{DynamicResource RadiusContainer}" />
             <ContentPresenter Margin="14" RecognizesAccessKey="True" />
           </Grid>
           <ControlTemplate.Triggers>
@@ -330,12 +330,12 @@
     <Setter Property="FocusVisualStyle" Value="{StaticResource FocusRing}" />
     <Setter Property="Foreground" Value="{DynamicResource TextBrush}" />
     <Setter Property="Width" Value="40" />
-    <Setter Property="Height" Value="{StaticResource ControlHeight}" />
+    <Setter Property="Height" Value="{DynamicResource ControlHeight}" />
     <Setter Property="Cursor" Value="Hand" />
     <Setter Property="Template">
       <Setter.Value>
         <ControlTemplate TargetType="ToggleButton">
-          <Border x:Name="Bd" Background="Transparent" CornerRadius="{StaticResource RadiusControl}">
+          <Border x:Name="Bd" Background="Transparent" CornerRadius="{DynamicResource RadiusControl}">
             <views:Glyph Style="{StaticResource IconText}" HorizontalAlignment="Center" Foreground="{TemplateBinding Foreground}" Text="&#xE700;" />
           </Border>
           <ControlTemplate.Triggers>
@@ -351,12 +351,12 @@
     <Setter Property="FocusVisualStyle" Value="{StaticResource FocusRing}" />
     <Setter Property="Foreground" Value="{DynamicResource TextMutedBrush}" />
     <Setter Property="Width" Value="40" />
-    <Setter Property="Height" Value="{StaticResource ControlHeight}" />
+    <Setter Property="Height" Value="{DynamicResource ControlHeight}" />
     <Setter Property="Cursor" Value="Hand" />
     <Setter Property="Template">
       <Setter.Value>
         <ControlTemplate TargetType="ToggleButton">
-          <Border x:Name="Bd" Background="Transparent" CornerRadius="{StaticResource RadiusControl}">
+          <Border x:Name="Bd" Background="Transparent" CornerRadius="{DynamicResource RadiusControl}">
             <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
           </Border>
           <ControlTemplate.Triggers>
@@ -381,7 +381,7 @@
       <Setter.Value>
         <ControlTemplate TargetType="ContextMenu">
           <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="1"
-                  CornerRadius="{StaticResource RadiusContainer}" Padding="{TemplateBinding Padding}">
+                  CornerRadius="{DynamicResource RadiusContainer}" Padding="{TemplateBinding Padding}">
             <ItemsPresenter KeyboardNavigation.DirectionalNavigation="Cycle" />
           </Border>
         </ControlTemplate>
@@ -394,13 +394,13 @@
   </Style>
   <Style TargetType="MenuItem">
     <Setter Property="Foreground" Value="{DynamicResource TextBrush}" />
-    <Setter Property="FontSize" Value="{StaticResource FontSizeBody}" />
+    <Setter Property="FontSize" Value="{DynamicResource FontSizeBody}" />
     <Setter Property="FocusVisualStyle" Value="{x:Null}" />
     <Setter Property="Template">
       <Setter.Value>
         <!-- Item inside a menu: label row with hover/highlight. -->
         <ControlTemplate TargetType="MenuItem">
-          <Border x:Name="Bd" Background="Transparent" CornerRadius="{StaticResource RadiusControl}" Padding="12,8" MinWidth="180">
+          <Border x:Name="Bd" Background="Transparent" CornerRadius="{DynamicResource RadiusControl}" Padding="12,8" MinWidth="180">
             <ContentPresenter ContentSource="Header" RecognizesAccessKey="True" VerticalAlignment="Center" />
           </Border>
           <ControlTemplate.Triggers>
@@ -417,13 +417,13 @@
           <Setter.Value>
             <ControlTemplate TargetType="MenuItem">
               <Grid>
-                <Border x:Name="Bd" Width="{StaticResource ControlHeight}" Height="{StaticResource ControlHeight}" Background="Transparent" CornerRadius="{StaticResource RadiusControl}">
+                <Border x:Name="Bd" Width="{DynamicResource ControlHeight}" Height="{DynamicResource ControlHeight}" Background="Transparent" CornerRadius="{DynamicResource RadiusControl}">
                   <ContentPresenter ContentSource="Header" HorizontalAlignment="Center" VerticalAlignment="Center" />
                 </Border>
                 <Rectangle x:Name="Focus" Margin="-3" RadiusX="8" RadiusY="8" Stroke="{DynamicResource FocusRingBrush}" StrokeThickness="2" Visibility="Hidden" />
                 <Popup x:Name="PART_Popup" IsOpen="{TemplateBinding IsSubmenuOpen}" Placement="Bottom" AllowsTransparency="True" Focusable="False" PopupAnimation="None">
                   <Border Background="{DynamicResource SurfaceAltBrush}" BorderBrush="{DynamicResource BorderStrongBrush}" BorderThickness="1"
-                          CornerRadius="{StaticResource RadiusContainer}" Padding="4" Margin="0,4,0,0">
+                          CornerRadius="{DynamicResource RadiusContainer}" Padding="4" Margin="0,4,0,0">
                     <ItemsPresenter KeyboardNavigation.DirectionalNavigation="Cycle" />
                   </Border>
                 </Popup>
@@ -462,7 +462,7 @@
                   </ControlTemplate.Triggers>
                 </ControlTemplate>
               </ToggleButton.Template>
-              <ContentPresenter ContentSource="Header" TextElement.Foreground="{TemplateBinding Foreground}" TextElement.FontSize="{StaticResource FontSizeCaption}" />
+              <ContentPresenter ContentSource="Header" TextElement.Foreground="{TemplateBinding Foreground}" TextElement.FontSize="{DynamicResource FontSizeCaption}" />
             </ToggleButton>
             <ContentPresenter x:Name="Body" Margin="18,4,0,0" Visibility="Collapsed" />
           </DockPanel>
@@ -478,13 +478,13 @@
   <Style x:Key="NavItem" TargetType="RadioButton">
     <Setter Property="FocusVisualStyle" Value="{StaticResource FocusRing}" />
     <Setter Property="Foreground" Value="{DynamicResource TextBrush}" />
-    <Setter Property="FontSize" Value="{StaticResource FontSizeBody}" />
+    <Setter Property="FontSize" Value="{DynamicResource FontSizeBody}" />
     <Setter Property="MinHeight" Value="46" />
     <Setter Property="Cursor" Value="Hand" />
     <Setter Property="Template">
       <Setter.Value>
         <ControlTemplate TargetType="RadioButton">
-          <Border x:Name="Bd" Background="Transparent" CornerRadius="{StaticResource RadiusControl}" Margin="0,1">
+          <Border x:Name="Bd" Background="Transparent" CornerRadius="{DynamicResource RadiusControl}" Margin="0,1">
             <Grid>
               <Grid.ColumnDefinitions>
               <ColumnDefinition Width="4" />
@@ -513,7 +513,7 @@
   </Style>
 
   <ControlTemplate x:Key="NavItemCompactTemplate" TargetType="RadioButton">
-    <Border x:Name="Bd" Background="Transparent" CornerRadius="{StaticResource RadiusControl}">
+    <Border x:Name="Bd" Background="Transparent" CornerRadius="{DynamicResource RadiusControl}">
       <Grid>
         <Border x:Name="Bar" Width="3" Height="18" CornerRadius="2" HorizontalAlignment="Left" Background="{DynamicResource AccentTextBrush}" Visibility="Hidden" />
         <views:Glyph x:Name="Icon" HorizontalAlignment="Center" Style="{StaticResource IconText}" Text="{TemplateBinding Tag}" />
@@ -535,7 +535,7 @@
     <Setter Property="Foreground" Value="{DynamicResource TextBrush}" />
     <Setter Property="Background" Value="{DynamicResource SurfaceBrush}" />
     <Setter Property="BorderBrush" Value="{DynamicResource BorderSubtleBrush}" />
-    <Setter Property="MinHeight" Value="{StaticResource ControlHeight}" />
+    <Setter Property="MinHeight" Value="{DynamicResource ControlHeight}" />
     <Setter Property="MinWidth" Value="48" />
     <Setter Property="Padding" Value="16,0" />
     <Setter Property="Margin" Value="0,0,8,0" />
@@ -544,7 +544,7 @@
       <Setter.Value>
         <ControlTemplate TargetType="RadioButton">
           <Border x:Name="Bd" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="1"
-                  CornerRadius="{StaticResource RadiusControl}">
+                  CornerRadius="{DynamicResource RadiusControl}">
             <ContentPresenter Margin="{TemplateBinding Padding}" HorizontalAlignment="Center" VerticalAlignment="Center" RecognizesAccessKey="True" />
           </Border>
           <ControlTemplate.Triggers>
@@ -580,7 +580,7 @@
       <Setter.Value>
         <ControlTemplate TargetType="RadioButton">
           <Border x:Name="Bd" Background="{DynamicResource SurfaceAltBrush}" BorderBrush="{DynamicResource BorderSubtleBrush}" BorderThickness="2"
-                  CornerRadius="{StaticResource RadiusContainer}" Padding="12">
+                  CornerRadius="{DynamicResource RadiusContainer}" Padding="12">
             <Grid>
               <ContentPresenter RecognizesAccessKey="True" />
               <Border x:Name="Check" Width="22" Height="22" CornerRadius="11" Background="{DynamicResource AccentBrush}"
@@ -646,7 +646,7 @@
   <Style x:Key="ToggleCheck" TargetType="CheckBox">
     <Setter Property="FocusVisualStyle" Value="{StaticResource FocusRing}" />
     <Setter Property="Foreground" Value="{DynamicResource TextBrush}" />
-    <Setter Property="FontSize" Value="{StaticResource FontSizeBody}" />
+    <Setter Property="FontSize" Value="{DynamicResource FontSizeBody}" />
     <Setter Property="Cursor" Value="Hand" />
     <Setter Property="Template">
       <Setter.Value>
@@ -687,15 +687,15 @@
     <Setter Property="BorderBrush" Value="{DynamicResource BorderStrongBrush}" />
     <Setter Property="CaretBrush" Value="{DynamicResource TextBrush}" />
     <Setter Property="SelectionBrush" Value="{DynamicResource AccentBrush}" />
-    <Setter Property="FontSize" Value="{StaticResource FontSizeBody}" />
-    <Setter Property="MinHeight" Value="{StaticResource ControlHeight}" />
+    <Setter Property="FontSize" Value="{DynamicResource FontSizeBody}" />
+    <Setter Property="MinHeight" Value="{DynamicResource ControlHeight}" />
     <Setter Property="Padding" Value="12,8" />
     <Setter Property="VerticalContentAlignment" Value="Center" />
     <Setter Property="Template">
       <Setter.Value>
         <ControlTemplate TargetType="TextBox">
           <Border x:Name="Bd" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="1"
-                  CornerRadius="{StaticResource RadiusControl}">
+                  CornerRadius="{DynamicResource RadiusControl}">
             <ScrollViewer x:Name="PART_ContentHost" Margin="{TemplateBinding Padding}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" />
           </Border>
           <ControlTemplate.Triggers>
@@ -724,7 +724,7 @@
     <Setter Property="Template">
       <Setter.Value>
         <ControlTemplate TargetType="ListBoxItem">
-          <Border x:Name="Bd" Background="Transparent" CornerRadius="{StaticResource RadiusControl}" Padding="{TemplateBinding Padding}">
+          <Border x:Name="Bd" Background="Transparent" CornerRadius="{DynamicResource RadiusControl}" Padding="{TemplateBinding Padding}">
             <ContentPresenter />
           </Border>
           <ControlTemplate.Triggers>
