@@ -116,7 +116,7 @@
               <TextBlock Style="{StaticResource CaptionText}" Text="TU EXPERIENCIA" />
               <TextBlock Margin="0,3,0,0" FontSize="15" FontWeight="SemiBold" Text="Personaliza el launcher" />
             </StackPanel>
-            <Button Grid.Column="2" Style="{StaticResource IconToggle}" Command="{Binding OpenCustomizationCommand}"
+            <Button Grid.Column="2" Style="{StaticResource IconButton}" Command="{Binding OpenCustomizationCommand}"
                     AutomationProperties.Name="Abrir personalización" ToolTip="Personalización">
               <views:Glyph Style="{StaticResource IconText}" Text="&#xE8A7;" />
             </Button>

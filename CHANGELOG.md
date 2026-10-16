@@ -2,6 +2,11 @@
 
 Todos los cambios relevantes de LarpStrap. Formato basado en [Keep a Changelog](https://keepachangelog.com/es-ES/1.1.0/); versiones según [SemVer](https://semver.org/lang/es/).
 
+## 0.4.3 - 2026-10-16 (versión preliminar)
+
+### Corregido
+- Evita un cierre al iniciar causado por asignar un estilo de ToggleButton a botones normales en la portada y el aviso.
+
 ## 0.4.2 - 2026-10-16 (versión preliminar)
 
 ### Cambiado
