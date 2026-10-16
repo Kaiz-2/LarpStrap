@@ -35,6 +35,11 @@ public partial class MainWindow : Window
         }
     }
 
+    private void DismissStatus_Click(object sender, RoutedEventArgs e)
+    {
+        if (DataContext is ShellViewModel shell) shell.Announce("");
+    }
+
     // The dialog is modal while visible: focus goes to Cancel, and returns to the page when the launch ends.
     private void OnLaunchOverlayVisibleChanged(object sender, DependencyPropertyChangedEventArgs e)
     {

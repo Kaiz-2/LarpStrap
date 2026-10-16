@@ -22,6 +22,9 @@ public sealed partial class HomeViewModel(InstancesViewModel instances, Shortcut
 
     [RelayCommand]
     private void OpenShortcuts() => shell.NavigateTo<ShortcutsViewModel>();
+
+    [RelayCommand]
+    private void OpenCustomization() => shell.NavigateTo<CustomizationViewModel>();
 }
 
 /// <summary>Opens Roblox's separate official Store app and web sessions without collecting credentials.</summary>

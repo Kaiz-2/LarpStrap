@@ -44,7 +44,7 @@ public sealed class AppUpdater(AppLog log, string downloadDirectory, Func<bool> 
                 UpdateStatus.Rejected => "Se ha descartado una actualización que no superó la verificación (firma, origen o contenido). No se ha instalado nada.",
                 UpdateStatus.UpToDate => manual ? $"LarpStrap está al día (versión {Format(Current)})." : "",
                 UpdateStatus.NoRelease => manual ? "Todavía no hay ninguna versión publicada que se instale sola." : "",
-                _ => manual ? "No se pudo comprobar si hay actualizaciones (sin conexión o GitHub no responde). Se volverá a intentar al iniciar." : "",
+                _ => "No se pudo comprobar si hay actualizaciones (sin conexión o GitHub no responde). Se volverá a intentar al iniciar.",
             };
             if (message.Length > 0) announce(message);
             return message;
@@ -58,11 +58,11 @@ public sealed class AppUpdater(AppLog log, string downloadDirectory, Func<bool> 
     private async Task<string> InstallAsync(UpdateCheck check)
     {
         var version = Format(check.Available!);
-        var later = $"LarpStrap {version} está descargado y verificado. Se instalará la próxima vez que abras LarpStrap sin Roblox abierto.";
+        var later = $"La actualización {version} está descargada y verificada. Se instalará la próxima vez que abras LarpStrap sin Roblox abierto.";
         if (robloxBusy()) return later;
 
-        announce($"Actualizando a LarpStrap {version}: se cerrará y volverá a abrirse en unos segundos.");
-        await Task.Delay(TimeSpan.FromSeconds(3));
+        announce($"Nueva actualización disponible: LarpStrap {version}. Se instalará en unos segundos y la aplicación se reiniciará.");
+        await Task.Delay(TimeSpan.FromSeconds(8));
         if (robloxBusy()) return later; // a launch started meanwhile
 
         // Checked again right before running: the file sat on disk since it was verified.

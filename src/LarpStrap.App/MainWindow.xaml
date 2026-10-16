@@ -156,6 +156,25 @@
       </Grid>
     </Border>
 
+    <!-- Persistent, visible notice. The footer remains the accessible live region; this banner makes updates hard to miss. -->
+    <Border Grid.Row="1" Grid.Column="1" Panel.ZIndex="20" HorizontalAlignment="Right" VerticalAlignment="Top"
+            Width="450" Margin="20,18,24,0" Padding="16,14" CornerRadius="14"
+            Background="{DynamicResource InfoSoftBrush}" BorderBrush="{DynamicResource InfoBrush}" BorderThickness="1"
+            Visibility="{Binding HasStatusMessage, Converter={StaticResource Visible}}">
+      <Grid>
+        <Grid.ColumnDefinitions><ColumnDefinition Width="Auto" /><ColumnDefinition Width="*" /><ColumnDefinition Width="Auto" /></Grid.ColumnDefinitions>
+        <Border Width="36" Height="36" CornerRadius="11" Background="{DynamicResource SurfaceBrush}" VerticalAlignment="Top">
+          <views:Glyph Style="{StaticResource IconText}" HorizontalAlignment="Center" Foreground="{DynamicResource InfoBrush}" Text="&#xE946;" />
+        </Border>
+        <TextBlock Grid.Column="1" Margin="12,1,12,0" FontSize="13" LineHeight="19" Foreground="{DynamicResource TextBrush}"
+                   Text="{Binding StatusMessage}" TextWrapping="Wrap" AutomationProperties.LiveSetting="Polite" />
+        <Button Grid.Column="2" Style="{StaticResource IconToggle}" Width="30" Height="30" Padding="0" Click="DismissStatus_Click"
+                AutomationProperties.Name="Cerrar aviso" ToolTip="Cerrar aviso">
+          <TextBlock FontSize="19" VerticalAlignment="Center" Text="×" />
+        </Button>
+      </Grid>
+    </Border>
+
     <!-- Launch dialog: shown while a launch runs, wherever it was started. Focus moves to Cancel (code-behind). -->
     <Grid x:Name="LaunchOverlay" Grid.RowSpan="2" Grid.ColumnSpan="2" Background="{DynamicResource ScrimBrush}"
           Visibility="{Binding Launcher.IsLaunching, Converter={StaticResource Visible}, FallbackValue=Collapsed}"

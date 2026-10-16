@@ -28,6 +28,8 @@ public sealed partial class ShellViewModel : ObservableObject
     /// <summary>Announced to screen readers through a live region in the main window.</summary>
     [ObservableProperty] public partial string StatusMessage { get; set; } = "";
 
+    public bool HasStatusMessage => !string.IsNullOrWhiteSpace(StatusMessage);
+
     [ObservableProperty] public partial double TextScale { get; set; } = 1.0;
 
     [ObservableProperty] public partial bool IsSimulated { get; set; }
@@ -62,6 +64,8 @@ public sealed partial class ShellViewModel : ObservableObject
     }
 
     public void Announce(string message) => StatusMessage = message;
+
+    partial void OnStatusMessageChanged(string value) => OnPropertyChanged(nameof(HasStatusMessage));
 
     partial void OnIsAdvancedModeChanged(bool value)
     {

@@ -2,6 +2,12 @@
 
 Todos los cambios relevantes de LarpStrap. Formato basado en [Keep a Changelog](https://keepachangelog.com/es-ES/1.1.0/); versiones según [SemVer](https://semver.org/lang/es/).
 
+## 0.4.2 - 2026-10-16 (versión preliminar)
+
+### Cambiado
+- Portada renovada con estado del cliente, acceso directo para jugar, biblioteca y acciones rápidas.
+- Los avisos de actualización y conexión aparecen en un banner visible; la actualización indica su versión antes de reiniciar.
+
 ## 0.4.1 - 2026-10-16 (versión preliminar)
 
 ### Cambiado
