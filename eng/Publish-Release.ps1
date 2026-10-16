@@ -16,6 +16,11 @@ Set-Location $root
 $commit = (git rev-parse --short HEAD).Trim()
 if ((git status --porcelain) -and -not $AllowDirty) { throw 'El árbol de trabajo tiene cambios sin commit: el paquete debe salir de un commit.' }
 
+# Release gate: every test, including StartupSmokeTests. 0.4.2 and 0.4.4 were packaged without it and closed at startup;
+# an installed copy that crashes at startup never reaches its update check, so it can't be fixed by an update.
+dotnet test --solution LarpStrap.slnx -c Release
+if ($LASTEXITCODE) { throw "Los tests fallan ($LASTEXITCODE): no se empaqueta." }
+
 $version = if ($Version) { $Version } else { ([xml](Get-Content Directory.Build.props)).Project.PropertyGroup.Version | Where-Object { $_ } | Select-Object -First 1 }
 $versionArg = "-p:Version=$version"
 $name = "LarpStrap-$version-win-x64"

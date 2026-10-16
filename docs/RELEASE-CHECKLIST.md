@@ -16,6 +16,7 @@ Un procedimiento reutilizable más el estado de la candidata actual. **Preparar 
    Después, el paso «Fail on vulnerable packages» de la CI.
 4. **Commit** y luego `.\eng\Publish-Release.ps1`.
    - Se niega a empaquetar si el árbol tiene cambios o si cualquier archivo del paquete, incluido el instalador, contiene la ruta de tu perfil o tu correo de git.
+   - **Se niega también si falla cualquier test.** Lo ejecuta él mismo antes de compilar, e incluye `StartupSmokeTests`, que carga los temas, la ventana principal y cada página en los dos modos. 0.4.2 y 0.4.4 se publicaron sin esa barrera y se cerraban al arrancar. Con la actualización automática eso es grave: una versión que se cierra al arrancar nunca llega a buscar la siguiente, y el usuario queda atascado en ella.
    - Genera:
      - `artifacts/LarpStrap-Setup-<versión>-win-x64.exe` y su `.sha256`: el único paquete desde 0.4.0, un solo archivo con la app embebida;
      - `artifacts/update.json` y `update.json.sig`: el manifiesto firmado para el actualizador (ADR 0009). Necesita la clave de firma y se niega si no corresponde a `UpdateTrust`.

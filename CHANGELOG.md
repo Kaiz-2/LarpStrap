@@ -2,6 +2,19 @@
 
 Todos los cambios relevantes de LarpStrap. Formato basado en [Keep a Changelog](https://keepachangelog.com/es-ES/1.1.0/); versiones según [SemVer](https://semver.org/lang/es/).
 
+## Sin publicar
+
+### Añadido
+- **Barrera de arranque para publicar:**
+  - `StartupSmokeTests` carga los recursos de la app, aplica los temas claro y oscuro y crea la ventana principal, cada página y el diálogo de confirmación. Habría detectado los fallos de arranque de 0.4.2 (un estilo de `ToggleButton` en un `Button`) y de 0.4.4 (`StaticResource` en temas anidados): se comprobó reintroduciendo cada uno.
+  - `Publish-Release.ps1` ejecuta todos los tests antes de empaquetar y se niega si alguno falla.
+
+### Corregido
+- `ThemeService` carga los colores con una ruta que nombra su propio ensamblado, en lugar de depender del ejecutable de entrada.
+- **Los tests vuelven a pasar.** Fallaban 11 desde 0.4.2: la CI falló en 0.4.2, 0.4.3, 0.4.4 y 0.4.5, y aun así se publicaron.
+  - El borde fuerte del modo oscuro pasa de `#666675` a `#7A7A89`: no llegaba a 3:1 (WCAG, contraste de componentes) en ningún tema oscuro.
+  - Los tokens exportados (`assets/design-tokens.*`) se regeneran con los colores actuales.
+
 ## 0.4.5 - 2026-10-16 (versión preliminar)
 
 ### Corregido

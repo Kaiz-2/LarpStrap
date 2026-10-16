@@ -1,15 +1,15 @@
 /* LarpStrap «Nebulosa» design tokens: exported from src/LarpStrap.App/Themes by eng/Export-DesignTokens.ps1. Do not edit. */
 :root {
-  --color-bg: #111318;
-  --color-layer: #111318D9;
-  --color-surface: #181B22;
-  --color-surface-alt: #20242C;
-  --color-surface-hover: #292E38;
-  --color-border-subtle: #303743;
-  --color-border-strong: #9AA8BA;
-  --color-text: #E7EAF0;
-  --color-text-muted: #A9B1BE;
-  --color-text-disabled: #858F9D;
+  --color-bg: #0F0F12;
+  --color-layer: #0F0F12F2;
+  --color-surface: #18181C;
+  --color-surface-alt: #1E1E24;
+  --color-surface-hover: #282830;
+  --color-border-subtle: #2A2A32;
+  --color-border-strong: #7A7A89;
+  --color-text: #F2F2F5;
+  --color-text-muted: #AAAAB5;
+  --color-text-disabled: #777783;
   --color-ok: #69B889;
   --color-warn: #D8A64D;
   --color-error: #DB8080;
@@ -43,7 +43,7 @@
   --accent-bronze: #BA7748;
   --accent-slate: #8B9AAF;
   --accent-graphite: #64748B;
-  --gradient-brand: linear-gradient(135deg, #4B3A83, #285A78);
+  --gradient-brand: linear-gradient(135deg, #17334A, #1A5361);
   --font-brand: Bahnschrift SemiBold, Bahnschrift, Segoe UI Variable Display, Segoe UI;
   --font-display: Segoe UI Variable Display, Segoe UI Semibold, Segoe UI;
   --font-text: Segoe UI Variable Text, Segoe UI;
@@ -53,21 +53,21 @@
   --size-body: 14px;
   --size-subtitle: 16px;
   --size-title: 20px;
-  --size-display: 30px;
+  --size-display: 28px;
   --size-hero: 40px;
-  --radius-control: 10px;
-  --radius-container: 14px;
-  --radius-hero: 20px;
+  --radius-control: 8px;
+  --radius-container: 8px;
+  --radius-hero: 12px;
   --radius-pill: 999px;
   --radius-status: 4px;
 }
 [data-theme="light"] {
-  --color-bg: #F3F4F6;
-  --color-layer: #F3F4F6D9;
+  --color-bg: #F2F6F8;
+  --color-layer: #F2F6F8D9;
   --color-surface: #FFFFFF;
-  --color-surface-alt: #EEF0F3;
-  --color-surface-hover: #E4E7EB;
-  --color-border-subtle: #D7DCE3;
+  --color-surface-alt: #EAF1F4;
+  --color-surface-hover: #DDE9EE;
+  --color-border-subtle: #D0DEE4;
   --color-border-strong: #687386;
   --color-text: #1B2028;
   --color-text-muted: #525C69;

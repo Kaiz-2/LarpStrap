@@ -10,7 +10,7 @@
   <SolidColorBrush x:Key="SurfaceAltBrush" Color="#1E1E24" />
   <SolidColorBrush x:Key="SurfaceHoverBrush" Color="#282830" />
   <SolidColorBrush x:Key="BorderSubtleBrush" Color="#2A2A32" />
-  <SolidColorBrush x:Key="BorderStrongBrush" Color="#666675" />
+  <SolidColorBrush x:Key="BorderStrongBrush" Color="#7A7A89" />
   <SolidColorBrush x:Key="TextBrush" Color="#F2F2F5" />
   <SolidColorBrush x:Key="TextMutedBrush" Color="#AAAAB5" />
   <SolidColorBrush x:Key="TextDisabledBrush" Color="#777783" />

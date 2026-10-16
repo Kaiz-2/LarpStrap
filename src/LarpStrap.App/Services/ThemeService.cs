@@ -40,7 +40,8 @@ public sealed class ThemeService
         var resources = Application.Current.Resources;
         resources.MergedDictionaries[0] = new ResourceDictionary
         {
-            Source = new Uri($"pack://application:,,,/Themes/Colors.{(IsDark ? "Dark" : "Light")}.xaml"),
+            // Assembly-qualified: this file is compiled into both the app and the installer, each with its own copy of Themes/.
+            Source = new Uri($"pack://application:,,,/{typeof(ThemeService).Assembly.GetName().Name};component/Themes/Colors.{(IsDark ? "Dark" : "Light")}.xaml"),
         };
         ApplyThemePalette(resources, _preset, IsDark);
 

@@ -3,16 +3,16 @@
     "brand":  "LarpStrap",
     "color":  {
                   "dark":  {
-                               "bg":  "#111318",
-                               "layer":  "#111318D9",
-                               "surface":  "#181B22",
-                               "surface-alt":  "#20242C",
-                               "surface-hover":  "#292E38",
-                               "border-subtle":  "#303743",
-                               "border-strong":  "#9AA8BA",
-                               "text":  "#E7EAF0",
-                               "text-muted":  "#A9B1BE",
-                               "text-disabled":  "#858F9D",
+                               "bg":  "#0F0F12",
+                               "layer":  "#0F0F12F2",
+                               "surface":  "#18181C",
+                               "surface-alt":  "#1E1E24",
+                               "surface-hover":  "#282830",
+                               "border-subtle":  "#2A2A32",
+                               "border-strong":  "#7A7A89",
+                               "text":  "#F2F2F5",
+                               "text-muted":  "#AAAAB5",
+                               "text-disabled":  "#777783",
                                "ok":  "#69B889",
                                "warn":  "#D8A64D",
                                "error":  "#DB8080",
@@ -25,12 +25,12 @@
                                "scrim":  "#05070BCC"
                            },
                   "light":  {
-                                "bg":  "#F3F4F6",
-                                "layer":  "#F3F4F6D9",
+                                "bg":  "#F2F6F8",
+                                "layer":  "#F2F6F8D9",
                                 "surface":  "#FFFFFF",
-                                "surface-alt":  "#EEF0F3",
-                                "surface-hover":  "#E4E7EB",
-                                "border-subtle":  "#D7DCE3",
+                                "surface-alt":  "#EAF1F4",
+                                "surface-hover":  "#DDE9EE",
+                                "border-subtle":  "#D0DEE4",
                                 "border-strong":  "#687386",
                                 "text":  "#1B2028",
                                 "text-muted":  "#525C69",
@@ -75,18 +75,18 @@
     "theme":  {
                   "nebula":  {
                                  "dark":  {
-                                              "bg":  "#111318",
-                                              "surface":  "#181B22",
-                                              "surface-alt":  "#20242C",
-                                              "surface-hover":  "#292E38",
-                                              "border-subtle":  "#303743"
+                                              "bg":  "#0F0F12",
+                                              "surface":  "#18181C",
+                                              "surface-alt":  "#1E1E24",
+                                              "surface-hover":  "#282830",
+                                              "border-subtle":  "#2A2A32"
                                           },
                                  "light":  {
-                                               "bg":  "#F3F4F6",
+                                               "bg":  "#F2F6F8",
                                                "surface":  "#FFFFFF",
-                                               "surface-alt":  "#EEF0F3",
-                                               "surface-hover":  "#E4E7EB",
-                                               "border-subtle":  "#D7DCE3"
+                                               "surface-alt":  "#EAF1F4",
+                                               "surface-hover":  "#DDE9EE",
+                                               "border-subtle":  "#D0DEE4"
                                            }
                              },
                   "midnight":  {
@@ -187,8 +187,8 @@
                             }
               },
     "gradient":  {
-                     "start":  "#4B3A83",
-                     "end":  "#285A78"
+                     "start":  "#17334A",
+                     "end":  "#1A5361"
                  },
     "font":  {
                  "brand":  "Bahnschrift SemiBold, Bahnschrift, Segoe UI Variable Display, Segoe UI",
@@ -202,13 +202,13 @@
                  "body":  14,
                  "subtitle":  16,
                  "title":  20,
-                 "display":  30,
+                 "display":  28,
                  "hero":  40
              },
     "radius":  {
-                   "control":  10,
-                   "container":  14,
-                   "hero":  20,
+                   "control":  8,
+                   "container":  8,
+                   "hero":  12,
                    "pill":  999,
                    "status":  4
                }
