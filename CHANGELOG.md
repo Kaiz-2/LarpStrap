@@ -2,6 +2,14 @@
 
 Todos los cambios relevantes de LarpStrap. Formato basado en [Keep a Changelog](https://keepachangelog.com/es-ES/1.1.0/); versiones según [SemVer](https://semver.org/lang/es/).
 
+## 0.4.4 - 2026-10-16 (versión preliminar)
+
+### Cambiado
+- Ventana con barra de título propia y botones para minimizar, maximizar/restaurar y cerrar.
+- Nuevo tema oscuro obsidiana con tarjetas, bordes y radios unificados; el instalador comparte los mismos recursos.
+- FastFlags pasa a la navegación principal; la sección Mods se muestra deshabilitada porque aún no hay soporte.
+- Pie de ventana con estado de guardado automático y acceso a Lanzar Roblox; diálogo de lanzamiento con barra de progreso.
+
 ## 0.4.3 - 2026-10-16 (versión preliminar)
 
 ### Corregido

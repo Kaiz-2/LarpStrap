@@ -8,10 +8,7 @@
       <ResourceDictionary.MergedDictionaries>
         <!-- Same order as the app: index 0 is replaced by ThemeService (light/dark). -->
         <ResourceDictionary Source="Themes/Colors.Dark.xaml" />
-        <ResourceDictionary Source="Themes/Tokens.xaml" />
-        <ResourceDictionary Source="Themes/Accents.xaml" />
-        <ResourceDictionary Source="Themes/Presets.xaml" />
-        <ResourceDictionary Source="Themes/Controls.xaml" />
+        <ResourceDictionary Source="Themes/Theme.xaml" />
       </ResourceDictionary.MergedDictionaries>
       <views:BoolToVisibilityConverter x:Key="Visible" />
       <views:BoolToVisibilityConverter x:Key="Hidden" Invert="True" />

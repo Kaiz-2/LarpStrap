@@ -100,7 +100,7 @@ public partial class App : Application
         shell.Add("Inicio", "\uE80F", new HomeViewModel(instances, shortcuts, shell), "_Inicio");
         shell.Add("Clientes abiertos", "\uE7FC", instances, "C_lientes abiertos");
         shell.Add("Accesos directos", "\uE734", shortcuts, "Accesos _directos");
-        shell.Add("FastFlags", "\uE9E9", new FastFlagsViewModel(settings, dialogs, Announce), "_FastFlags", NavGroup.Advanced);
+        shell.Add("FastFlags", "\uE9E9", new FastFlagsViewModel(settings, dialogs, Announce), "_FastFlags");
         shell.Add("Diagnóstico", "\uE9D9", new DiagnosticsViewModel(logDir, installation?.PlayerPath, dialogs, Announce), "Dia_gnóstico", NavGroup.Advanced);
         shell.Add("Dos cuentas", "\uE716", new AccountsViewModel(dialogs, storeLauncher), "Dos _cuentas");
         shell.Add("Personalización", "\uE790", new CustomizationViewModel(settings, Announce), "Pe_rsonalización", NavGroup.Footer);

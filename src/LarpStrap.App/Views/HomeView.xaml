@@ -4,9 +4,9 @@
              xmlns:views="clr-namespace:LarpStrap.App.Views">
   <UserControl.Resources>
     <LinearGradientBrush x:Key="DashboardGlow" StartPoint="0,0" EndPoint="1,1">
-      <GradientStop Color="#182640" Offset="0" />
-      <GradientStop Color="#111C2B" Offset="0.58" />
-      <GradientStop Color="#102B36" Offset="1" />
+      <GradientStop Color="#24232F" Offset="0" />
+      <GradientStop Color="#19191F" Offset="0.58" />
+      <GradientStop Color="#20212A" Offset="1" />
     </LinearGradientBrush>
     <Style x:Key="MetricCard" TargetType="Border" BasedOn="{StaticResource Card}">
       <Setter Property="Padding" Value="18,16" />
@@ -30,22 +30,22 @@
         </Border>
       </Grid>
 
-      <Border Margin="0,24,0,0" Height="296" CornerRadius="22" Background="{StaticResource DashboardGlow}" ClipToBounds="True">
+      <Border Margin="0,24,0,0" Height="296" CornerRadius="12" Background="{StaticResource DashboardGlow}" ClipToBounds="True" BorderBrush="{DynamicResource BorderSubtleBrush}" BorderThickness="1">
         <Border.Effect><DropShadowEffect Color="#000000" Opacity="0.24" BlurRadius="28" ShadowDepth="5" Direction="270" /></Border.Effect>
         <Grid>
           <Grid.ColumnDefinitions><ColumnDefinition Width="1.2*" /><ColumnDefinition Width="0.8*" /></Grid.ColumnDefinitions>
           <Ellipse Grid.Column="1" Width="310" Height="310" HorizontalAlignment="Right" VerticalAlignment="Center"
-                   Fill="#101C2C" Stroke="#385369" StrokeThickness="1" Opacity="0.75" />
+                   Fill="#191920" Stroke="#393944" StrokeThickness="1" Opacity="0.75" />
           <Ellipse Grid.Column="1" Width="252" Height="252" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,28,0"
-                   Fill="Transparent" Stroke="#45647A" StrokeThickness="1" Opacity="0.68" />
+                   Fill="Transparent" Stroke="#454552" StrokeThickness="1" Opacity="0.68" />
           <Ellipse Grid.Column="1" Width="194" Height="194" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,57,0"
-                   Fill="#142A3A" Stroke="#59748A" StrokeThickness="1" Opacity="0.9" />
+                   Fill="#22222B" Stroke="#555563" StrokeThickness="1" Opacity="0.9" />
           <Border Grid.Column="1" Width="132" Height="132" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,88,0"
-                  CornerRadius="66" Background="#1B3548" BorderBrush="#68889C" BorderThickness="1">
+                  CornerRadius="66" Background="#282832" BorderBrush="#666675" BorderThickness="1">
             <views:LogoBadge OnBrand="True" Width="76" Height="76" HorizontalAlignment="Center" VerticalAlignment="Center" />
           </Border>
           <Border Grid.Column="1" Width="172" Height="54" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0,0,8,22"
-                  Background="#E6172735" BorderBrush="#557186" BorderThickness="1" CornerRadius="14">
+                  Background="#E622222B" BorderBrush="#555563" BorderThickness="1" CornerRadius="8">
             <StackPanel Margin="13,0" VerticalAlignment="Center">
               <TextBlock FontSize="10" FontWeight="SemiBold" Foreground="#AFC2D1" Text="INSTALACIÓN" />
               <TextBlock Margin="0,2,0,0" FontSize="13" FontWeight="SemiBold" Foreground="#F2F6FA" Text="{Binding Instances.InstallationText}" />
@@ -53,7 +53,7 @@
           </Border>
 
           <StackPanel Grid.Column="0" Margin="32,28,8,28" VerticalAlignment="Center" MaxWidth="540">
-            <Border HorizontalAlignment="Left" Padding="10,5" CornerRadius="7" Background="#243D4E" BorderBrush="#537286" BorderThickness="1">
+              <Border HorizontalAlignment="Left" Padding="10,5" CornerRadius="7" Background="#292933" BorderBrush="#555563" BorderThickness="1">
               <StackPanel Orientation="Horizontal">
                 <Ellipse Width="7" Height="7" Fill="#72D59B" VerticalAlignment="Center" />
                 <TextBlock Margin="8,0,0,0" FontSize="11" FontWeight="Bold" Foreground="#D9E8EF" Text="ESTADO DEL CLIENTE" />

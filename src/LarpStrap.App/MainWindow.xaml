@@ -10,7 +10,7 @@
   <!-- The client area extends under the title bar; Windows keeps drawing the caption buttons. ThemeService sets the
        window material (Mica/Acrylic) or a solid background. -->
   <WindowChrome.WindowChrome>
-    <WindowChrome CaptionHeight="60" GlassFrameThickness="-1" ResizeBorderThickness="6" UseAeroCaptionButtons="True" />
+    <WindowChrome CaptionHeight="52" GlassFrameThickness="0" ResizeBorderThickness="6" UseAeroCaptionButtons="False" />
   </WindowChrome.WindowChrome>
 
   <Window.Resources>
@@ -46,7 +46,7 @@
       <ScaleTransform ScaleX="{Binding TextScale}" ScaleY="{Binding TextScale}" />
     </Grid.LayoutTransform>
     <Grid.RowDefinitions>
-      <RowDefinition Height="60" />
+      <RowDefinition Height="52" />
       <RowDefinition Height="*" />
     </Grid.RowDefinitions>
     <Grid.ColumnDefinitions>
@@ -54,9 +54,9 @@
       <ColumnDefinition Width="*" />
     </Grid.ColumnDefinitions>
 
-    <!-- Title bar (draggable): logo, name, version and the demo badge. Caption buttons are drawn by Windows on the right. -->
+    <!-- Custom title bar with native drag and resize behavior. -->
     <Border Grid.Row="0" Grid.ColumnSpan="2" Background="{DynamicResource SurfaceBrush}" BorderBrush="{DynamicResource BorderSubtleBrush}" BorderThickness="0,0,0,1">
-      <Grid Margin="24,0,170,0">
+      <Grid Margin="22,0,8,0">
         <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
           <views:LogoBadge Width="28" Height="28" />
           <TextBlock Margin="12,0,0,0" VerticalAlignment="Center" FontFamily="{StaticResource FontBrand}" FontSize="16" Text="LarpStrap" />
@@ -67,7 +67,12 @@
             <TextBlock Style="{StaticResource CaptionText}" Foreground="{DynamicResource TextBrush}" FontWeight="SemiBold" Text="MODO DEMOSTRACIÓN · SIMULADO" />
           </Border>
         </StackPanel>
-        <TextBlock HorizontalAlignment="Right" VerticalAlignment="Center" FontSize="15" FontWeight="SemiBold" Text="{Binding Current.Title}" />
+        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="13" FontWeight="SemiBold" Foreground="{DynamicResource TextMutedBrush}" Text="{Binding Current.Title}" />
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Top" WindowChrome.IsHitTestVisibleInChrome="True">
+          <Button Width="46" Height="52" Style="{StaticResource CaptionButton}" Click="MinimizeWindow_Click" AutomationProperties.Name="Minimizar" ToolTip="Minimizar"><TextBlock Text="&#xE921;" /></Button>
+          <Button x:Name="MaximizeButton" Width="46" Height="52" Style="{StaticResource CaptionButton}" Click="MaximizeWindow_Click" AutomationProperties.Name="Maximizar" ToolTip="Maximizar"><TextBlock x:Name="MaximizeGlyph" Text="&#xE922;" /></Button>
+          <Button Width="46" Height="52" Style="{StaticResource CaptionCloseButton}" Click="CloseWindow_Click" AutomationProperties.Name="Cerrar" ToolTip="Cerrar"><TextBlock Text="&#xE8BB;" /></Button>
+        </StackPanel>
       </Grid>
     </Border>
 
@@ -116,9 +121,13 @@
 
       <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled" Focusable="False">
         <StackPanel>
-          <TextBlock Style="{StaticResource OverlineText}" Margin="12,4,0,8" Text="JUGAR" Visibility="{Binding IsNavCompact, Converter={StaticResource Hidden}}" />
+          <TextBlock Style="{StaticResource OverlineText}" Margin="12,4,0,8" Text="PRINCIPAL" Visibility="{Binding IsNavCompact, Converter={StaticResource Hidden}}" />
           <ItemsControl ItemsSource="{Binding PlayPages}" ItemTemplate="{StaticResource NavEntry}" Focusable="False"
                         KeyboardNavigation.TabNavigation="Once" AutomationProperties.Name="Jugar" />
+          <RadioButton Margin="0,0,0,4" Tag="&#xE8B7;" Content="Mods" IsEnabled="False" ToolTip="La gestión de mods aún no está disponible"
+                       AutomationProperties.Name="Mods, no disponibles todavía">
+            <RadioButton.Style><Style TargetType="RadioButton" BasedOn="{StaticResource NavItem}"><Setter Property="Opacity" Value="0.48" /></Style></RadioButton.Style>
+          </RadioButton>
           <StackPanel Visibility="{Binding IsAdvancedMode, Converter={StaticResource Visible}}">
             <TextBlock Style="{StaticResource OverlineText}" Margin="12,16,0,8" Text="AVANZADO" Visibility="{Binding IsNavCompact, Converter={StaticResource Hidden}}" />
             <Border Height="1" Margin="8,12,8,12" Background="{DynamicResource BorderSubtleBrush}" Visibility="{Binding IsNavCompact, Converter={StaticResource Visible}}" />
@@ -138,8 +147,10 @@
           <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
         <ContentControl x:Name="PageHost" Content="{Binding Current.Page}" Focusable="False" />
-        <Border Grid.Row="1" BorderBrush="{DynamicResource BorderSubtleBrush}" BorderThickness="0,1,0,0" Padding="28,10">
-          <StackPanel Orientation="Horizontal">
+        <Border Grid.Row="1" BorderBrush="{DynamicResource BorderSubtleBrush}" BorderThickness="0,1,0,0" Padding="22,8">
+          <Grid>
+            <Grid.ColumnDefinitions><ColumnDefinition Width="*" /><ColumnDefinition Width="Auto" /><ColumnDefinition Width="Auto" /></Grid.ColumnDefinitions>
+            <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
             <views:Glyph FontSize="12" Margin="0,0,8,0" Text="&#xE789;">
               <views:Glyph.Style>
                 <Style TargetType="TextBlock" BasedOn="{StaticResource IconText}">
@@ -151,7 +162,10 @@
             </views:Glyph>
             <TextBlock x:Name="LiveStatus" Style="{StaticResource CaptionText}" Text="{Binding StatusMessage}"
                        AutomationProperties.LiveSetting="Polite" AutomationProperties.Name="{Binding StatusMessage}" />
-          </StackPanel>
+            </StackPanel>
+            <TextBlock Grid.Column="1" Margin="12,0,18,0" VerticalAlignment="Center" Style="{StaticResource CaptionText}" Text="Cambios guardados automáticamente" />
+            <Button Grid.Column="2" Style="{StaticResource PrimaryButton}" Padding="18,0" MinHeight="34" Command="{Binding Launcher.LaunchCommand}" Content="_Lanzar Roblox" AutomationProperties.Name="Lanzar Roblox" />
+          </Grid>
         </Border>
       </Grid>
     </Border>
@@ -196,6 +210,7 @@
                      Foreground="{DynamicResource OnBrandBrush}" Text="Iniciando Roblox…" />
           <TextBlock Margin="0,8,0,0" HorizontalAlignment="Center" TextAlignment="Center" Style="{StaticResource BodyText}"
                      Foreground="{DynamicResource OnBrandMutedBrush}" Text="Esperando a que aparezca la ventana del cliente." />
+          <ProgressBar IsIndeterminate="True" Height="4" Margin="24,20,24,0" />
           <Border Style="{StaticResource Chip}" BorderThickness="1" Margin="0,12,0,0" HorizontalAlignment="Center" Background="{StaticResource OnBrandChipBrush}" BorderBrush="{DynamicResource OnBrandBrush}"
                   Visibility="{Binding Launcher.IsSimulated, Converter={StaticResource Visible}, FallbackValue=Collapsed}">
             <TextBlock Style="{StaticResource CaptionText}" Foreground="{DynamicResource OnBrandBrush}" FontWeight="SemiBold" Text="SIMULADO" />

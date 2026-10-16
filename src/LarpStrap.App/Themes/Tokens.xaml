@@ -21,8 +21,8 @@
 
   <!-- Fluent-like radii: small on controls, a step up on cards, the largest only on the brand hero. -->
   <CornerRadius x:Key="RadiusControl">8</CornerRadius>
-  <CornerRadius x:Key="RadiusContainer">12</CornerRadius>
-  <CornerRadius x:Key="RadiusHero">16</CornerRadius>
+  <CornerRadius x:Key="RadiusContainer">8</CornerRadius>
+  <CornerRadius x:Key="RadiusHero">12</CornerRadius>
   <CornerRadius x:Key="RadiusPill">999</CornerRadius>
   <CornerRadius x:Key="RadiusStatus">4</CornerRadius>
 

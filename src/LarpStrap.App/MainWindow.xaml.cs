@@ -19,8 +19,20 @@ public partial class MainWindow : Window
         VersionText.Text = $"v{AboutViewModel.AppVersion}";
         shell.PropertyChanged += OnShellChanged;
         LaunchOverlay.IsVisibleChanged += OnLaunchOverlayVisibleChanged;
-        StateChanged += (_, _) => Root.Margin = WindowState == WindowState.Maximized ? SystemParameters.WindowResizeBorderThickness : new Thickness(0);
+        StateChanged += (_, _) =>
+        {
+            Root.Margin = WindowState == WindowState.Maximized ? SystemParameters.WindowResizeBorderThickness : new Thickness(0);
+            MaximizeGlyph.Text = WindowState == WindowState.Maximized ? "\uE923" : "\uE922";
+            MaximizeButton.ToolTip = WindowState == WindowState.Maximized ? "Restaurar" : "Maximizar";
+        };
     }
+
+    private void MinimizeWindow_Click(object sender, RoutedEventArgs e) => WindowState = WindowState.Minimized;
+
+    private void MaximizeWindow_Click(object sender, RoutedEventArgs e) =>
+        WindowState = WindowState == WindowState.Maximized ? WindowState.Normal : WindowState.Maximized;
+
+    private void CloseWindow_Click(object sender, RoutedEventArgs e) => Close();
 
     private void OnShellChanged(object? sender, PropertyChangedEventArgs e)
     {

@@ -4,16 +4,16 @@
     Nebulosa, dark. Contrast is enforced by ThemeContrastTests (WCAG 2.x). Accent brushes are set by ThemeService.
     Layer brushes are translucent so the Mica/Acrylic window material shows through; cards stay opaque for legibility.
   -->
-  <SolidColorBrush x:Key="BgBrush" Color="#0D1722" />
-  <SolidColorBrush x:Key="LayerBrush" Color="#D90D1722" />
-  <SolidColorBrush x:Key="SurfaceBrush" Color="#121F2A" />
-  <SolidColorBrush x:Key="SurfaceAltBrush" Color="#1A2C39" />
-  <SolidColorBrush x:Key="SurfaceHoverBrush" Color="#223A49" />
-  <SolidColorBrush x:Key="BorderSubtleBrush" Color="#2D4655" />
-  <SolidColorBrush x:Key="BorderStrongBrush" Color="#9AA8BA" />
-  <SolidColorBrush x:Key="TextBrush" Color="#E7EAF0" />
-  <SolidColorBrush x:Key="TextMutedBrush" Color="#A9B1BE" />
-  <SolidColorBrush x:Key="TextDisabledBrush" Color="#858F9D" />
+  <SolidColorBrush x:Key="BgBrush" Color="#0F0F12" />
+  <SolidColorBrush x:Key="LayerBrush" Color="#F20F0F12" />
+  <SolidColorBrush x:Key="SurfaceBrush" Color="#18181C" />
+  <SolidColorBrush x:Key="SurfaceAltBrush" Color="#1E1E24" />
+  <SolidColorBrush x:Key="SurfaceHoverBrush" Color="#282830" />
+  <SolidColorBrush x:Key="BorderSubtleBrush" Color="#2A2A32" />
+  <SolidColorBrush x:Key="BorderStrongBrush" Color="#666675" />
+  <SolidColorBrush x:Key="TextBrush" Color="#F2F2F5" />
+  <SolidColorBrush x:Key="TextMutedBrush" Color="#AAAAB5" />
+  <SolidColorBrush x:Key="TextDisabledBrush" Color="#777783" />
   <SolidColorBrush x:Key="OkBrush" Color="#69B889" />
   <SolidColorBrush x:Key="WarnBrush" Color="#D8A64D" />
   <SolidColorBrush x:Key="ErrorBrush" Color="#DB8080" />

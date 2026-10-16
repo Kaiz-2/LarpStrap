@@ -1,0 +1,10 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <!-- Shared presentation resources. The color dictionary stays at merged index 0 for ThemeService. -->
+  <ResourceDictionary.MergedDictionaries>
+    <ResourceDictionary Source="Tokens.xaml" />
+    <ResourceDictionary Source="Accents.xaml" />
+    <ResourceDictionary Source="Presets.xaml" />
+    <ResourceDictionary Source="Controls.xaml" />
+  </ResourceDictionary.MergedDictionaries>
+</ResourceDictionary>
