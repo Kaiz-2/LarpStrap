@@ -3,12 +3,12 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:views="clr-namespace:LarpStrap.App.Views"
         Title="Instalador de LarpStrap" Language="es-ES"
-        Width="800" Height="600" MinWidth="720" MinHeight="560" WindowStartupLocation="CenterScreen" ResizeMode="CanMinimize"
+        Width="960" Height="680" MinWidth="860" MinHeight="620" WindowStartupLocation="CenterScreen" ResizeMode="CanMinimize"
         Background="{DynamicResource BgBrush}" Foreground="{DynamicResource TextBrush}"
         FontFamily="{StaticResource FontText}" FontSize="{StaticResource FontSizeBody}">
   <Grid>
     <Grid.ColumnDefinitions>
-      <ColumnDefinition Width="248" />
+      <ColumnDefinition Width="260" />
       <ColumnDefinition Width="*" />
     </Grid.ColumnDefinitions>
 
@@ -20,14 +20,14 @@
           <Ellipse Margin="60" Stroke="#14FFFFFF" StrokeThickness="1.5" />
           <Ellipse Margin="120" Stroke="#0FFFFFFF" StrokeThickness="1.5" />
         </Grid>
-        <DockPanel Margin="28,32">
+        <DockPanel Margin="30,34">
           <TextBlock DockPanel.Dock="Bottom" Foreground="{DynamicResource OnBrandMutedBrush}" FontSize="{StaticResource FontSizeCaption}" TextWrapping="Wrap"
                      Text="Licencia MIT · © 2026 Leir. Sin firma de código: comprueba el SHA-256 publicado." />
           <StackPanel>
             <views:LogoBadge OnBrand="True" Width="64" Height="64" HorizontalAlignment="Left" />
             <TextBlock Margin="0,18,0,0" FontFamily="{StaticResource FontBrand}" FontSize="{StaticResource FontSizeDisplay}" Foreground="{DynamicResource OnBrandBrush}" Text="LarpStrap" />
             <TextBlock x:Name="BrandVersion" Margin="0,4,0,0" Foreground="{DynamicResource OnBrandMutedBrush}" />
-            <StackPanel x:Name="Steps" Margin="0,36,0,0" AutomationProperties.Name="Pasos del instalador" />
+            <StackPanel x:Name="Steps" Margin="0,48,0,0" AutomationProperties.Name="Pasos del instalador" />
           </StackPanel>
         </DockPanel>
       </Grid>
@@ -40,7 +40,7 @@
       </Grid.RowDefinitions>
 
       <ScrollViewer VerticalScrollBarVisibility="Auto" Focusable="False">
-        <Grid Margin="32,28,32,16">
+        <Grid Margin="40,34,40,20">
 
           <!-- Welcome -->
           <StackPanel x:Name="WelcomePage">
@@ -135,7 +135,7 @@
       </ScrollViewer>
 
       <!-- Actions -->
-      <Border Grid.Row="1" BorderBrush="{DynamicResource BorderSubtleBrush}" BorderThickness="0,1,0,0" Padding="32,16">
+      <Border Grid.Row="1" BorderBrush="{DynamicResource BorderSubtleBrush}" BorderThickness="0,1,0,0" Padding="40,16">
         <DockPanel LastChildFill="False">
           <Button x:Name="ExtraButton" DockPanel.Dock="Left" Style="{StaticResource GhostButton}" Click="OnExtra" />
           <Button x:Name="PrimaryButton" DockPanel.Dock="Right" Margin="8,0,0,0" Style="{StaticResource PrimaryButton}" IsDefault="True" Click="OnPrimary" />

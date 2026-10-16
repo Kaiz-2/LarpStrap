@@ -4,13 +4,13 @@
         xmlns:vm="clr-namespace:LarpStrap.App.ViewModels"
         xmlns:views="clr-namespace:LarpStrap.App.Views"
         Title="LarpStrap" Language="es-ES"
-        Width="1320" Height="860" MinWidth="980" MinHeight="640" WindowStartupLocation="CenterScreen"
+        Width="1380" Height="880" MinWidth="1040" MinHeight="680" WindowStartupLocation="CenterScreen"
         Foreground="{DynamicResource TextBrush}"
         FontFamily="{StaticResource FontText}" FontSize="{StaticResource FontSizeBody}">
   <!-- The client area extends under the title bar; Windows keeps drawing the caption buttons. ThemeService sets the
        window material (Mica/Acrylic) or a solid background. -->
   <WindowChrome.WindowChrome>
-    <WindowChrome CaptionHeight="52" GlassFrameThickness="-1" ResizeBorderThickness="6" UseAeroCaptionButtons="True" />
+    <WindowChrome CaptionHeight="60" GlassFrameThickness="-1" ResizeBorderThickness="6" UseAeroCaptionButtons="True" />
   </WindowChrome.WindowChrome>
 
   <Window.Resources>
@@ -46,7 +46,7 @@
       <ScaleTransform ScaleX="{Binding TextScale}" ScaleY="{Binding TextScale}" />
     </Grid.LayoutTransform>
     <Grid.RowDefinitions>
-      <RowDefinition Height="52" />
+      <RowDefinition Height="60" />
       <RowDefinition Height="*" />
     </Grid.RowDefinitions>
     <Grid.ColumnDefinitions>
@@ -67,25 +67,23 @@
             <TextBlock Style="{StaticResource CaptionText}" Foreground="{DynamicResource TextBrush}" FontWeight="SemiBold" Text="MODO DEMOSTRACIÓN · SIMULADO" />
           </Border>
         </StackPanel>
-        <TextBlock HorizontalAlignment="Right" VerticalAlignment="Center" Style="{StaticResource CaptionText}" Text="ROBLOX DESKTOP LAUNCHER" />
+        <TextBlock HorizontalAlignment="Right" VerticalAlignment="Center" FontSize="15" FontWeight="SemiBold" Text="{Binding Current.Title}" />
       </Grid>
     </Border>
 
-    <!-- Navigation pane, grouped: JUGAR always, AVANZADO only in advanced mode, settings at the bottom with the mode switch.
-         ☰ switches between labels and icons only; both choices are remembered (Settings.json). The demo notice lives in
-         the title bar chip and on Clientes abiertos, not here. -->
-    <Border Grid.Row="1" Grid.Column="0" Margin="12,12,6,12" Padding="8" Background="{DynamicResource SurfaceBrush}"
-            BorderBrush="{DynamicResource BorderSubtleBrush}" BorderThickness="1" CornerRadius="16">
+    <!-- Navigation is grouped by task: play first, technical tools only in advanced mode, settings at the bottom. -->
+    <Border Grid.Row="1" Grid.Column="0" Background="{DynamicResource SurfaceBrush}"
+            BorderBrush="{DynamicResource BorderSubtleBrush}" BorderThickness="0,0,1,0">
       <Border.Style>
         <Style TargetType="Border">
-          <Setter Property="Width" Value="252" />
+          <Setter Property="Width" Value="244" />
           <Style.Triggers>
-            <DataTrigger Binding="{Binding IsNavCompact}" Value="True"><Setter Property="Width" Value="88" /></DataTrigger>
+            <DataTrigger Binding="{Binding IsNavCompact}" Value="True"><Setter Property="Width" Value="76" /></DataTrigger>
           </Style.Triggers>
         </Style>
       </Border.Style>
-      <DockPanel>
-      <ToggleButton x:Name="NavToggle" DockPanel.Dock="Top" HorizontalAlignment="Left" Margin="0,0,0,8" IsChecked="{Binding IsNavCompact, Mode=TwoWay}">
+      <DockPanel Margin="14,18,14,14">
+      <ToggleButton x:Name="NavToggle" DockPanel.Dock="Top" HorizontalAlignment="Left" Margin="0,0,0,18" IsChecked="{Binding IsNavCompact, Mode=TwoWay}">
         <ToggleButton.Style>
           <Style TargetType="ToggleButton" BasedOn="{StaticResource PaneToggle}">
             <Setter Property="AutomationProperties.Name" Value="Contraer la navegación" />
@@ -102,7 +100,7 @@
 
       <!-- Bottom: appearance, settings, about, and simple/advanced. -->
       <StackPanel DockPanel.Dock="Bottom">
-        <Border Height="1" Margin="8,4,8,8" Background="{DynamicResource BorderSubtleBrush}" />
+        <Border Height="1" Margin="8,8,8,12" Background="{DynamicResource BorderSubtleBrush}" />
         <ItemsControl ItemsSource="{Binding FooterPages}" ItemTemplate="{StaticResource NavEntry}" Focusable="False"
                       KeyboardNavigation.TabNavigation="Once" AutomationProperties.Name="Configuración" />
         <CheckBox Style="{StaticResource ToggleCheck}" Margin="12,8,0,0" Content="Modo avan_zado" IsChecked="{Binding IsAdvancedMode, Mode=TwoWay}"
@@ -132,25 +130,15 @@
       </DockPanel>
     </Border>
 
-    <!-- Content layer: rounded sheet over the window material, as in Windows 11 settings. -->
-    <Border Grid.Row="1" Grid.Column="1" Margin="6,12,12,12" Background="{DynamicResource LayerBrush}" BorderBrush="{DynamicResource BorderSubtleBrush}"
-            BorderThickness="1" CornerRadius="18">
+    <!-- Page workspace and persistent status line. -->
+    <Border Grid.Row="1" Grid.Column="1" Margin="0" Background="{DynamicResource LayerBrush}">
       <Grid>
         <Grid.RowDefinitions>
           <RowDefinition Height="*" />
           <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
-        <!-- A soft wash of the accent colour at the top of every page. -->
-        <Border VerticalAlignment="Top" Height="300" CornerRadius="18,18,0,0" Background="{DynamicResource AccentBrush}" Opacity="0.09" IsHitTestVisible="False">
-          <Border.OpacityMask>
-            <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
-              <GradientStop Offset="0" Color="#FF000000" />
-              <GradientStop Offset="1" Color="#00000000" />
-            </LinearGradientBrush>
-          </Border.OpacityMask>
-        </Border>
         <ContentControl x:Name="PageHost" Content="{Binding Current.Page}" Focusable="False" />
-        <Border Grid.Row="1" BorderBrush="{DynamicResource BorderSubtleBrush}" BorderThickness="0,1,0,0" Padding="32,8">
+        <Border Grid.Row="1" BorderBrush="{DynamicResource BorderSubtleBrush}" BorderThickness="0,1,0,0" Padding="28,10">
           <StackPanel Orientation="Horizontal">
             <views:Glyph FontSize="12" Margin="0,0,8,0" Text="&#xE789;">
               <views:Glyph.Style>

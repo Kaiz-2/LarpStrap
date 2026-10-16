@@ -3,52 +3,49 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:views="clr-namespace:LarpStrap.App.Views">
   <ScrollViewer VerticalScrollBarVisibility="Auto" Focusable="False">
-    <StackPanel Margin="32,24,32,32" MaxWidth="1120">
+    <StackPanel Margin="36,28,36,36" MaxWidth="1160">
+      <TextBlock Style="{StaticResource OverlineText}" Foreground="{DynamicResource AccentTextBrush}" Text="TU ESPACIO DE JUEGO" />
+      <TextBlock Style="{StaticResource DisplayText}" Margin="0,4,0,0" Text="Todo listo para jugar" />
+      <TextBlock Style="{StaticResource MutedText}" Margin="0,4,0,0" Text="Lanza Roblox, vuelve a tus experiencias y controla tus clientes desde un solo lugar." />
 
-      <!-- Hero: the real state in one line and Jugar. The only place with the brand gradient. -->
-      <Border Style="{StaticResource HeroCard}" Margin="0,4,0,0">
+      <Border Style="{StaticResource HeroCard}" Margin="0,24,0,0" Padding="30">
         <Grid>
-        <!-- Decoration only (no automation peer): orbit rings that bleed off the right edge. -->
-        <Grid HorizontalAlignment="Right" VerticalAlignment="Center" Width="360" Height="360" Margin="0,-120,-150,-120" IsHitTestVisible="False">
-          <Ellipse Stroke="#1AFFFFFF" StrokeThickness="1.5" />
-          <Ellipse Margin="48" Stroke="#14FFFFFF" StrokeThickness="1.5" />
-          <Ellipse Margin="96" Stroke="#0FFFFFFF" StrokeThickness="1.5" />
-          <Ellipse Width="14" Height="14" Fill="#40FFFFFF" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="52,52,0,0" />
-        </Grid>
-        <!-- WrapPanel: the actions sit beside the text when there is room and drop below it when not. -->
-        <WrapPanel>
-          <views:LogoBadge OnBrand="True" Width="76" Height="76" Margin="0,0,24,0" VerticalAlignment="Center" />
-          <StackPanel MinWidth="240" MaxWidth="440" Margin="0,0,32,0" VerticalAlignment="Center">
-            <TextBlock Style="{StaticResource OverlineText}" Foreground="{DynamicResource OnBrandMutedBrush}" Text="LARPSTRAP · CENTRO DE JUEGO" />
-            <TextBlock Style="{StaticResource HeroText}" FontSize="{StaticResource FontSizeDisplay}" Text="{Binding Instances.StatusHeadline}" />
-            <TextBlock Style="{StaticResource BodyText}" Margin="0,6,0,0" Foreground="{DynamicResource OnBrandMutedBrush}" Text="{Binding Instances.LaunchHint}" />
+          <Grid.ColumnDefinitions><ColumnDefinition Width="*" /><ColumnDefinition Width="Auto" /></Grid.ColumnDefinitions>
+          <StackPanel VerticalAlignment="Center" MaxWidth="640">
+            <TextBlock Style="{StaticResource OverlineText}" Foreground="{DynamicResource OnBrandMutedBrush}" Text="ESTADO DE ROBLOX" />
+            <TextBlock Style="{StaticResource HeroText}" Margin="0,8,0,0" FontSize="30" Text="{Binding Instances.StatusHeadline}" />
+            <TextBlock Style="{StaticResource BodyText}" Margin="0,8,0,0" Foreground="{DynamicResource OnBrandMutedBrush}" Text="{Binding Instances.LaunchHint}" />
+            <StackPanel Orientation="Horizontal" Margin="0,22,0,0">
+              <Button Style="{StaticResource HeroButton}" MinWidth="164" Command="{Binding Instances.LaunchCommand}"
+                      AutomationProperties.Name="{Binding Instances.PrimaryActionText}">
+                <StackPanel Orientation="Horizontal">
+                  <views:Glyph Style="{StaticResource IconText}" Foreground="{StaticResource OnHeroButtonBrush}" Margin="0,0,10,0" Text="&#xE768;" />
+                  <TextBlock VerticalAlignment="Center" Text="{Binding Instances.PrimaryActionText}" />
+                </StackPanel>
+              </Button>
+              <Button Style="{StaticResource HeroSecondaryButton}" Margin="10,0,0,0" Content="Ver clientes"
+                      Command="{Binding OpenPanelCommand}" AutomationProperties.Name="Ver los clientes abiertos" />
+            </StackPanel>
           </StackPanel>
-          <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="0,12,0,0">
-            <Button Style="{StaticResource HeroButton}" MinWidth="160" Command="{Binding Instances.LaunchCommand}" AutomationProperties.Name="{Binding Instances.PrimaryActionText}">
-              <StackPanel Orientation="Horizontal">
-                <views:Glyph Style="{StaticResource IconText}" Foreground="{StaticResource OnHeroButtonBrush}" FontSize="16" Margin="0,0,12,0" Text="&#xE768;" />
-                <TextBlock VerticalAlignment="Center" Text="{Binding Instances.PrimaryActionText}" />
-              </StackPanel>
-            </Button>
-            <Button Style="{StaticResource HeroSecondaryButton}" Margin="12,0,0,0" Content="_Ver clientes"
-                    Command="{Binding OpenPanelCommand}" AutomationProperties.Name="Ver los clientes abiertos" />
-          </StackPanel>
-        </WrapPanel>
+          <Border Grid.Column="1" Width="144" Height="144" Margin="28,0,8,0" CornerRadius="72"
+                  BorderBrush="{StaticResource OnBrandTrackBrush}" BorderThickness="1" Background="{StaticResource OnBrandFaintBrush}"
+                  VerticalAlignment="Center">
+            <views:LogoBadge OnBrand="True" Width="76" Height="76" HorizontalAlignment="Center" VerticalAlignment="Center" />
+          </Border>
         </Grid>
       </Border>
 
-      <!-- Last result: one quiet line, never three cards. -->
-      <DockPanel Margin="4,12,0,0" Visibility="{Binding Instances.HasActivity, Converter={StaticResource Visible}}">
+      <DockPanel Margin="4,12,4,0" Visibility="{Binding Instances.HasActivity, Converter={StaticResource Visible}}">
         <TextBlock DockPanel.Dock="Left" Style="{StaticResource CaptionText}" FontFamily="{StaticResource FontMono}" Margin="0,0,12,0" Text="{Binding Instances.LastActivity.TimeText}" />
-        <TextBlock DockPanel.Dock="Right" Style="{StaticResource CaptionText}" Margin="8,0,0,0" Text="· simulado"
+        <TextBlock DockPanel.Dock="Right" Style="{StaticResource CaptionText}" Margin="8,0,0,0" Text="· modo de demostración"
                    Visibility="{Binding Instances.LastActivity.IsSimulated, Converter={StaticResource Visible}, FallbackValue=Collapsed}" />
         <TextBlock Style="{StaticResource CaptionText}" TextTrimming="CharacterEllipsis" TextWrapping="NoWrap"
                    Text="{Binding Instances.LastActivity.Summary}" ToolTip="{Binding Instances.LastActivity.Guidance}" />
       </DockPanel>
 
-      <!-- Saved games: the main content. -->
-      <DockPanel Margin="0,32,0,14">
-        <Button DockPanel.Dock="Right" Style="{StaticResource GhostButton}" Command="{Binding OpenShortcutsCommand}" AutomationProperties.Name="Añadir o gestionar juegos">
+      <DockPanel Margin="0,34,0,14">
+        <Button DockPanel.Dock="Right" Style="{StaticResource GhostButton}" Command="{Binding OpenShortcutsCommand}"
+                AutomationProperties.Name="Añadir o gestionar juegos">
           <StackPanel Orientation="Horizontal">
             <views:Glyph Style="{StaticResource IconText}" Margin="0,0,8,0" Text="&#xE710;" />
             <AccessText VerticalAlignment="Center" Text="_Añadir juego" />
@@ -56,22 +53,27 @@
         </Button>
         <StackPanel VerticalAlignment="Center">
           <TextBlock Style="{StaticResource TitleText}" Text="Tus experiencias" />
-          <TextBlock Style="{StaticResource CaptionText}" Margin="0,2,0,0" Text="Tus juegos guardados, listos para iniciar" />
+          <TextBlock Style="{StaticResource CaptionText}" Margin="0,3,0,0" Text="Accesos directos a los juegos que más usas" />
         </StackPanel>
       </DockPanel>
-      <Border Style="{StaticResource Card}" Padding="32,28" Visibility="{Binding Shortcuts.IsEmpty, Converter={StaticResource Visible}}">
-        <StackPanel HorizontalAlignment="Center">
-          <views:Glyph Style="{StaticResource IconText}" HorizontalAlignment="Center" FontSize="28" Foreground="{DynamicResource AccentTextBrush}" Text="&#xE734;" />
-          <TextBlock Style="{StaticResource SubtitleText}" Margin="0,12,0,0" HorizontalAlignment="Center" Text="Aún no has guardado ningún juego" />
-          <TextBlock Style="{StaticResource MutedText}" Margin="0,4,0,0" HorizontalAlignment="Center" TextAlignment="Center"
-                     Text="Añade un enlace o place ID y podrás iniciarlo desde aquí." />
-          <Button Style="{StaticResource PrimaryButton}" Margin="0,16,0,0" HorizontalAlignment="Center" Content="Añadir mi primer juego" Command="{Binding OpenShortcutsCommand}" />
-        </StackPanel>
+
+      <Border Style="{StaticResource Card}" Padding="28,26" Visibility="{Binding Shortcuts.IsEmpty, Converter={StaticResource Visible}}">
+        <Grid>
+          <Grid.ColumnDefinitions><ColumnDefinition Width="Auto" /><ColumnDefinition Width="*" /><ColumnDefinition Width="Auto" /></Grid.ColumnDefinitions>
+          <Border Width="48" Height="48" CornerRadius="14" Background="{DynamicResource AccentSoftBrush}">
+            <views:Glyph Style="{StaticResource IconText}" HorizontalAlignment="Center" Foreground="{DynamicResource AccentTextBrush}" Text="&#xE734;" />
+          </Border>
+          <StackPanel Grid.Column="1" Margin="16,0,20,0" VerticalAlignment="Center">
+            <TextBlock Style="{StaticResource SubtitleText}" Text="Tu biblioteca empieza aquí" />
+            <TextBlock Style="{StaticResource MutedText}" Margin="0,4,0,0" Text="Guarda un juego por su enlace o place ID para tenerlo a mano." />
+          </StackPanel>
+          <Button Grid.Column="2" Style="{StaticResource PrimaryButton}" VerticalAlignment="Center" Content="Añadir experiencia"
+                  Command="{Binding OpenShortcutsCommand}" />
+        </Grid>
       </Border>
+
       <ItemsControl ItemsSource="{Binding Shortcuts.Favorites}" Focusable="False" AutomationProperties.Name="Tus juegos">
-        <ItemsControl.ItemsPanel>
-          <ItemsPanelTemplate><WrapPanel /></ItemsPanelTemplate>
-        </ItemsControl.ItemsPanel>
+        <ItemsControl.ItemsPanel><ItemsPanelTemplate><WrapPanel /></ItemsPanelTemplate></ItemsControl.ItemsPanel>
         <ItemsControl.ItemTemplate>
           <DataTemplate>
             <Button Style="{StaticResource GameTile}" Width="264" Margin="0,0,14,14" Click="OpenJoinMenu"
@@ -81,15 +83,14 @@
                         CornerRadius="{StaticResource RadiusContainer}" ClipToBounds="True">
                   <Grid>
                     <Image Source="{Binding ThumbnailUrl}" Stretch="UniformToFill" Visibility="{Binding HasThumbnail, Converter={StaticResource Visible}}" />
-                    <Border HorizontalAlignment="Stretch" VerticalAlignment="Bottom" Height="48" Background="{StaticResource BrandGradientBrush}"
-                            Visibility="{Binding HasThumbnail, Converter={StaticResource Hidden}}" />
-                    <views:Glyph Style="{StaticResource IconText}" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="30" Foreground="{DynamicResource AccentTextBrush}" Text="&#xE7FC;"
+                    <views:Glyph Style="{StaticResource IconText}" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="30"
+                                 Foreground="{DynamicResource AccentTextBrush}" Text="&#xE7FC;"
                                  Visibility="{Binding HasThumbnail, Converter={StaticResource Hidden}}" />
                   </Grid>
                 </Border>
                 <TextBlock Style="{StaticResource SubtitleText}" Margin="0,14,0,0" Text="{Binding Name}" TextTrimming="CharacterEllipsis" TextWrapping="NoWrap" />
                 <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
-                  <TextBlock Style="{StaticResource CaptionText}" Foreground="{DynamicResource AccentTextBrush}" Text="Unirme ▾" />
+                  <TextBlock Style="{StaticResource CaptionText}" Foreground="{DynamicResource AccentTextBrush}" Text="Unirme" />
                   <views:Glyph Style="{StaticResource IconText}" FontSize="10" Margin="6,0,0,0" Foreground="{DynamicResource AccentTextBrush}" Text="&#xE8A7;" />
                 </StackPanel>
               </StackPanel>

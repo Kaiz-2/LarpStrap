@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:views="clr-namespace:LarpStrap.App.Views">
   <ScrollViewer VerticalScrollBarVisibility="Auto" Focusable="False">
-    <StackPanel Margin="32,24,32,32" MaxWidth="1120">
+    <StackPanel Margin="36,28,36,36" MaxWidth="1160">
       <TextBlock Style="{StaticResource DisplayText}" Text="Acerca de" />
 
       <Border Style="{StaticResource HeroCard}" Margin="0,20,0,0">

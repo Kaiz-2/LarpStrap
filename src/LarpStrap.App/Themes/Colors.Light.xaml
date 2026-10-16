@@ -4,12 +4,12 @@
     Nebulosa, light. Contrast is enforced by ThemeContrastTests (WCAG 2.x). Accent brushes are set by ThemeService.
     Layer brushes are translucent so the Mica/Acrylic window material shows through; cards stay opaque for legibility.
   -->
-  <SolidColorBrush x:Key="BgBrush" Color="#F3F4F6" />
-  <SolidColorBrush x:Key="LayerBrush" Color="#D9F3F4F6" />
+  <SolidColorBrush x:Key="BgBrush" Color="#F2F6F8" />
+  <SolidColorBrush x:Key="LayerBrush" Color="#D9F2F6F8" />
   <SolidColorBrush x:Key="SurfaceBrush" Color="#FFFFFF" />
-  <SolidColorBrush x:Key="SurfaceAltBrush" Color="#EEF0F3" />
-  <SolidColorBrush x:Key="SurfaceHoverBrush" Color="#E4E7EB" />
-  <SolidColorBrush x:Key="BorderSubtleBrush" Color="#D7DCE3" />
+  <SolidColorBrush x:Key="SurfaceAltBrush" Color="#EAF1F4" />
+  <SolidColorBrush x:Key="SurfaceHoverBrush" Color="#DDE9EE" />
+  <SolidColorBrush x:Key="BorderSubtleBrush" Color="#D0DEE4" />
   <SolidColorBrush x:Key="BorderStrongBrush" Color="#687386" />
   <SolidColorBrush x:Key="TextBrush" Color="#1B2028" />
   <SolidColorBrush x:Key="TextMutedBrush" Color="#525C69" />

@@ -14,7 +14,7 @@
     </Style>
   </UserControl.Resources>
   <ScrollViewer VerticalScrollBarVisibility="Auto" Focusable="False">
-    <StackPanel Margin="32,24,32,32" MaxWidth="1120">
+    <StackPanel Margin="36,28,36,36" MaxWidth="1160">
       <TextBlock Style="{StaticResource DisplayText}" Text="Personalización" />
       <TextBlock Style="{StaticResource MutedText}" Margin="0,4,0,0" Text="Elige cómo se ve LarpStrap. Los cambios se aplican al momento y se guardan." />
 
@@ -61,7 +61,7 @@
       <TextBlock Style="{StaticResource MutedText}" Margin="0,0,0,10" Text="Cada tema cambia los fondos, superficies y bordes. El modo claro u oscuro se conserva por separado." />
       <WrapPanel KeyboardNavigation.TabNavigation="Once" AutomationProperties.Name="Temas de interfaz">
         <RadioButton Style="{StaticResource TileOption}" GroupName="ThemePreset" AutomationProperties.Name="Nebulosa" IsChecked="{Binding ThemePreset, Mode=TwoWay, Converter={StaticResource Equals}, ConverterParameter=Nebula}">
-          <StackPanel><Border Style="{StaticResource PreviewFrame}" Background="{StaticResource PresetNebulaDarkBgBrush}"><Grid><Border Margin="12,13,48,13" CornerRadius="4" Background="{StaticResource PresetNebulaDarkSurfaceAltBrush}" /><Border Width="28" Height="4" Margin="14,0,0,0" VerticalAlignment="Bottom" HorizontalAlignment="Left" Background="{StaticResource SwatchViolet}" /></Grid></Border><TextBlock Text="Nebulosa"/><TextBlock Style="{StaticResource CaptionText}" Text="Violeta y grafito"/></StackPanel>
+          <StackPanel><Border Style="{StaticResource PreviewFrame}" Background="{StaticResource PresetNebulaDarkBgBrush}"><Grid><Border Margin="12,13,48,13" CornerRadius="4" Background="{StaticResource PresetNebulaDarkSurfaceAltBrush}" /><Border Width="28" Height="4" Margin="14,0,0,0" VerticalAlignment="Bottom" HorizontalAlignment="Left" Background="{StaticResource SwatchViolet}" /></Grid></Border><TextBlock Text="Nebulosa"/><TextBlock Style="{StaticResource CaptionText}" Text="Azul petróleo y grafito"/></StackPanel>
         </RadioButton>
         <RadioButton Style="{StaticResource TileOption}" GroupName="ThemePreset" AutomationProperties.Name="Medianoche" IsChecked="{Binding ThemePreset, Mode=TwoWay, Converter={StaticResource Equals}, ConverterParameter=Midnight}">
           <StackPanel><Border Style="{StaticResource PreviewFrame}" Background="{StaticResource PresetMidnightDarkBgBrush}"><Grid><Border Margin="12,13,48,13" CornerRadius="4" Background="{StaticResource PresetMidnightDarkSurfaceAltBrush}" /><Border Width="28" Height="4" Margin="14,0,0,0" VerticalAlignment="Bottom" HorizontalAlignment="Left" Background="{StaticResource SwatchBlue}" /></Grid></Border><TextBlock Text="Medianoche"/><TextBlock Style="{StaticResource CaptionText}" Text="Azul profundo"/></StackPanel>

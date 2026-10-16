@@ -2,6 +2,11 @@
 
 Todos los cambios relevantes de LarpStrap. Formato basado en [Keep a Changelog](https://keepachangelog.com/es-ES/1.1.0/); versiones según [SemVer](https://semver.org/lang/es/).
 
+## 0.4.1 - 2026-10-16 (versión preliminar)
+
+### Cambiado
+- Rediseño completo de la interfaz principal, navegación, tarjetas, temas y asistente de instalación.
+
 ## 0.4.0 - 2026-10-16 (versión preliminar)
 
 ### Añadido

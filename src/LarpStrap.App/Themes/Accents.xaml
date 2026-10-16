@@ -55,26 +55,26 @@
   <SolidColorBrush x:Key="SwatchGraphite" Color="{StaticResource AccentSeedGraphite}" />
 
   <!-- Brand "nebula" gradient: hero, logo tile and launch dialog. White text on both ends is ≥4.5:1. -->
-  <Color x:Key="BrandGradientStart">#4B3A83</Color>
-  <Color x:Key="BrandGradientEnd">#285A78</Color>
+  <Color x:Key="BrandGradientStart">#17334A</Color>
+  <Color x:Key="BrandGradientEnd">#1A5361</Color>
   <LinearGradientBrush x:Key="BrandGradientBrush" StartPoint="0,0" EndPoint="1,1">
     <GradientStop Offset="0" Color="{StaticResource BrandGradientStart}" />
     <GradientStop Offset="1" Color="{StaticResource BrandGradientEnd}" />
   </LinearGradientBrush>
   <SolidColorBrush x:Key="OnBrandBrush" Color="#FFFFFF" />
-  <SolidColorBrush x:Key="OnBrandMutedBrush" Color="#D8D6E5" />
+  <SolidColorBrush x:Key="OnBrandMutedBrush" Color="#D7E6EA" />
   <!-- Text on the white hero button (≥8:1 on white). -->
-  <SolidColorBrush x:Key="OnHeroButtonBrush" Color="#30265C" />
+  <SolidColorBrush x:Key="OnHeroButtonBrush" Color="#17334A" />
   <!-- Translucent white on the brand gradient: decorative fills and the progress track (not text). -->
   <SolidColorBrush x:Key="OnBrandFaintBrush" Color="#26FFFFFF" />
   <SolidColorBrush x:Key="OnBrandTrackBrush" Color="#59FFFFFF" />
   <SolidColorBrush x:Key="OnBrandChipBrush" Color="#33FFFFFF" />
 
   <!-- Theme previews in Personalización: always both themes' real colours, whatever theme is active. -->
-  <SolidColorBrush x:Key="PreviewLightBrush" Color="#F3F4F6" />
-  <SolidColorBrush x:Key="PreviewLightCardBrush" Color="#E4E7EB" />
-  <SolidColorBrush x:Key="PreviewDarkBrush" Color="#111318" />
-  <SolidColorBrush x:Key="PreviewDarkCardBrush" Color="#292E38" />
+  <SolidColorBrush x:Key="PreviewLightBrush" Color="#F2F6F8" />
+  <SolidColorBrush x:Key="PreviewLightCardBrush" Color="#DDE9EE" />
+  <SolidColorBrush x:Key="PreviewDarkBrush" Color="#0D1722" />
+  <SolidColorBrush x:Key="PreviewDarkCardBrush" Color="#223A49" />
 
   <!-- Defaults until ThemeService applies the saved accent and theme. -->
   <SolidColorBrush x:Key="AccentBrush" Color="{StaticResource AccentSeedViolet}" />

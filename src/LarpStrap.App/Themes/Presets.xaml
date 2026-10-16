@@ -6,16 +6,16 @@
     every theme against the text, border and state colours of its mode.
   -->
   <!-- Nebula -->
-  <SolidColorBrush x:Key="PresetNebulaDarkBgBrush" Color="#111318" />
-  <SolidColorBrush x:Key="PresetNebulaDarkSurfaceBrush" Color="#181B22" />
-  <SolidColorBrush x:Key="PresetNebulaDarkSurfaceAltBrush" Color="#20242C" />
-  <SolidColorBrush x:Key="PresetNebulaDarkSurfaceHoverBrush" Color="#292E38" />
-  <SolidColorBrush x:Key="PresetNebulaDarkBorderSubtleBrush" Color="#303743" />
-  <SolidColorBrush x:Key="PresetNebulaLightBgBrush" Color="#F3F4F6" />
+  <SolidColorBrush x:Key="PresetNebulaDarkBgBrush" Color="#0D1722" />
+  <SolidColorBrush x:Key="PresetNebulaDarkSurfaceBrush" Color="#121F2A" />
+  <SolidColorBrush x:Key="PresetNebulaDarkSurfaceAltBrush" Color="#1A2C39" />
+  <SolidColorBrush x:Key="PresetNebulaDarkSurfaceHoverBrush" Color="#223A49" />
+  <SolidColorBrush x:Key="PresetNebulaDarkBorderSubtleBrush" Color="#2D4655" />
+  <SolidColorBrush x:Key="PresetNebulaLightBgBrush" Color="#F2F6F8" />
   <SolidColorBrush x:Key="PresetNebulaLightSurfaceBrush" Color="#FFFFFF" />
-  <SolidColorBrush x:Key="PresetNebulaLightSurfaceAltBrush" Color="#EEF0F3" />
-  <SolidColorBrush x:Key="PresetNebulaLightSurfaceHoverBrush" Color="#E4E7EB" />
-  <SolidColorBrush x:Key="PresetNebulaLightBorderSubtleBrush" Color="#D7DCE3" />
+  <SolidColorBrush x:Key="PresetNebulaLightSurfaceAltBrush" Color="#EAF1F4" />
+  <SolidColorBrush x:Key="PresetNebulaLightSurfaceHoverBrush" Color="#DDE9EE" />
+  <SolidColorBrush x:Key="PresetNebulaLightBorderSubtleBrush" Color="#D0DEE4" />
   <!-- Midnight -->
   <SolidColorBrush x:Key="PresetMidnightDarkBgBrush" Color="#0B1020" />
   <SolidColorBrush x:Key="PresetMidnightDarkSurfaceBrush" Color="#11182A" />

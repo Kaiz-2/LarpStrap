@@ -16,13 +16,13 @@
   <sys:Double x:Key="FontSizeBody">14</sys:Double>
   <sys:Double x:Key="FontSizeSubtitle">16</sys:Double>
   <sys:Double x:Key="FontSizeTitle">20</sys:Double>
-  <sys:Double x:Key="FontSizeDisplay">30</sys:Double>
+  <sys:Double x:Key="FontSizeDisplay">28</sys:Double>
   <sys:Double x:Key="FontSizeHero">40</sys:Double>
 
   <!-- Fluent-like radii: small on controls, a step up on cards, the largest only on the brand hero. -->
-  <CornerRadius x:Key="RadiusControl">10</CornerRadius>
-  <CornerRadius x:Key="RadiusContainer">14</CornerRadius>
-  <CornerRadius x:Key="RadiusHero">20</CornerRadius>
+  <CornerRadius x:Key="RadiusControl">8</CornerRadius>
+  <CornerRadius x:Key="RadiusContainer">12</CornerRadius>
+  <CornerRadius x:Key="RadiusHero">16</CornerRadius>
   <CornerRadius x:Key="RadiusPill">999</CornerRadius>
   <CornerRadius x:Key="RadiusStatus">4</CornerRadius>
 
@@ -33,7 +33,7 @@
   <sys:Double x:Key="RowHeight">52</sys:Double>
 
   <sys:Double x:Key="ControlHeight">42</sys:Double>
-  <sys:Double x:Key="ControlHeightLarge">54</sys:Double>
+  <sys:Double x:Key="ControlHeightLarge">50</sys:Double>
 
   <!-- Logo: a launch glyph (an L holding a play mark) on the brand tile, drawn in a 64×64 box. -->
   <Geometry x:Key="LogoTile">M14,0 H50 A14,14 0 0 1 64,14 V50 A14,14 0 0 1 50,64 H14 A14,14 0 0 1 0,50 V14 A14,14 0 0 1 14,0 Z</Geometry>

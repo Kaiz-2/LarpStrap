@@ -75,15 +75,15 @@
     <Setter Property="BorderBrush" Value="{DynamicResource BorderSubtleBrush}" />
     <Setter Property="BorderThickness" Value="1" />
     <Setter Property="CornerRadius" Value="{StaticResource RadiusContainer}" />
-    <Setter Property="Padding" Value="22" />
+    <Setter Property="Padding" Value="20" />
   </Style>
   <!-- Brand hero: the nebula gradient behind white text (≥4.5:1 on both ends). -->
   <Style x:Key="HeroCard" TargetType="Border">
     <Setter Property="Background" Value="{StaticResource BrandGradientBrush}" />
     <Setter Property="CornerRadius" Value="{StaticResource RadiusHero}" />
-    <Setter Property="Padding" Value="32" />
+    <Setter Property="Padding" Value="28" />
     <Setter Property="ClipToBounds" Value="True" />
-    <Setter Property="Effect"><Setter.Value><DropShadowEffect Color="#000000" Opacity="0.35" BlurRadius="28" ShadowDepth="6" Direction="270" /></Setter.Value></Setter>
+    <Setter Property="Effect"><Setter.Value><DropShadowEffect Color="#000000" Opacity="0.18" BlurRadius="24" ShadowDepth="3" Direction="270" /></Setter.Value></Setter>
   </Style>
   <!-- Round icon tile used as an avatar for clients and games. -->
   <Style x:Key="Avatar" TargetType="Border">
@@ -171,21 +171,20 @@
       <Setter.Value>
         <ControlTemplate TargetType="views:SettingCard">
           <Border Background="{DynamicResource SurfaceBrush}" BorderBrush="{DynamicResource BorderSubtleBrush}" BorderThickness="1"
-                  CornerRadius="{StaticResource RadiusContainer}" Padding="20,16">
-            <WrapPanel VerticalAlignment="Center">
-              <DockPanel MinWidth="300" MaxWidth="560" Margin="0,4,24,4" VerticalAlignment="Center">
-                <Border DockPanel.Dock="Left" Width="44" Height="44" Margin="0,0,14,0" CornerRadius="12"
-                        Background="{DynamicResource AccentSoftBrush}" VerticalAlignment="Center">
-                  <views:Glyph Style="{StaticResource IconText}" FontSize="19" HorizontalAlignment="Center"
-                               Foreground="{DynamicResource AccentTextBrush}" Text="{TemplateBinding Icon}" />
-                </Border>
-                <StackPanel VerticalAlignment="Center" Margin="0,0,8,0">
-                  <TextBlock Style="{StaticResource SubtitleText}" FontSize="{StaticResource FontSizeBody}" Text="{TemplateBinding Title}" />
-                  <TextBlock Style="{StaticResource CaptionText}" Margin="0,4,0,0" Text="{TemplateBinding Description}" />
-                </StackPanel>
-              </DockPanel>
-              <ContentPresenter VerticalAlignment="Center" Margin="0,4" />
-            </WrapPanel>
+                  CornerRadius="{StaticResource RadiusContainer}" Padding="18,14">
+            <Grid VerticalAlignment="Center">
+              <Grid.ColumnDefinitions><ColumnDefinition Width="Auto" /><ColumnDefinition Width="*" /><ColumnDefinition Width="Auto" /></Grid.ColumnDefinitions>
+              <Border Width="42" Height="42" Margin="0,0,14,0" CornerRadius="11" Background="{DynamicResource AccentSoftBrush}"
+                      VerticalAlignment="Center">
+                <views:Glyph Style="{StaticResource IconText}" FontSize="18" HorizontalAlignment="Center"
+                             Foreground="{DynamicResource AccentTextBrush}" Text="{TemplateBinding Icon}" />
+              </Border>
+              <StackPanel Grid.Column="1" VerticalAlignment="Center" Margin="0,0,18,0">
+                <TextBlock Style="{StaticResource SubtitleText}" FontSize="{StaticResource FontSizeBody}" Text="{TemplateBinding Title}" />
+                <TextBlock Style="{StaticResource CaptionText}" Margin="0,4,0,0" Text="{TemplateBinding Description}" />
+              </StackPanel>
+              <ContentPresenter Grid.Column="2" VerticalAlignment="Center" Margin="8,4,0,4" />
+            </Grid>
           </Border>
         </ControlTemplate>
       </Setter.Value>
